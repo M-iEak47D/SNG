@@ -10,6 +10,8 @@ import HomeTestimonial from "../components/Home/HomeTestimonial";
 import Footer from "../components/Common/Footer";
 import axiosInstance from "../helper/axios";
 import Axios from "axios";
+import CommingSoon from "../components/Ads/commingSoon";
+import $ from 'jquery'
 
 function Home() {
   const [rooms, setRooms] = useState()
@@ -17,6 +19,7 @@ function Home() {
   const [banner, setBanner] = useState()
   const [welcome, setWelcome] = useState()
   useEffect(() => {
+    $('#commingModal').toggle();
     let source = Axios.CancelToken.source();
     const loadData = async () => {
       try {
@@ -52,6 +55,7 @@ function Home() {
         <div className="vertical-divider"></div>
       </div>
       <HomeTestimonial  testimonials={testimonials}/>
+      <CommingSoon /> 
     </div>
   );
 }
