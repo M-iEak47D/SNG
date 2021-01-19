@@ -1,17 +1,45 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import $ from "jquery";
+import CommingSoon from "../Ads/commingSoon";
 
 function Navbar() {
   function openNav() {
     document.getElementById("mySidenav").style.width = "250px";
   }
+  function modalOpen() {
+    $("#commingModal").toggle();
+  }
+  useEffect(() => {
+
+    var navbar = document.querySelector(".primary-navbar");
+    var firstNavbar = document.querySelector(".first-navbar");
+    // var bookingBtn = document.querySelector(".booking-btn");
+    window.onscroll = function () {
+      if (navbar != null) {
+        scrollFunction();
+      }
+    };
+    var sticky = navbar.offsetTop + 5;
+    function scrollFunction() {
+      if (window.pageYOffset >= sticky) {
+        navbar.classList.add("sticky");
+        // firstNavbar.style.display = "none";
+        // bookingBtn.style.background = "#ff9800";
+      } else {
+        navbar.classList.remove("sticky");
+        // firstNavbar.style.display = "flex";
+        // bookingBtn.style.background = "none";
+      }
+    }
+  }, []);
 
   return (
     <div>
       <div className="primary-navbar">
         <div className="container">
           <div className="row">
-            <div className="col-md-7 col-12">
+            <div className="col-md-8 col-12">
               <div className="first-navbar">
                 <nav className="navbar navbar-static-top navbar-expand-lg navbar-dark navbar-inverse">
                   <div className="navbar-logo">
@@ -42,6 +70,22 @@ function Navbar() {
                           Home <span className="sr-only">(current)</span>
                         </Link>
                       </li>
+                      <li className="nav-item active">
+                        <Link className="nav-link" to="/about_us">
+                          About us <span class="sr-only">(current)</span>
+                        </Link>
+                      </li>
+                      <li className="nav-item active">
+                        <Link className="nav-link" to="/restaurant">
+                          Restaurant <span class="sr-only">(current)</span>
+                        </Link>
+                      </li>
+                      <li className="nav-item active">
+                        <Link className="nav-link" to="/packages">
+                          Packages
+                          <span className="sr-only">(current)</span>
+                        </Link>
+                      </li>
                       <li className="nav-item dropdown">
                         <a
                           className="nav-link dropdown-toggle"
@@ -70,12 +114,7 @@ function Navbar() {
                           </Link>
                         </div>
                       </li>
-                      <li className="nav-item active">
-                        <Link className="nav-link" to="/packages">
-                          Packages
-                          <span className="sr-only">(current)</span>
-                        </Link>
-                      </li>
+
                       <li className="nav-item dropdown">
                         <a
                           className="nav-link dropdown-toggle"
@@ -101,16 +140,11 @@ function Navbar() {
                         </div>
                       </li>
 
-                      <li className="nav-item active">
+                      {/* <li className="nav-item active">
                         <Link className="nav-link" to="/contact">
                           Contact <span class="sr-only">(current)</span>
                         </Link>
-                      </li>
-                      <li className="nav-item active">
-                        <Link className="nav-link" to="/about_us">
-                          About us <span class="sr-only">(current)</span>
-                        </Link>
-                      </li>
+                      </li> */}
 
                       <li className="nav-item dropdown">
                         <a
@@ -128,14 +162,13 @@ function Navbar() {
                           className="dropdown-menu"
                           aria-labelledby="navbarDropdown"
                         >
-                          <Link className="dropdown-item" to="/restaurant">
-                            Restaurant and Bar
+                          <Link className="dropdown-item" to="/contact">
+                            Contact
                           </Link>
-
                           <Link className="dropdown-item" to="/blog">
                             Blog
                           </Link>
-                         
+
                           <Link className="dropdown-item" to="/our_team">
                             Our Team
                           </Link>
@@ -151,7 +184,7 @@ function Navbar() {
             </div>
 
             <div
-              className="col-md-5 col-12"
+              className="col-md-4 col-12"
               style={{ marginTop: "auto", marginBottom: "auto" }}
             >
               <div className="second-navbar-wrapper">
@@ -170,10 +203,14 @@ function Navbar() {
                       &nbsp;&nbsp;
                     </div> */}
                     <div className="book-now">
-                      <a href="search-for-room.html">BOOK NOW&nbsp;</a>
+                      {/* <a href="" onClick={() => modalOpen}>
+                        BOOK NOW&nbsp;{" "}
+                      </a> */}
+                      <button onClick={modalOpen}>BOOK NOW</button>
                     </div>
                     <div className="select-country">
                       <select id="country" name="country">
+                        <option value="NP">NP</option>
                         <option value="NP">NP</option>
                         <option value="IN">IN</option>
                         <option value="US">US</option>

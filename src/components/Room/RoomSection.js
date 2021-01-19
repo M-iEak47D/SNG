@@ -1,4 +1,5 @@
 import React from "react";
+import RoomSlider from "./RoomSlider";
 
 function RoomSection() {
   return (
@@ -49,7 +50,6 @@ function RoomSection() {
                     </div>
                   </div>
                 </div>
-              
               </div>
               <div className="col-md-7">
                 <div className="room-description">
@@ -83,25 +83,12 @@ function RoomSection() {
               </div>
             </div>
           </div>
-       
         </div>
       </div>
 
       {/* <!-- Slick slider for room images --> */}
 
-      <div className="room-photos-slider">
-        <div className="room-slide">
-          <div className="room-content">
-            <img src={process.env.PUBLIC_URL + "/images/hotelroom1.jpg"} />
-          </div>
-          <div className="room-content">
-            <img src={process.env.PUBLIC_URL + "/images/hotelroom1.jpg"} />
-          </div>
-          <div className="room-content">
-            <img src={process.env.PUBLIC_URL + "/images/hotelroom1.jpg"} />
-          </div>
-        </div>
-      </div>
+      <RoomSlider />
     </div>
   );
 }

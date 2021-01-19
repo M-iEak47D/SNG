@@ -176,10 +176,22 @@
   background: linear-gradient(black, rgba(4, 0, 0, 0.04));
   margin-top: 0;
   font-weight: 600;
+  position: fixed;
+  top: 0px;
+  left: 0;
+  right: 0;
+  z-index: 90;
 }
 
 .banner .primary-navbar .nav-logo img {
   width: 80%;
+}
+
+.banner .sticky {
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+  background: #62668e !important;
+  padding: 0px;
 }
 
 #single-room-text-in-banner {
@@ -517,7 +529,7 @@
   position: relative;
 }
 
-.second-navbar .login .book-now a {
+.second-navbar .login .book-now button {
   background-color: #ff6a00;
   height: 30px;
   display: -webkit-box;
@@ -555,10 +567,6 @@
   font-size: 10px;
 }
 
-.select-country {
-  display: none;
-}
-
 .login-text {
   margin: auto 0;
 }
@@ -579,7 +587,21 @@
 }
 
 .select-country {
-  margin: auto 0;
+  margin: auto 5px;
+  width: 50px;
+}
+
+.select-country select {
+  width: 100%;
+  height: 30px;
+  border: none;
+  background: none;
+  color: white;
+  font-weight: bold;
+}
+
+.select-country select:focus {
+  outline: none;
 }
 
 .navbar-dark .navbar-nav .nav-link {
@@ -588,7 +610,7 @@
 
 .nav-link {
   color: white;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 500;
 }
 
@@ -1446,7 +1468,7 @@
 
 .our-rooms-details-wrapper .our-rooms-details .hotel-room .hotel-room-image {
   overflow: hidden;
-  /* background-image: url("../images/discover-location-hotel-room.jpg"); */
+  background-image: url("../images/discover-location-hotel-room.jpg");
   background-size: cover;
   background-position: center;
   height: inherit;

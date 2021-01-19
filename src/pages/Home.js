@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import HomeBanner from "../components/Home/HomeBanner";
 import HomeWelcome from "../components/Home/HomeWelcome";
 import HomeDiscover from "../components/Home/HomeDiscover";
@@ -11,15 +11,15 @@ import Footer from "../components/Common/Footer";
 import axiosInstance from "../helper/axios";
 import Axios from "axios";
 import CommingSoon from "../components/Ads/commingSoon";
-import $ from 'jquery'
+import $ from "jquery";
 
 function Home() {
-  const [rooms, setRooms] = useState()
-  const [testimonials, setTestimonials] = useState()
-  const [banner, setBanner] = useState()
-  const [welcome, setWelcome] = useState()
+  const [rooms, setRooms] = useState();
+  const [testimonials, setTestimonials] = useState();
+  const [banner, setBanner] = useState();
+  const [welcome, setWelcome] = useState();
   useEffect(() => {
-    $('#commingModal').toggle();
+    $("#commingModal").toggle();
     let source = Axios.CancelToken.source();
     const loadData = async () => {
       try {
@@ -27,9 +27,9 @@ function Home() {
           cancelToken: source.token,
         });
         setRooms((await response).data.rooms);
-        setTestimonials((await response).data.testimonials)
-        setBanner((await response).data.data)
-        setWelcome((await response).data.welcome)
+        setTestimonials((await response).data.testimonials);
+        setBanner((await response).data.data);
+        setWelcome((await response).data.welcome);
       } catch (error) {
         if (!Axios.isCancel(error)) {
           throw error;
@@ -40,12 +40,13 @@ function Home() {
       };
     };
     loadData();
+    window.scrollTo(0, 0);
   }, []);
-  console.log(rooms, 'hello')
+  console.log(rooms, "hello");
   return (
     <div id="main">
-      <HomeBanner banner={banner}/>
-      <HomeWelcome welcome={welcome}/>
+      <HomeBanner banner={banner} />
+      <HomeWelcome welcome={welcome} />
       <HomeDiscover />
       <HomeSummer />
       <HomeRooms rooms={rooms} />
@@ -54,8 +55,8 @@ function Home() {
       <div className="container">
         <div className="vertical-divider"></div>
       </div>
-      <HomeTestimonial testimonials={testimonials}/>
-      <CommingSoon /> 
+      <HomeTestimonial testimonials={testimonials} />
+      
     </div>
   );
 }

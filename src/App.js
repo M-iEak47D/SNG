@@ -15,11 +15,13 @@ import Restaurant from "./pages/Restaurant";
 import Team from "./pages/Team";
 import Room from "./pages/Room";
 import Checkout from "./pages/Checkout";
+import CommingSoon from "./components/Ads/commingSoon";
 
 function App() {
   return (
     <Router>
       <Sidenav />
+      <CommingSoon/>
       <Switch>
         <Route exact path="/contact">
           <Contact />
