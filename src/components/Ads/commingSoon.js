@@ -17,12 +17,11 @@ const CommingSoon =()=>{
         </div>
      
       <div className="modal-body" >
-        <img src="https://www.nopcommerce.com/images/thumbs/0005720_coming-soon-page_550.jpeg" className="img-fluid" alt=""/>
+        <img src={
+                        process.env.PUBLIC_URL + "/images/OpeningSoon.png"
+                      } className="img-fluid" alt=""/>
       </div>
-
-      
-
-    </div>
+  </div>
   </div>
 </div>
 

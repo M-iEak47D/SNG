@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import Axios from 'axios'
 import axiosInstance from "../../helper/axios";
+import Skeleton from "react-loading-skeleton";
 
 function Allpackages() {
   const [packages, setPackages] = useState()
@@ -28,7 +29,7 @@ function Allpackages() {
   return (
     <div>
       <div className="all-packages-background">
-        {packages && packages.map((trip)=>
+        {packages ? packages.map((trip)=>
         <div className="all-packages-section" style={{ cursor: "hand" }}>
           {/* <a href="package-single.html"></a> */}
           <div className="package-item">
@@ -75,7 +76,14 @@ function Allpackages() {
             </div>
           </div>
         </div>
-        )}
+        ): 
+        <>
+       
+        <Skeleton height={200} />
+        <Skeleton height={200} />
+                  
+        </>
+        }
       </div>
     </div>
   );

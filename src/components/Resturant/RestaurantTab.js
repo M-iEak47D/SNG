@@ -1,28 +1,31 @@
 import React from "react";
 
-function RestaurantTab(props) {
+function RestaurantTab({foodItem}) {
+  console.log(foodItem, 'hello')
   return (
     <div>
-      <h1>{props.name}</h1>
       <div>
         <div class="container">
           <div class="row">
+            {foodItem && foodItem.foods.map((food) => {
+              return(
             <div class="col-md-6">
               <div class="menu-content">
                 <div class="image-for-food">
                   <img
-                    src={process.env.PUBLIC_URL + "/images/food-dinner.jpg"}
+                    src={food.image}
                   />
                 </div>
                 <div class="food">
-                  <div class="food-name">Omelette</div>
-                  <div class="food-description">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  <div class="food-name">{food.title}</div>
+                  <div class="food-description" dangerouslySetInnerHTML={{__html: food.description}}>
                   </div>
                 </div>
-                <div class="food-price">Rs. 1000</div>
+                <div class="food-price">Rs. {food.price}</div>
               </div>
             </div>
+              )
+          })}
           </div>
         </div>
       </div>

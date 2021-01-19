@@ -1441,7 +1441,7 @@
 
 .our-rooms-details-wrapper .our-rooms-details .hotel-room .hotel-room-image {
   overflow: hidden;
-  background-image: url("../images/discover-location-hotel-room.jpg");
+  /* background-image: url("../images/discover-location-hotel-room.jpg"); */
   background-size: cover;
   background-position: center;
   height: inherit;

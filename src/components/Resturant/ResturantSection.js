@@ -6,14 +6,25 @@ import Axios from 'axios'
 
 function ResturantSection() {
   const [foods, setFoods] = useState()
+  const [foodItem, setFoodItem] = useState()
+  const [active, setActive] = useState()
+
+  const handleActive = (slug) =>{
+    const foodFilter = foods.filter((food)=> food.slug === slug)[0]
+    setActive(slug)
+    setFoodItem(foodFilter)
+  }
   useEffect(() => {
     let source = Axios.CancelToken.source();
     const loadData = async () => {
       try {
-        const response = axiosInstance.get(`/teams`, {
+        const response = axiosInstance.get(`/restaurant`, {
           cancelToken: source.token,
         });
         setFoods((await response).data.foodCategories);
+        setFoodItem((await response).data.foodCategories[0])
+        setActive((await response).data.foodCategories[0].slug)
+        // console.log((await response).data.foodCategories[0].slug, 'hello')
       } catch (error) {
         if (!Axios.isCancel(error)) {
           throw error;
@@ -38,42 +49,16 @@ function ResturantSection() {
           <div class="restaurant-menu">
             {/* <!-- Tab links --> */}
             <div class="tab">
-              <Link to={"/restaurant/breakfast"}>
-                <button className="active">BREAKFAST</button>
-              </Link>
-              <Link to={"/restaurant/lunch"}>
-                <button>LUNCH</button>
-              </Link>
-              <Link to={"/restaurant/dinner"}>
-                <button>DINNER</button>
-              </Link>
-              <Link to={"/restaurant/dessert"}>
-                <button>DESSERT</button>
-              </Link>
-              <Link to={"/restaurant/beverage"}>
-                <button>BEVERAGE</button>
-              </Link>
+              {foods && foods.map((duration) => 
+                <button className={active && active === duration.slug ? "active": " "}
+                onClick={()=> handleActive(duration.slug)}
+                >{duration.title}</button>
+              )}
             </div>
 
             {/* <!-- Tab content --> */}
             <div class="menu-tab-content-all">
-              <Switch>
-                <Route exact path={"/restaurant/:breakfast?"}>
-                  <RestaurantTab name="Breakfast" />
-                </Route>
-                <Route exact path={"/restaurant/lunch"}>
-                  <RestaurantTab name="Lunch" />
-                </Route>
-                <Route exact path={"/restaurant/dinner"}>
-                  <RestaurantTab name="dinner" />
-                </Route>
-                <Route exact path={"/restaurant/dessert"}>
-                  <RestaurantTab name="dessert" />
-                </Route>
-                <Route exact path={"/restaurant/beverage"}>
-                  <RestaurantTab name="beverage" />
-                </Route>
-              </Switch>
+              <RestaurantTab foodItem = {foodItem} />
             </div>
           </div>
         </div>

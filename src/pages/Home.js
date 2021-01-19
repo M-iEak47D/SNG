@@ -54,7 +54,7 @@ function Home() {
       <div className="container">
         <div className="vertical-divider"></div>
       </div>
-      <HomeTestimonial  testimonials={testimonials}/>
+      <HomeTestimonial testimonials={testimonials}/>
       <CommingSoon /> 
     </div>
   );
