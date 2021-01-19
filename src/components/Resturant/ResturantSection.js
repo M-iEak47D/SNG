@@ -10,10 +10,11 @@ function ResturantSection() {
     let source = Axios.CancelToken.source();
     const loadData = async () => {
       try {
-        const response = axiosInstance.get(`/teams`, {
+        const response = axiosInstance.get(`/restaurant`, {
           cancelToken: source.token,
         });
-        setFoods((await response).data.foodCategories);
+        setFoods((await response).data);
+          console.log(foods.foodCategories, "data");
       } catch (error) {
         if (!Axios.isCancel(error)) {
           throw error;
@@ -38,7 +39,7 @@ function ResturantSection() {
           <div class="restaurant-menu">
             {/* <!-- Tab links --> */}
             <div class="tab">
-              <Link to={"/restaurant/breakfast"}>
+              <Link to={"/restaurant"}>
                 <button className="active">BREAKFAST</button>
               </Link>
               <Link to={"/restaurant/lunch"}>
@@ -58,8 +59,9 @@ function ResturantSection() {
             {/* <!-- Tab content --> */}
             <div class="menu-tab-content-all">
               <Switch>
-                <Route exact path={"/restaurant/:breakfast?"}>
-                  <RestaurantTab name="Breakfast" />
+                <Route exact path={"/restaurant"}>
+                 
+                  <RestaurantTab name="Breakfast"  />
                 </Route>
                 <Route exact path={"/restaurant/lunch"}>
                   <RestaurantTab name="Lunch" />

@@ -370,6 +370,11 @@
   text-align: left;
 }
 
+.dropdown:hover .dropdown-menu {
+  display: block;
+  margin-top: 0;
+}
+
 @media screen and (max-width: 992px) {
   #myNavbar .dropdown {
     float: none;
@@ -950,7 +955,7 @@
 .search-wrapper .button-container button:hover {
   color: white;
   background-color: #ff6a00 !important;
-  border: 1px solid #ff6a00 !important;
+  border: 1.5px solid #ff6a00 !important;
   height: 100%;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;

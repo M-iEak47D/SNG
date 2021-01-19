@@ -106,6 +106,11 @@ function Navbar() {
                           Contact <span class="sr-only">(current)</span>
                         </Link>
                       </li>
+                      <li className="nav-item active">
+                        <Link className="nav-link" to="/about_us">
+                          About us <span class="sr-only">(current)</span>
+                        </Link>
+                      </li>
 
                       <li className="nav-item dropdown">
                         <a
@@ -130,9 +135,7 @@ function Navbar() {
                           <Link className="dropdown-item" to="/blog">
                             Blog
                           </Link>
-                          <Link className="dropdown-item" to="/about_us">
-                            About us
-                          </Link>
+                         
                           <Link className="dropdown-item" to="/our_team">
                             Our Team
                           </Link>

@@ -355,6 +355,11 @@ $primary-color: #ff6a00;
   text-align: left;
 }
 
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0; // remove the gap so it doesn't close
+ }
+
 @media screen and (max-width: 992px) {
   #myNavbar {
     .dropdown {
@@ -804,7 +809,7 @@ $primary-color: #ff6a00;
     button:hover {
       color: white;
       background-color: $primary-color !important;
-      border: 1px solid $primary-color !important;
+      border: 1.5px solid $primary-color !important;
       height: 100%;
       transition: all 0.3s ease-in-out;
     }
