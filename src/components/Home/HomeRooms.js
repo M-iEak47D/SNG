@@ -1,4 +1,5 @@
 import React from "react";
+import Skeleton from "react-loading-skeleton";
 
 function HomeRooms({rooms}) {
   return (
@@ -16,9 +17,9 @@ function HomeRooms({rooms}) {
         <div className="container">
           <div className="our-rooms-details-wrapper">
             <div className="our-rooms-details">
-              { rooms && rooms.map((room)=>
+              { rooms ? rooms.map((room)=>
               <div className="hotel-room">
-                <div className="hotel-room-image">
+                <div className="hotel-room-image"  style={{backgroundImage: `url(${room.feature_image})`}}>
                   <div className="hotel-room-overlay"></div>
                   {/* <a href="#"></a> */}
                   <div className="hotel-room-price">
@@ -32,7 +33,19 @@ function HomeRooms({rooms}) {
                   </div>
                 </div>
               </div>
-              )}
+              )
+              :
+                [1,2,3].map((z)=>
+                <div className="hotel-room">
+                  <Skeleton height={325}>
+                    <div className="hotel-room-image">
+                      <div className="hotel-room-price">
+                      </div>
+                    </div>
+                  </Skeleton>
+                </div>
+                )
+              }
             </div>
           </div>
         </div>
