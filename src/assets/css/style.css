@@ -265,6 +265,61 @@
   }
 }
 
+.social-icon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: fixed;
+  top: 50%;
+  right: 20px;
+  z-index: 999;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.social-icon::before, .social-icon::after {
+  content: "";
+  height: 70px;
+  background-color: #e2e2e259;
+  position: absolute;
+  width: 1px;
+}
+
+.social-icon::before {
+  top: -80px;
+}
+
+.social-icon::after {
+  bottom: -80px;
+}
+
+.social-icon a {
+  text-align: center;
+  height: 32px;
+  width: 32px;
+  line-height: 32px;
+  font-size: 14px;
+  color: #c4c4c4;
+  border: 1px solid #c4c4c4;
+  margin-bottom: 5px;
+}
+
+.social-icon a:hover {
+  color: #ff6a00;
+  border: 1px solid #ff6a00;
+  background-color: #fff;
+}
+
 .background-overlay {
   background-color: #3341588f;
   top: 0;
@@ -3433,6 +3488,10 @@ footer .social-media-icons ul li a:hover {
 
 .gallery-tab-content-all .lightbox-image img {
   width: 100%;
+}
+
+.gallery-tab-content-all .lightbox-image:hover {
+  opacity: 0.5;
 }
 
 .gallery-tab-content-all .lightbox-image-thumbnails {

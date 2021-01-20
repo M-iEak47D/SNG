@@ -248,6 +248,47 @@ $primary-color: #ff6a00;
   }
 }
 
+.social-icon {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  top: 50%;
+  right: 20px;
+  z-index: 999;
+  transform: translateY(-50%);
+
+  &::before,
+  &::after {
+    content: "";
+    height: 70px;
+    background-color: #e2e2e259;
+    position: absolute;
+    width: 1px;
+  }
+  &::before {
+    top: -80px;
+  }
+  &::after {
+    bottom: -80px;
+  }
+  a {
+    text-align: center;
+    height: 32px;
+    width: 32px;
+    line-height: 32px;
+    font-size: 14px;
+    color: #c4c4c4;
+    border: 1px solid #c4c4c4;
+    margin-bottom: 5px;
+    &:hover {
+      color: #ff6a00;
+      border: 1px solid #ff6a00;
+      background-color: #fff;
+    }
+  }
+}
 //---------------- Background overlay over banner ------------------//
 
 .background-overlay {
@@ -2975,6 +3016,9 @@ footer {
     width: 100%;
     img {
       width: 100%;
+    }
+    &:hover {
+      opacity: 0.5;
     }
   }
   .lightbox-image-thumbnails {

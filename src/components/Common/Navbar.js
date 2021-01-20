@@ -11,7 +11,6 @@ function Navbar() {
     $("#commingModal").toggle();
   }
   useEffect(() => {
-
     var navbar = document.querySelector(".primary-navbar");
     var firstNavbar = document.querySelector(".first-navbar");
     // var bookingBtn = document.querySelector(".booking-btn");
@@ -89,12 +88,7 @@ function Navbar() {
                       <li className="nav-item dropdown">
                         <a
                           className="nav-link dropdown-toggle"
-                          href="#"
                           id="navbarDropdown"
-                          role="button"
-                          data-toggle="dropdown"
-                          aria-haspopup="true"
-                          aria-expanded="false"
                         >
                           Rooms
                         </a>
@@ -118,12 +112,7 @@ function Navbar() {
                       <li className="nav-item dropdown">
                         <a
                           className="nav-link dropdown-toggle"
-                          href="#"
                           id="navbarDropdown"
-                          role="button"
-                          data-toggle="dropdown"
-                          aria-haspopup="true"
-                          aria-expanded="false"
                         >
                           Gallery
                         </a>
@@ -149,12 +138,7 @@ function Navbar() {
                       <li className="nav-item dropdown">
                         <a
                           className="nav-link dropdown-toggle"
-                          href="#"
                           id="navbarDropdown"
-                          role="button"
-                          data-toggle="dropdown"
-                          aria-haspopup="true"
-                          aria-expanded="false"
                         >
                           More
                         </a>
@@ -210,11 +194,8 @@ function Navbar() {
                     </div>
                     <div className="select-country">
                       <select id="country" name="country">
+                        <option value="NP">ENG</option>
                         <option value="NP">NP</option>
-                        <option value="NP">NP</option>
-                        <option value="IN">IN</option>
-                        <option value="US">US</option>
-                        <option value="UK">UK</option>
                       </select>
                     </div>
                   </div>
@@ -223,6 +204,17 @@ function Navbar() {
             </div>
           </div>
         </div>
+      </div>
+      <div className="social-icon">
+        <a href="">
+          <i className="fab fa-facebook"></i>
+        </a>
+        <a href="">
+          <i className="fab fa-linkedin"></i>
+        </a>
+        <a href="">
+          <i className="fab fa-twitter"></i>
+        </a>
       </div>
     </div>
   );
