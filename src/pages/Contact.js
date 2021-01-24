@@ -8,7 +8,7 @@ function Contact() {
    }, []);
     return (
       <div id="main">
-        <Banner title="Contact" bread="Contact" />
+        <Banner title="Contact" home="Home" bread="Contact" />
         <ContactSection />
       </div>
     );

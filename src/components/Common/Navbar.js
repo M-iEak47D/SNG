@@ -34,11 +34,11 @@ function Navbar() {
   }, []);
 
   return (
-    <div>
+    <>
       <div className="primary-navbar">
         <div className="container">
           <div className="row">
-            <div className="col-md-8 col-12">
+            <div className="col-md-9 col-12">
               <div className="first-navbar">
                 <nav className="navbar navbar-static-top navbar-expand-lg navbar-dark navbar-inverse">
                   <div className="navbar-logo">
@@ -168,7 +168,7 @@ function Navbar() {
             </div>
 
             <div
-              className="col-md-4 col-12"
+              className=" d-none col-md-3 d-md-block"
               style={{ marginTop: "auto", marginBottom: "auto" }}
             >
               <div className="second-navbar-wrapper">
@@ -216,7 +216,7 @@ function Navbar() {
           <i className="fab fa-twitter"></i>
         </a>
       </div>
-    </div>
+    </>
   );
 }
 

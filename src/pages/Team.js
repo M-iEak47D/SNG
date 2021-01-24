@@ -7,8 +7,8 @@ function Team() {
      window.scrollTo(0, 0);
    }, []);
     return (
-      <div>
-        <Banner title="Our Team" bread="Our Team" />
+      <div id="main">
+        <Banner title="Our Team" home="Home" bread="Our Team" />
         <TeamSection />
       </div>
     );

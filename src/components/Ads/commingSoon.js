@@ -31,6 +31,7 @@ const CommingSoon = () => {
         </div>
       </div>
     </div>
-  );
+ 
+ );
 };
 export default CommingSoon;

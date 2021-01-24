@@ -4,11 +4,11 @@ function Footer() {
   return (
     <>
       <footer>
+        <div id="google_translate_element"></div>
         <div className="footer-logo">
           <img
             src={process.env.PUBLIC_URL + "/images/hotel sng logo color.png"}
           />
-          ;
         </div>
         <div className="footer-title">Hotel SNG</div>
         <div className="vertical-divider"></div>

@@ -1,19 +1,19 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { Link, Switch, Route } from "react-router-dom";
 import axiosInstance from "../../helper/axios";
 import RestaurantTab from "./RestaurantTab";
-import Axios from 'axios'
+import Axios from "axios";
 
 function ResturantSection() {
-  const [foods, setFoods] = useState()
-  const [foodItem, setFoodItem] = useState()
-  const [active, setActive] = useState()
+  const [foods, setFoods] = useState();
+  const [foodItem, setFoodItem] = useState();
+  const [active, setActive] = useState();
 
-  const handleActive = (slug) =>{
-    const foodFilter = foods.filter((food)=> food.slug === slug)[0]
-    setActive(slug)
-    setFoodItem(foodFilter)
-  }
+  const handleActive = (slug) => {
+    const foodFilter = foods.filter((food) => food.slug === slug)[0];
+    setActive(slug);
+    setFoodItem(foodFilter);
+  };
   useEffect(() => {
     let source = Axios.CancelToken.source();
     const loadData = async () => {
@@ -22,8 +22,8 @@ function ResturantSection() {
           cancelToken: source.token,
         });
         setFoods((await response).data.foodCategories);
-        setFoodItem((await response).data.foodCategories[0])
-        setActive((await response).data.foodCategories[0].slug)
+        setFoodItem((await response).data.foodCategories[0]);
+        setActive((await response).data.foodCategories[0].slug);
         // console.log((await response).data.foodCategories[0].slug, 'hello')
       } catch (error) {
         if (!Axios.isCancel(error)) {
@@ -49,16 +49,22 @@ function ResturantSection() {
           <div class="restaurant-menu">
             {/* <!-- Tab links --> */}
             <div class="tab">
-              {foods && foods.map((duration) => 
-                <button className={active && active === duration.slug ? "active": " "}
-                onClick={()=> handleActive(duration.slug)}
-                >{duration.title}</button>
-              )}
+              {foods &&
+                foods.map((duration) => (
+                  <button
+                    className={
+                      active && active === duration.slug ? "active" : " "
+                    }
+                    onClick={() => handleActive(duration.slug)}
+                  >
+                    {duration.title}
+                  </button>
+                ))}
             </div>
 
             {/* <!-- Tab content --> */}
             <div class="menu-tab-content-all">
-              <RestaurantTab foodItem = {foodItem} />
+              <RestaurantTab foodItem={foodItem} />
             </div>
           </div>
         </div>

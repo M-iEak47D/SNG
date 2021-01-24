@@ -16,12 +16,13 @@ import Team from "./pages/Team";
 import Room from "./pages/Room";
 import Checkout from "./pages/Checkout";
 import CommingSoon from "./components/Ads/commingSoon";
+import PackageSingle from "./pages/PackageSingle";
 
 function App() {
   return (
     <Router>
       <Sidenav />
-      <CommingSoon/>
+      <CommingSoon />
       <Switch>
         <Route exact path="/contact">
           <Contact />
@@ -53,8 +54,11 @@ function App() {
         <Route exact path="/packages">
           <Packages />
         </Route>
+        <Route exact path="/package/:slug">
+          <PackageSingle />
+        </Route>
         <Route exact path="/checkout">
-         <Checkout/>
+          <Checkout />
         </Route>
         <Route exact path="/">
           <Home />

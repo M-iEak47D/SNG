@@ -1,63 +1,63 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Switch, Route, Link } from "react-router-dom";
 import ImageTab from "./ImageTab";
-
+import Axios from "axios";
+import axiosInstance from "../../helper/axios";
 
 function Image() {
+  const [images, setImages] = useState();
+  const [imageItem, setImageItem] = useState();
+  const [active, setActive] = useState();
 
+  const handleActive = (slug) => {
+    const imageFilter = images.filter((img) => img.slug === slug)[0];
+    setActive(slug);
+    setImageItem(imageFilter);
+  };
+
+  useEffect(() => {
+    let source = Axios.CancelToken.source();
+    const loadData = async () => {
+      try {
+        const response = axiosInstance.get(`/gallery`, {
+          cancelToken: source.token,
+        });
+        setImages((await response).data.gallery);
+        setImageItem((await response).data.gallery[0]);
+        setActive((await response).data.gallery[0].slug);
+      } catch (error) {
+        if (!Axios.isCancel(error)) {
+          throw error;
+        }
+      }
+      return () => {
+        source.cancel();
+      };
+    };
+    loadData();
+  }, []);
+  console.log(imageItem, "hello");
   return (
     <div>
       <div class="gallery-section">
         <div class="gallery-menu">
           <div class="tab">
-            <Link to={"/image_gallery"}>
-              <button class="my_tabs active">All</button>
-            </Link>
-            <Link to={"/image_gallery/room"}>
-              <button class="my_tabs">ROOM</button>
-            </Link>
-            <Link to={"/image_gallery/food"}>
-              <button class="my_tabs">FOOD</button>
-            </Link>
-            <Link to={"/image_gallery/spa"}>
-              <button class="my_tabs">SPA</button>
-            </Link>
-            <Link to={"/image_gallery/cooking"}>
-              <button class="my_tabs">COOKING</button>
-            </Link>
-            <Link to={"/image_gallery/bath"}>
-              <button class="my_tabs">BATH</button>
-            </Link>
-            <Link to={"/image_gallery/pool"}>
-              <button class="my_tabs">POOL</button>
-            </Link>
+            {images &&
+              images.map((tab) => (
+                <button
+                  className={
+                    "my_tabs" + active && active === tab.slug ? "active" : " "
+                  }
+                  onClick={() => handleActive(tab.slug)}
+                >
+                  {tab.title}
+                </button>
+              ))}
           </div>
 
           <div class="gallery-tab-content-all">
             <div id="room">
-              <Switch>
-                <Route exact path={"/image_gallery"}>
-                  <ImageTab name="all" />
-                </Route>
-                <Route exact path={"/image_gallery/room"}>
-                  <ImageTab name="room" />
-                </Route>
-                <Route exact path={"/image_gallery/food"}>
-                  <ImageTab />
-                </Route>
-                <Route exact path={"/image_gallery/spa"}>
-                  <ImageTab />
-                </Route>
-                <Route exact path={"/image_gallery/cooking"}>
-                  <ImageTab />
-                </Route>
-                <Route exact path={"/image_gallery/bath"}>
-                  <ImageTab />
-                </Route>
-                <Route exact path={"/image_gallery/pool"}>
-                  <ImageTab />
-                </Route>
-              </Switch>
+              <ImageTab imageItem={imageItem} />
             </div>
           </div>
         </div>

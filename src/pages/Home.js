@@ -56,7 +56,6 @@ function Home() {
         <div className="vertical-divider"></div>
       </div>
       <HomeTestimonial testimonials={testimonials} />
-      
     </div>
   );
 }

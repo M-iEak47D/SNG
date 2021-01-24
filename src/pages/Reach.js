@@ -8,7 +8,7 @@ function Reach() {
      }, []);
     return (
       <div id="main">
-        <Banner title="How to reach?" bread="How to reach?" />
+        <Banner title="How to reach?" home="Home" bread="How to reach?" />
         <ReachSection />
       </div>
     );

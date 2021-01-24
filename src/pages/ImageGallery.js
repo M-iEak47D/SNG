@@ -7,10 +7,9 @@ function ImageGallery() {
      window.scrollTo(0, 0);
    }, []);
   return (
-    <div id="main"> 
-      <Banner title="Images Gallery" bread="Images Gallery" />
+    <div id="main">
+      <Banner title="Images Gallery" home="Home" bread="Images Gallery" />
       <Image />
-
     </div>
   );
 }

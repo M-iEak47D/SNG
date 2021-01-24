@@ -3,14 +3,13 @@ import Banner from "../components/Common/Banner";
 import ResturantSection from "../components/Resturant/ResturantSection";
 import RestaurantSlider from "../components/Resturant/RestaurantSlider";
 
-
 function Restaurant() {
-   useEffect(() => {
-     window.scrollTo(0, 0);
-   }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
-    <div>
-      <Banner title="Restaurant" bread="Restaurant" />
+    <div id="main">
+      <Banner title="Restaurant" home="Home" bread="Restaurant" />
       <ResturantSection />
       <RestaurantSlider />
     </div>
@@ -18,4 +17,3 @@ function Restaurant() {
 }
 
 export default Restaurant;
-

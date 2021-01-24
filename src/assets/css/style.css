@@ -17,6 +17,10 @@
   src: url(../fonts/Montserrat-Bold.ttf);
 }
 
+a:hover {
+  text-decoration: none;
+}
+
 .rdrDateRangeWrapper {
   z-index: 999;
   position: absolute !important;
@@ -394,6 +398,12 @@
   transition: margin-left 0.5s;
 }
 
+@media screen and (max-width: 992px) {
+  #main {
+    margin-top: 69px;
+  }
+}
+
 @media screen and (max-height: 450px) {
   .sidenav {
     padding-top: 15px;
@@ -575,9 +585,6 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   width: 90px;
   text-align: center;
   font-family: sans-serif;
@@ -600,6 +607,9 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 90px;
   text-align: center;
   font-family: sans-serif;
@@ -703,7 +713,7 @@
   color: white;
   width: 45%;
   margin: 0 auto;
-  padding-top: 100px;
+  padding-top: 150px;
 }
 
 .text-in-banner .banner-subtitle {
@@ -3061,7 +3071,7 @@ footer .social-media-icons ul li a:hover {
 }
 
 #banner-for-other-pages .text-in-banner {
-  padding-top: 50px;
+  padding-top: 100px;
 }
 
 @media (max-width: 768px) {
@@ -3471,194 +3481,17 @@ footer .social-media-icons ul li a:hover {
   }
 }
 
-.gallery-tab-content-all {
-  /* The Modal (background) */
-  /* Modal Content */
-  /* The Close Button */
-  /* Hide the slides by default */
-  /* Next & previous buttons */
-  /* Position the "next button" to the right */
-  /* On hover, add a black background color with a little bit see-through */
-  /* Number text (1/3 etc) */
-  /* Caption text */
+.image_gallery {
+  margin-bottom: 30px;
 }
 
-.gallery-tab-content-all .lightbox-image {
-  overflow: hidden;
-  padding: 10px 10px;
-  width: 100%;
+.image_gallery img {
+  border-radius: 5px;
+  opacity: .8;
 }
 
-.gallery-tab-content-all .lightbox-image img {
-  width: 100%;
-}
-
-.gallery-tab-content-all .lightbox-image:hover {
-  opacity: 0.5;
-}
-
-.gallery-tab-content-all .lightbox-image-thumbnails {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  overflow: hidden;
-  padding: 0px 5px;
-}
-
-.gallery-tab-content-all .lightbox-image-thumbnails .image-thumbnail-single {
-  padding: 0px 5px;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  margin: auto 0;
-}
-
-.gallery-tab-content-all .lightbox-image-thumbnails img {
-  width: 100%;
-  height: 100%;
-  -o-object-fit: contain;
-     object-fit: contain;
-}
-
-.gallery-tab-content-all .row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.gallery-tab-content-all .modal {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  padding-top: 50px;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: black;
-}
-
-.gallery-tab-content-all .modal-content {
-  position: relative;
-  background-color: #fefefe;
-  margin: auto;
-  padding: 0;
-  width: 90%;
-  max-width: 1200px;
-}
-
-.gallery-tab-content-all .close {
-  color: white;
-  position: absolute;
-  top: 10px;
-  right: 25px;
-  font-size: 35px;
-  font-weight: bold;
-}
-
-.gallery-tab-content-all .close:hover,
-.gallery-tab-content-all .close:focus {
-  color: #999;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.gallery-tab-content-all .mySlides {
-  display: block;
-  height: 500px;
-  overflow: hidden;
-  text-align: center;
-}
-
-.gallery-tab-content-all .mySlides img {
-  width: 100%;
-  margin: 0 auto;
-  height: 100%;
-  -o-object-fit: contain;
-     object-fit: contain;
-}
-
-.gallery-tab-content-all .prev,
-.gallery-tab-content-all .next {
-  cursor: pointer;
-  position: absolute;
-  top: 45%;
-  width: auto;
-  padding: 5px;
-  margin-top: -50px;
-  color: white;
-  font-weight: bold;
-  font-size: 20px;
-  -webkit-transition: 0.6s ease;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-user-select: none;
-  background-color: #f78e57;
-}
-
-.gallery-tab-content-all .next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-
-.gallery-tab-content-all .prev:hover,
-.gallery-tab-content-all .next:hover {
-  background-color: rgba(0, 0, 0, 0.8);
-}
-
-.gallery-tab-content-all .numbertext {
-  color: white;
-  font-size: 12px;
-  padding: 4px 10px;
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  border-radius: 72px;
-  background: #ff6a00;
-}
-
-.gallery-tab-content-all .caption-container {
-  text-align: center;
-  background-color: black;
-  padding: 2px 16px;
-  color: white;
-}
-
-.gallery-tab-content-all .caption-container p {
-  margin-top: 5px;
-  margin-bottom: 5px;
-}
-
-.gallery-tab-content-all img.demo {
-  opacity: 0.85;
-}
-
-.gallery-tab-content-all .active,
-.gallery-tab-content-all .demo:hover {
+.image_gallery:hover img {
   opacity: 1;
-}
-
-.gallery-tab-content-all img.hover-shadow {
-  border-radius: 3px;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-}
-
-.gallery-tab-content-all .hover-shadow:hover {
-  border: none;
-  -webkit-box-shadow: 2px 2px 4px -2px black;
-          box-shadow: 2px 2px 4px -2px black;
 }
 
 .search-room-section {

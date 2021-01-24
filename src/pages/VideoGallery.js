@@ -8,7 +8,7 @@ function VideoGallery() {
    }, []);
     return (
       <div id="main">
-        <Banner title="Video Gallery" bread="Video Gallery" />
+        <Banner title="Video Gallery" home="Home" bread="Video Gallery" />
         <Video />
       </div>
     );

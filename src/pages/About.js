@@ -7,8 +7,8 @@ function About() {
     window.scrollTo(0, 0);
   }, []);
   return (
-    <div>
-      <Banner title="About us" bread="About Us" />
+    <div id="main">
+      <Banner title="About us" home="Home" bread="About Us" />
       <AboutSection />
     </div>
   );

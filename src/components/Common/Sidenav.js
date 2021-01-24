@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Sidenav() {
   /* Set the width of the side navigation to 0 */
@@ -36,7 +37,7 @@ function Sidenav() {
           &times;
         </a>
         <div className="nav-content">
-          <a href="index.html">Home</a>
+          <Link to="/">Home</Link>
         </div>
         <div className="nav-content">
           <div className="dropdown">
@@ -50,14 +51,13 @@ function Sidenav() {
             </button>
           </div>
           <div id="roomsDropdown" className="dropdown-content">
-            <a href="rooms.html">View all rooms</a>
-            <a href="room-detail.html">Grand Deluxe</a>
-            <a href="room-detail.html">Superior Deluxe</a>
-            <a href="room-detail.html">Deluxe King Room</a>
+            <Link to="/room_details">Grand Deluxe</Link>
+            <Link to="/room_details">Superior Deluxe</Link>
+            <Link to="/room_details">Deluxe King Room</Link>
           </div>
         </div>
         <div className="nav-content">
-          <a href="packages.html">Packages</a>
+          <Link to="/packages">Packages</Link>
         </div>
         <div className="nav-content">
           <div className="dropdown">
@@ -70,12 +70,12 @@ function Sidenav() {
             </button>
           </div>
           <div id="galleryDropdown" className="dropdown-content">
-            <a href="gallery.html">Images Gallery</a>
-            <a href="gallery-video.html">Video Gallery</a>
+            <Link to="/image_gallery">Images Gallery</Link>
+            <Link to="/video_gallery">Video Gallery</Link>
           </div>
         </div>
         <div className="nav-content">
-          <a href="contact.html">Contact</a>
+          <Link to="/contact">Contact</Link>
         </div>
         <div className="nav-content">
           <div className="dropdown">
@@ -88,12 +88,11 @@ function Sidenav() {
             </button>
           </div>
           <div id="buttonDropdownContent" className="dropdown-content">
-            <a href="restaurant.html">Restaurant and bar</a>
-            <a href="search-for-room.html">Search Room</a>
-            <a href="blog.html">Blog</a>
-            <a href="about-us">About Us</a>
-            <a href="our-team">Our Team</a>
-            <a href="reach">How to Reach</a>
+            <Link to="/restaurant">Restaurant</Link>
+            <Link to="/blog">Blog</Link>
+            <Link to="/about_us">About Us</Link>
+            <Link to="/team">Our Team</Link>
+            <Link to="/reach">How to Reach</Link>
           </div>
         </div>
       </div>

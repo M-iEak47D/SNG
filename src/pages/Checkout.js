@@ -4,8 +4,8 @@ import CheckoutSection from '../components/Checkout/CheckoutSection'
 
 function Checkout() {
     return (
-      <div>
-        <Banner title="Checkout" bread="Checkout" />
+      <div id="main">
+        <Banner title="Checkout" home="Home" bread="Checkout" />
         <CheckoutSection />
       </div>
     );
