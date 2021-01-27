@@ -13,6 +13,7 @@ import { addDays, set, format } from "date-fns";
 import FormikControl from "../Formik/FormikControl";
 import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css";
+import axiosInstance from "../../helper/axios";
 
 function SearchBar() {
   const [startDate, setStartDate] = useState(new Date());
@@ -31,8 +32,17 @@ function SearchBar() {
   const validationSchema = Yup.object({
     destination: Yup.string().required("This Field Cannot be Empty"),
   });
-  const onSubmit = (values) => {
+  const onSubmit = (values, onSubmitProps) => {
     console.log("form data", values);
+    axiosInstance
+      .post("/booking", values)
+      .then((response) => {
+        onSubmitProps.resetForm();
+        console.log(response, "hello");
+      })
+      .error((response) => {
+        console.log(response);
+      });
   };
 
   return (

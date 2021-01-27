@@ -1,4 +1,5 @@
 import React from "react";
+import ContactForm from "./ContactForm";
 
 function ContactSection() {
   return (
@@ -82,46 +83,7 @@ function ContactSection() {
             nostrum facilis. Illum, minus. Fuga, corporis.
           </div>
           <div className="leave-message-input-fields">
-            <div className="leave-message-person-detail">
-              <div className="container">
-                <div className="row">
-                  <div className="col-md-4">
-                    <input
-                      type="text"
-                      placeholder="Name"
-                      className="form-control"
-                    />
-                  </div>
-                  <div className="col-md-4">
-                    <input
-                      type="text"
-                      placeholder="Email"
-                      className="form-control"
-                    />
-                  </div>
-                  <div className="col-md-4">
-                    <input
-                      type="text"
-                      placeholder="Subject"
-                      className="form-control"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="message-by-customer">
-              <textarea
-                name=""
-                id=""
-                cols="30"
-                rows="5"
-                className="form-control"
-                placeholder="Message"
-              ></textarea>
-            </div>
-            <div className="message-submit-button">
-              <button>SEND MESSAGE</button>
-            </div>
+            <ContactForm />
           </div>
         </div>
       </div>

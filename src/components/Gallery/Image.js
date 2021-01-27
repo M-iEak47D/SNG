@@ -3,6 +3,7 @@ import { Switch, Route, Link } from "react-router-dom";
 import ImageTab from "./ImageTab";
 import Axios from "axios";
 import axiosInstance from "../../helper/axios";
+import Skeleton from "react-loading-skeleton";
 
 function Image() {
   const [images, setImages] = useState();
@@ -42,17 +43,22 @@ function Image() {
       <div class="gallery-section">
         <div class="gallery-menu">
           <div class="tab">
-            {images &&
+            {images ? (
               images.map((tab) => (
-                <button
-                  className={
-                    "my_tabs" + active && active === tab.slug ? "active" : " "
-                  }
-                  onClick={() => handleActive(tab.slug)}
-                >
-                  {tab.title}
-                </button>
-              ))}
+                <>
+                  <button
+                    className={
+                      "my_tabs" + active && active === tab.slug ? "active" : " "
+                    }
+                    onClick={() => handleActive(tab.slug)}
+                  >
+                    {tab.title}
+                  </button>
+                </>
+              ))
+            ) : (
+              <Skeleton width={400} />
+            )}
           </div>
 
           <div class="gallery-tab-content-all">

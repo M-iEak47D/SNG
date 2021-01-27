@@ -7,7 +7,6 @@ import { Link, useParams } from "react-router-dom";
 function Allpackages() {
   const [packages, setPackages] = useState();
 
-  
   useEffect(() => {
     let source = Axios.CancelToken.source();
     const loadData = async () => {
@@ -86,8 +85,13 @@ function Allpackages() {
           ))
         ) : (
           <>
-            <Skeleton height={200} />
-            <Skeleton height={200} />
+            {[0, 1].map((a) => (
+              <div className="all-packages-section">
+                <div className="package-item">
+                  <Skeleton height={200} />
+                </div>
+              </div>
+            ))}
           </>
         )}
       </div>

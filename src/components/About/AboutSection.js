@@ -1,6 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import Axios from "axios";
+import axiosInstance from "../../helper/axios";
+import Skeleton from "react-loading-skeleton";
 
 function AboutSection() {
+  const [about, setAbout] = useState();
+
+  useEffect(() => {
+    let source = Axios.CancelToken.source();
+    const loadData = async () => {
+      try {
+        const response = axiosInstance.get(`/aboutpage`, {
+          cancelToken: source.token,
+        });
+        setAbout((await response).data.data);
+      } catch (error) {
+        if (!Axios.isCancel(error)) {
+          throw error;
+        }
+      }
+      return () => {
+        source.cancel();
+      };
+    };
+    loadData();
+  }, []);
+  console.log(about, "hello");
   return (
     <div>
       <div className="about-us-section">
@@ -12,24 +37,24 @@ function AboutSection() {
                   <p>
                     Overview<div className="about-us-divider"></div>
                   </p>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius
-                  aliquid corporis consequatur magnam, alias esse dolore cum
-                  inventore enim exercitationem, vitae repellat sed dicta
-                  distinctio quasi obcaecati sequi odit natus? Lorem ipsum dolor
-                  sit amet consectetur adipisicing elit. Quam aperiam quas nam,
-                  animi aspernatur dicta assumenda dolores nesciunt officiis
-                  possimus minus hic ipsam eius maxime vitae quasi earum unde
-                  saepe.
-                  <br />
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi
-                  eius, natus corrupti distinctio porro in impedit? Delectus
-                  velit voluptatibus magni expedita eaque, excepturi
-                  necessitatibus at sequi quis, ex ut eos?
+                  {about ? (
+                    <div
+                      dangerouslySetInnerHTML={
+                        about && { __html: about.overview }
+                      }
+                    />
+                  ) : (
+                    <Skeleton count={10} />
+                  )}
                 </div>
               </div>
               <div className="col-md-6">
                 <div className="about-us-main-image">
-                  <img src={process.env.PUBLIC_URL + "/images/hotelroom.jpg"} />
+                  {about ? (
+                    <img src={about && about.about_image} />
+                  ) : (
+                    <Skeleton height={400} />
+                  )}
                 </div>
               </div>
             </div>
@@ -39,48 +64,29 @@ function AboutSection() {
           <p>Our mission</p>
           <div className="mission-icons">
             <div className="row">
-              <div className="col-md-4">
-                <div className="mission-item">
-                  <div className="mission-item-image">
-                    <img
-                      src={
-                        process.env.PUBLIC_URL +
-                        "/images/png/customer-satisfaction.png"
-                      }
-                    />
-                  </div>
-                  <div className="mission-item-name">Customer Satisfaction</div>
-                </div>
-              </div>
-              <div className="col-md-4">
-                <div className="mission-item">
-                  <div className="mission-item-image">
-                    <img
-                      src={
-                        process.env.PUBLIC_URL +
-                        "/images/png/quality-standard.png"
-                      }
-                    />
-                  </div>
-                  <div className="mission-item-name">
-                    Maintain Quality Standard
-                  </div>
-                </div>
-              </div>
-              <div className="col-md-4">
-                <div className="mission-item">
-                  <div className="mission-item-image">
-                    <img
-                      src={
-                        process.env.PUBLIC_URL + "/images/png/accomodation.png"
-                      }
-                    />
-                  </div>
-                  <div className="mission-item-name">
-                    Superior Accomodation Service
-                  </div>
-                </div>
-              </div>
+              {about
+                ? about.mission.map((miss) => (
+                    <div className="col-md-4">
+                      <div className="mission-item">
+                        <div className="mission-item-image">
+                          <img src={miss.image} />
+                        </div>
+                        <div className="mission-item-name">
+                          {miss.text || <Skeleton />}
+                        </div>
+                      </div>
+                    </div>
+                  ))
+                : [1, 2, 3].map((a) => (
+                    <div className="col-md-4">
+                      {/* <Skeleton height={100} /> */}
+                      <div className="mission-item">
+                        <div className="mission-item-name">
+                          {/* <Skeleton /> */}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
             </div>
           </div>
         </div>
@@ -89,24 +95,10 @@ function AboutSection() {
             <div className="why-smg-title">
               <p>Why choose Hotel SMG</p>
             </div>
-            <div className="why-smg-text">
-              <p>
-                Hotem SNG is one of the best hotels in Nepal. Lorem ipsum dolor
-                sit amet consectetur adipisicing elit. Aut quos reiciendis
-                suscipit sapiente sequi odio aspernatur officia. Recusandae
-                perferendis molestiae minus nesciunt porro voluptatibus, itaque
-                quod corrupti nobis ad commodi.
-              </p>
-              <p>On top of this, we also provide following:</p>
-              <ul>
-                <li>Training</li>
-                <li>Social media</li>
-                <li>Services</li>
-                <li>Facilities</li>
-                <li>Amenities</li>
-                <li>Hospitality</li>
-              </ul>
-            </div>
+            <div
+              className="why-smg-text"
+              dangerouslySetInnerHTML={about && { __html: about.why_choose }}
+            ></div>
           </div>
         </div>
       </div>

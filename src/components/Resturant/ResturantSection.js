@@ -3,6 +3,8 @@ import { Link, Switch, Route } from "react-router-dom";
 import axiosInstance from "../../helper/axios";
 import RestaurantTab from "./RestaurantTab";
 import Axios from "axios";
+import RestaurantSlider from "./RestaurantSlider";
+import Skeleton from "react-loading-skeleton";
 
 function ResturantSection() {
   const [foods, setFoods] = useState();
@@ -48,8 +50,9 @@ function ResturantSection() {
           </div>
           <div class="restaurant-menu">
             {/* <!-- Tab links --> */}
+
             <div class="tab">
-              {foods &&
+              {foods ? (
                 foods.map((duration) => (
                   <button
                     className={
@@ -59,7 +62,10 @@ function ResturantSection() {
                   >
                     {duration.title}
                   </button>
-                ))}
+                ))
+              ) : (
+                <Skeleton width={450} />
+              )}
             </div>
 
             {/* <!-- Tab content --> */}
@@ -69,6 +75,7 @@ function ResturantSection() {
           </div>
         </div>
       </div>
+      <RestaurantSlider foods={foods} />
     </div>
   );
 }

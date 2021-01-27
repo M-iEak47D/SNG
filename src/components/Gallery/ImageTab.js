@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import Skeleton from "react-loading-skeleton";
 
 function ImageTab({ imageItem }) {
   const [imgUrl, setImgUrl] = useState();
+  const arr = [0, 1, 2, 3, 4, 5];
 
   function handleClick(e) {
     var imgSrc = e.target.src;
@@ -10,7 +12,7 @@ function ImageTab({ imageItem }) {
   return (
     <>
       <div class="row">
-        {imageItem &&
+        {imageItem ? (
           imageItem.images.map((image) => (
             <div class="col-md-4 image_gallery">
               <img
@@ -21,7 +23,16 @@ function ImageTab({ imageItem }) {
                 onClick={handleClick}
               />
             </div>
-          ))}
+          ))
+        ) : (
+          <>
+            {[0, 1, 2, 3, 4, 5].map((a) => (
+              <div class="col-md-4 image_gallery">
+                <Skeleton height={200} />
+              </div>
+            ))}
+          </>
+        )}
       </div>
 
       <div

@@ -11,7 +11,7 @@ function Restaurant() {
     <div id="main">
       <Banner title="Restaurant" home="Home" bread="Restaurant" />
       <ResturantSection />
-      <RestaurantSlider />
+    
     </div>
   );
 }

@@ -3487,7 +3487,7 @@ footer .social-media-icons ul li a:hover {
 
 .image_gallery img {
   border-radius: 5px;
-  opacity: .8;
+  opacity: 0.8;
 }
 
 .image_gallery:hover img {
@@ -4102,7 +4102,6 @@ footer .social-media-icons ul li a:hover {
 .about-us-section .about-us-main p {
   font-size: 35px;
   font-family: "Noto Serif JP";
-  font-weight: 900;
 }
 
 .about-us-section .about-us-main .about-us-main-image img {
@@ -4608,5 +4607,35 @@ footer .social-media-icons ul li a:hover {
 .checkout_section .form-btn a:hover {
   text-decoration: none;
   background-color: #790505;
+}
+
+.error {
+  font-size: 10px;
+  padding: 5px;
+  text-align: start;
+  color: red;
+}
+
+.error::before {
+  content: "* ";
+}
+
+.spinner-border {
+  height: 1em;
+  width: 1em;
+  color: white;
+}
+
+.send_message {
+  border-radius: 5px;
+  margin-top: 20px;
+  background: #7dce7d;
+}
+
+.send_message h3 {
+  margin: 0px;
+  font-size: 16px;
+  color: white;
+  padding: 10px 0px;
 }
 /*# sourceMappingURL=style.css.map */

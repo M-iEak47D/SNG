@@ -53,15 +53,13 @@ function RoomSelector(props) {
           <Field type="text" name={name}>
             {({ form }) => {
               const { values } = form;
-              console.log(values.occupancy, 'check')
+              console.log(values.occupancy, "check");
               return (
                 <>
                   <input
                     type="text"
                     // value = {values.occupancy.length}
-                    value={`${
-                      values.occupancy.length
-                    } Room `}
+                    value={`${values.occupancy.length} Room `}
                     onClick={() => setOpen(!open)}
                   />
                 </>

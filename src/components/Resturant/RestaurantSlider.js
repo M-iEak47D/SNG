@@ -1,7 +1,7 @@
 import React from "react";
 import Slider from "react-slick";
 
-function RestaurantSlider() {
+function RestaurantSlider({ foods }) {
   const settings = {
     dots: true,
     infinite: true,
@@ -9,35 +9,21 @@ function RestaurantSlider() {
     slidesToShow: 1,
     slidesToScroll: 1,
   };
+  console.log(foods, "heyy");
   return (
     <div>
       <div class="room-photos-slider">
         <div class="room-slide">
           <Slider {...settings}>
-            <div class="room-content">
-              <img
-                src={
-                  process.env.PUBLIC_URL +
-                  "/images/image-for-restaurant-slider.jpg"
-                }
-              />
-            </div>
-            <div class="room-content">
-              <img
-                src={
-                  process.env.PUBLIC_URL +
-                  "/images/image-for-restaurant-slider.jpg"
-                }
-              />
-            </div>
-            <div class="room-content">
-              <img
-                src={
-                  process.env.PUBLIC_URL +
-                  "/images/image-for-restaurant-slider.jpg"
-                }
-              />
-            </div>
+            {foods &&
+              foods.map(
+                (food) =>
+                  food.image && (
+                    <div class="room-content">
+                      <img src={food.image} />
+                    </div>
+                  )
+              )}
           </Slider>
         </div>
       </div>
