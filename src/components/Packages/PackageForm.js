@@ -7,7 +7,7 @@ import { addDays, format, set } from "date-fns";
 
 function PackageForm(props) {
   const [loading, setLoading] = useState(false);
-  const [send, setSend] = useState(true);
+  const [send, setSend] = useState(false);
   const [startDate, setStartDate] = useState(new Date());
   // const [packageID, setPackageID] = useState(props.packageId);
 
@@ -41,16 +41,16 @@ function PackageForm(props) {
     axiosInstance
       .post("/package-submit", values)
       .then((response) => {
-        // setLoading(false);
-        // setSend(true);
-        // setTimeout(function () {
-        //   setSend(false);
-        // }, 2000);
-        // onSubmitProps.resetForm();
+        setLoading(false);
+        setSend(true);
+        setTimeout(function () {
+          setSend(false);
+        }, 2000);
+        onSubmitProps.resetForm();
         console.log(response, "hello");
       })
       .error((response) => {
-        // setLoading(false);
+        setLoading(false);
         console.log(response);
       });
   };
