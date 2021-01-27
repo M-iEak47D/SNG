@@ -3,10 +3,12 @@ import Axios from "axios";
 import axiosInstance from "../../helper/axios";
 import { useParams } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
+import PackageForm from "./PackageForm";
 
 function SinglePackageSection() {
   let { slug } = useParams();
   const [packages, setPackages] = useState();
+  const [packageId, setPackageId] = useState();
 
   useEffect(() => {
     let source = Axios.CancelToken.source();
@@ -17,6 +19,7 @@ function SinglePackageSection() {
         });
         // console.log(await (await response).data.packages, "data");
         setPackages((await response).data.packages);
+        setPackageId((await response).data.packages.id);
       } catch (error) {
         if (!Axios.isCancel(error)) {
           throw error;
@@ -28,7 +31,7 @@ function SinglePackageSection() {
     };
     loadData();
   }, []);
-
+  console.log(packageId);
   return (
     <div>
       <div className="package-section">
@@ -50,7 +53,7 @@ function SinglePackageSection() {
             </div>
             <div className="package-quick-info-fact">
               <i className="fa fa-users"></i>
-              <span>Min. group size:</span>
+              <span>Min. group size:</span> 10
             </div>
           </div>
         </div>
@@ -113,52 +116,7 @@ function SinglePackageSection() {
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
-                  <div className="modal-body">
-                    <p>Full name</p>
-                    <input
-                      type="text"
-                      placeholder="Enter Full Name"
-                      className="form-control"
-                    />
-                    <p>Email</p>
-                    <input
-                      type="text"
-                      placeholder="Enter Email"
-                      className="form-control"
-                    />
-                    <p>Contact</p>
-                    <input
-                      type="text"
-                      placeholder="Enter Contact"
-                      className="form-control"
-                    />
-                    <p>Your preferred tour date</p>
-                    <input
-                      type="text"
-                      placeholder="Enter Preferred Tour Date"
-                      className="form-control"
-                    />
-                    <p>Number of person</p>
-                    <input
-                      type="text"
-                      placeholder="Enter Number of Person"
-                      className="form-control"
-                    />
-                    <p>Enquiry Message</p>
-                    <textarea
-                      name=""
-                      id=""
-                      cols="30"
-                      rows="5"
-                      placeholder="Your message"
-                      className="form-control"
-                    ></textarea>
-                  </div>
-                  <div className="modal-footer">
-                    <button type="button" className="btn btn-primary">
-                      Submit
-                    </button>
-                  </div>
+                  {packages && <PackageForm packageId={packageId} />}
                 </div>
               </div>
             </div>

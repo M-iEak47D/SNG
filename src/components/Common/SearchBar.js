@@ -33,7 +33,7 @@ function SearchBar() {
     destination: Yup.string().required("This Field Cannot be Empty"),
   });
   const onSubmit = (values, onSubmitProps) => {
-    console.log("form data", values);
+    console.table("form data", values);
     axiosInstance
       .post("/booking", values)
       .then((response) => {
@@ -53,7 +53,7 @@ function SearchBar() {
             <Form>
               <div className="bottom-search-bar d-none d-lg-flex">
                 <FormikControl
-                  control="date"
+                  control="datepicker"
                   type="text"
                   name="selectionRange"
                   startDate={initialValues.selectionRange.startDate}

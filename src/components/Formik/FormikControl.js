@@ -5,12 +5,16 @@ import Name from "./Name";
 import Email from "./Email";
 import Subject from "./Subject";
 import Message from "./Message";
+import Date from "./Date";
+import Number from "./Number";
+import ContactNo from "./ContactNo";
+import DatePick from "./DatePick";
 
 function FormikControl(props) {
   const { control, ...rest } = props;
 
   switch (control) {
-    case "date":
+    case "datepicker":
       return <DatePicker {...rest} />;
     case "occupancy":
       return <RoomSelector {...rest} />;
@@ -22,6 +26,12 @@ function FormikControl(props) {
       return <Subject {...rest} />;
     case "message":
       return <Message {...rest} />;
+    case "datepick":
+      return <DatePick {...rest} />;
+    case "number":
+      return <Number {...rest} />;
+    case "contact":
+      return <ContactNo {...rest} />;
     default:
       return null;
   }

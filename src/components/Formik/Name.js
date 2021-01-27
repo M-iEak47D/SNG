@@ -3,14 +3,14 @@ import { Field, ErrorMessage } from "formik";
 import TextError from "../Error/TextError";
 
 function Name(props) {
-  const { name, ...rest } = props;
+  const { name, placeholder, ...rest } = props;
   return (
     <div>
       <Field
         id={name}
         name={name}
         {...rest}
-        placeholder="Name"
+        placeholder={placeholder}
         className="form-control"
       />
       <ErrorMessage name={name} component={TextError} />

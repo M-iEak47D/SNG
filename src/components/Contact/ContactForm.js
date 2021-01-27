@@ -54,10 +54,20 @@ function ContactForm() {
               <div className="container">
                 <div className="row">
                   <div className="col-md-4">
-                    <FormikControl control="name" type="input" name="name" />
+                    <FormikControl
+                      control="name"
+                      type="text"
+                      name="name"
+                      placeholder="Name"
+                    />
                   </div>
                   <div className="col-md-4">
-                    <FormikControl control="email" type="email" name="email" />
+                    <FormikControl
+                      control="email"
+                      type="email"
+                      name="email"
+                      placeholder="Email"
+                    />
                   </div>
                   <div className="col-md-4">
                     <FormikControl
@@ -70,7 +80,11 @@ function ContactForm() {
               </div>
             </div>
             <div className="message-by-customer">
-              <FormikControl control="message" name="message" />
+              <FormikControl
+                control="message"
+                name="message"
+                placeholder="Message"
+              />
             </div>
             <div className="message-submit-button">
               <button>
