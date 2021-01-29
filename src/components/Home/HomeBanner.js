@@ -1,11 +1,22 @@
-import React from "react";
+import React, { useEffect , useState} from "react";
 import SearchBar from "../Common/SearchBar";
 import Navbar from "../Common/Navbar";
 import { Link } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
+import { addDays, set, format } from "date-fns";
 
 function HomeBanner({ banner }) {
-  console.log(banner, "banner");
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(addDays(new Date(), 1));
+
+  const initialValues = {
+    occupancy: [{ adult: 1, child: 0, id: "" + Math.random() }],
+    selectionRange: {
+      startDate: startDate,
+      endDate: endDate,
+      key: "selection",
+    },
+  };
   return (
     <>
       {banner ? (
@@ -26,7 +37,7 @@ function HomeBanner({ banner }) {
               </div>
             </div>
 
-            <SearchBar />
+            <SearchBar formData={initialValues} />
           </div>
         </div>
       ) : (

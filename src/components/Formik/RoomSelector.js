@@ -148,7 +148,7 @@ function RoomSelector(props) {
                                 </div>
                                 <div>
                                   {arrayHelpers.form.values.occupancy[index]
-                                    .adult < 4 && (
+                                    .adult < 2 && (
                                     <i
                                       id="plus"
                                       className="fas fa-plus-circle"

@@ -54,10 +54,11 @@ function DatePicker(props) {
                       <>
                         <input
                           type="text"
-                          value={format(
-                            values.selectionRange.startDate,
-                            "MMM dd yyyy"
-                          )}
+                          // value={format(
+                          //   values.selectionRange.startDate,
+                          //   "MMM dd yyyy"
+                          // )}
+                          value={values.selectionRange.startDate}
                           onClick={() => setOpen(!open)}
                         ></input>
                       </>
@@ -78,10 +79,11 @@ function DatePicker(props) {
                       <>
                         <input
                           type="text"
-                          value={format(
-                            values.selectionRange.endDate,
-                            "MMM dd yyyy"
-                          )}
+                          // value={format(
+                          //   values.selectionRange.endDate,
+                          //   "MMM dd yyyy"
+                          // )}
+                          value={values.selectionRange.endDate}
                           onClick={() => setOpen(!open)}
                         ></input>
                       </>

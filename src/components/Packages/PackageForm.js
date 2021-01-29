@@ -6,16 +6,10 @@ import axiosInstance from "../../helper/axios";
 import { addDays, format, set } from "date-fns";
 
 function PackageForm(props) {
-  const [loading, setLoading] = useState(false);
-  const [send, setSend] = useState(false);
   const [startDate, setStartDate] = useState(new Date());
-  // const [packageID, setPackageID] = useState(props.packageId);
-
-  // setStartDate(format(startDate, "yyyy-MM-d"));
-  console.log(props.packageId, "hello");
 
   const initialValues = {
-    id: "1",
+    id: "",
     name: "",
     email: "",
     contact: "",
@@ -33,25 +27,23 @@ function PackageForm(props) {
     message: Yup.string().required("Message is required"),
   });
   const onSubmit = (values, onSubmitProps) => {
-    console.log(values);
+    // props.setSending(true);
+    props.modal();
     var dateData = format(values.datepick, "yyyy-MM-d");
     values.datepick = dateData;
-    console.log(values, "new");
-    // setLoading(true);
+    values.id = props.packageId;
     axiosInstance
       .post("/package-submit", values)
       .then((response) => {
-        setLoading(false);
-        setSend(true);
-        setTimeout(function () {
-          setSend(false);
-        }, 2000);
         onSubmitProps.resetForm();
-        console.log(response, "hello");
+        props.setSending(false);
+        props.setMessage(true);
+        setTimeout(function () {
+          props.setMessage(false);
+        }, 2000);
       })
       .error((response) => {
-        setLoading(false);
-        console.log(response);
+        // setLoadings(false);
       });
   };
   return (
@@ -112,20 +104,7 @@ function PackageForm(props) {
               />
             </div>
             <div className="modal-footer">
-              <button className="btn btn-primary">
-                {}
-                Submit{" "}
-                {loading && (
-                  <span class="spinner-border" role="status">
-                    <span class="sr-only">Loading...</span>
-                  </span>
-                )}
-              </button>
-              {send && (
-                <div className="send_message enquiry_message">
-                  <h3>Message Send Successfully</h3>
-                </div>
-              )}
+              <button className="btn btn-primary">Submit</button>
             </div>
           </Form>
         )}

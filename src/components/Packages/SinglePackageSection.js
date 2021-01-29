@@ -9,6 +9,13 @@ function SinglePackageSection() {
   let { slug } = useParams();
   const [packages, setPackages] = useState();
   const [packageId, setPackageId] = useState();
+  const [sending, setSending] = useState(false);
+  const [message, setMessage] = useState(false);
+
+  const modalOff = () => {
+    document.getElementById("modal_btn").click();
+    setSending(true);
+  };
 
   useEffect(() => {
     let source = Axios.CancelToken.source();
@@ -17,7 +24,6 @@ function SinglePackageSection() {
         const response = axiosInstance.get(`/package/single/${slug}`, {
           cancelToken: source.token,
         });
-        // console.log(await (await response).data.packages, "data");
         setPackages((await response).data.packages);
         setPackageId((await response).data.packages.id);
       } catch (error) {
@@ -31,31 +37,46 @@ function SinglePackageSection() {
     };
     loadData();
   }, []);
-  console.log(packageId);
   return (
     <div>
       <div className="package-section">
         <div className="package-quick-info">
           <div className="package-quick-info-title">Quick Information</div>
           <div className="divider-in-package"></div>
-          <div className="package-quick-info-content">
-            <div className="package-quick-info-fact">
-              <i className="fa fa-location-arrow"></i>
-              <span>Location:</span> Kathmandu, Nepal
+
+          {packages ? (
+            <div className="package-quick-info-content">
+              <div className="package-quick-info-fact">
+                <i className="fa fa-location-arrow"></i>
+                <span>Location:</span> Kathmandu, Nepal
+              </div>
+              {packages && packages.duration ? (
+                <div className="package-quick-info-fact">
+                  <i className="fa fa-clock"></i>
+                  <span>Duration:</span> 3 nights, 4 days
+                </div>
+              ) : null}
+
+              {packages && packages.language ? (
+                <div className="package-quick-info-fact">
+                  <i className="fa fa-language"></i>
+                  <span>Language:</span>
+                  {packages.language}
+                </div>
+              ) : null}
+
+              {packages && packages.min_group_size ? (
+                <div className="package-quick-info-fact">
+                  <i className="fa fa-users"></i>
+                  <span>Min. group size:</span> {packages.min_group_size}
+                </div>
+              ) : null}
             </div>
-            <div className="package-quick-info-fact">
-              <i className="fa fa-clock-o"></i>
-              <span>Duration:</span> 3 nights, 4 days
+          ) : (
+            <div style={{ marginBottom: "30px" }}>
+              <Skeleton />
             </div>
-            <div className="package-quick-info-fact">
-              <i className="fa fa-language"></i>
-              <span>Language:</span> {packages && packages.language}
-            </div>
-            <div className="package-quick-info-fact">
-              <i className="fa fa-users"></i>
-              <span>Min. group size:</span> 10
-            </div>
-          </div>
+          )}
         </div>
 
         <div className="package-overview">
@@ -88,11 +109,31 @@ function SinglePackageSection() {
               className="btn btn-primary"
               data-toggle="modal"
               data-target="#exampleModal"
+              id="modal_btn"
+              disabled={sending}
             >
-              Enquiry
+              Enquiry{" "}
+              {sending && (
+                <div class="spinner-border" role="status">
+                  <span class="sr-only">Loading...</span>
+                </div>
+              )}
             </button>
+            {message && (
+              <div className="send_message enquiry_message">
+                <h3>Message Send Successfully</h3>
+              </div>
+            )}
+
+            {/* {sending && (
+              <div className="send_message enquiry_message">
+                <h3>Message Send Successfully</h3>
+              </div>
+            )} */}
+            {/* <button onClick={modalOff}>off</button> */}
 
             {/* <!-- Modal --> */}
+
             <div
               className="modal fade"
               id="exampleModal"
@@ -116,7 +157,14 @@ function SinglePackageSection() {
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
-                  {packages && <PackageForm packageId={packageId} />}
+                  {packages && (
+                    <PackageForm
+                      packageId={packageId}
+                      modal={modalOff}
+                      setSending={setSending}
+                      setMessage={setMessage}
+                    />
+                  )}
                 </div>
               </div>
             </div>

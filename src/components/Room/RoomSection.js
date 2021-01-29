@@ -1,7 +1,13 @@
-import React from "react";
+import { React, useEffect } from "react";
 import RoomSlider from "./RoomSlider";
+import { useLocation } from "react-router-dom";
 
 function RoomSection() {
+  const location = useLocation();
+  useEffect(() => {
+    console.log(location.pathname);
+    console.log(location.state);
+  }, [location]);
   return (
     <div>
       <div className="room-section" id="room-section-for-single-room">
