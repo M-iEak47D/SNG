@@ -9,6 +9,10 @@ import Date from "./Date";
 import Number from "./Number";
 import ContactNo from "./ContactNo";
 import DatePick from "./DatePick";
+import Radio from "./Radio";
+import Select from "./Select";
+import FirstName from "./FirstName";
+import LastName from "./LastName";
 
 function FormikControl(props) {
   const { control, ...rest } = props;
@@ -32,6 +36,14 @@ function FormikControl(props) {
       return <Number {...rest} />;
     case "contact":
       return <ContactNo {...rest} />;
+    case "radio":
+      return <Radio {...rest} />;
+    case "select":
+      return <Select {...rest} />;
+    case "firstName":
+      return <FirstName {...rest} />;
+    case "lastName":
+      return <LastName {...rest} />;
     default:
       return null;
   }

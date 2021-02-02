@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import axiosInstance from "../../helper/axios";
 import Skeleton from "react-loading-skeleton";
+import { Link, useParams } from "react-router-dom";
 
 function BlogSection() {
   const [blogs, setBlogs] = useState();
@@ -34,19 +35,21 @@ function BlogSection() {
           <div className="row">
             {blogs ? (
               blogs.map((blog) => (
-                <div className="col-md-3">
-                  <div className="blog">
-                    <div className="blog-image">
-                      <img src={blog.image} />
-                    </div>
-                    <div className="blog-title">
-                      <a href="#">{blog.title}</a>
-                    </div>
-                    <div className="blog-date">
-                      <a href="#">News</a> / <span>{blog.date}</span>
+                <Link to={"/blog/" + blog.slug}>
+                  <div className="col-md-3">
+                    <div className="blog">
+                      <div className="blog-image">
+                        <img src={blog.image} />
+                      </div>
+                      <div className="blog-title">
+                        <a href="#">{blog.title}</a>
+                      </div>
+                      <div className="blog-date">
+                        <a href="#">News</a> / <span>{blog.date}</span>
+                      </div>
                     </div>
                   </div>
-                </div>
+                </Link>
               ))
             ) : (
               <div className="col-md-3">

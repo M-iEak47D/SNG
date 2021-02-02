@@ -149,7 +149,7 @@ function Navbar() {
                           <Link className="dropdown-item" to="/contact">
                             Contact
                           </Link>
-                          <Link className="dropdown-item" to="/blog">
+                          <Link className="dropdown-item" to="/blogs">
                             Blog
                           </Link>
 

@@ -42,7 +42,6 @@ function Home() {
     loadData();
     window.scrollTo(0, 0);
   }, []);
-  console.log(rooms, "hello");
   return (
     <div id="main">
       <HomeBanner banner={banner} />

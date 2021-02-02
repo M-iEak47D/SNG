@@ -4030,14 +4030,16 @@ footer {
   .form-btn {
     margin: 40px 0px;
     text-align: center;
-    a {
+    button {
       display: block;
       background-color: #c20808;
       color: #ffffff;
       padding: 10px 20px;
       border-radius: 5px;
+      border: none;
+      width: 100%;
     }
-    a:hover {
+    button:hover {
       text-decoration: none;
       background-color: #790505;
     }
@@ -4088,4 +4090,278 @@ footer {
 //date pick
 .react-datepicker-wrapper {
   width: 100%;
+}
+
+//blog details
+
+.blog_single {
+  padding: 40px;
+  .products {
+    box-shadow: 0 0 20px 0 rgba(62, 28, 131, 0.1);
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+
+    .image-coantainer {
+      text-align: center;
+      height: 600px;
+      display: block;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+    .header {
+      h1 {
+        padding: 20px;
+        color: #034a6a;
+        font-size: 20px;
+        font-weight: 500;
+        margin-bottom: 0px;
+      }
+    }
+    .details {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      margin: 0px 20px;
+      margin-bottom: 10px;
+      h2 {
+        font-size: 13px;
+        color: rgba(0, 0, 0, 0.5);
+        margin-bottom: 0px;
+      }
+    }
+    .para {
+      p {
+        text-align: justify;
+        color: rgba(0, 0, 0, 0.75);
+        line-height: 1.7;
+      }
+      margin: 0px 20px;
+    }
+    .line {
+      padding: 0px 5px;
+    }
+    .product-btn {
+      margin: 30px 0px 20px 20px;
+      i {
+        opacity: 0;
+        font-size: 13px;
+        padding-left: 5px;
+        transition: 0.5s ease;
+      }
+      a {
+        background-color: #e5e5e5;
+        color: white;
+        padding: 10px 15px;
+        border-radius: 3px;
+        color: rgba(0, 0, 0, 0.75);
+        font-weight: 600;
+        transition: 0.5s ease;
+      }
+      a:hover {
+        transition: 0.5s ease;
+        padding-right: 20px;
+        background-color: #d0d0d0;
+        i {
+          opacity: 1;
+          transition: 0.5s ease;
+        }
+      }
+    }
+  }
+  .side-header {
+    box-shadow: 0 0 20px 0 rgba(62, 28, 131, 0.1);
+    border-radius: 3px;
+    .header {
+      padding: 15px 20px;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 1;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      background-color: #2e2751;
+    }
+    .list {
+      padding: 20px;
+      display: flex;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      .image-container {
+        margin-right: 10px;
+      }
+      .text {
+        color: rgba(0, 0, 0, 0.75);
+        font-size: 14px;
+        font-weight: 600;
+        span {
+          a {
+            display: block;
+            color: rgba(0, 0, 0, 0.5);
+            font-weight: 400;
+            font-size: 13px;
+          }
+        }
+      }
+    }
+  }
+}
+
+//single blog
+.blog-detail {
+  padding: 40px;
+  .products-detail {
+    box-shadow: 0 0 20px 0 rgba(62, 28, 131, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+
+    .image_container {
+      text-align: center;
+      img {
+        width: 100%;
+      }
+    }
+    .header {
+      text-align: center;
+      padding-top: 20px;
+      h1 {
+        padding: 20px;
+        color: #034a6a;
+        font-size: 26px;
+        font-weight: 500;
+        margin-bottom: 0px;
+      }
+    }
+    .details {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      margin: 0px 20px;
+      margin-bottom: 10px;
+      justify-content: center;
+      padding-bottom: 40px;
+      h2 {
+        font-size: 14px;
+        color: rgba(0, 0, 0, 0.5);
+        margin-bottom: 0px;
+      }
+    }
+    .para {
+      padding: 40px 60px;
+      p {
+        text-align: justify;
+        color: rgba(0, 0, 0, 0.75);
+        line-height: 1.7;
+      }
+      margin: 0px 20px;
+    }
+    .line {
+      padding: 0px 5px;
+    }
+  }
+  .product-footer {
+    box-shadow: 0 0 20px 0 rgba(62, 28, 131, 0.1);
+    padding: 20px;
+    margin-bottom: 30px;
+    .share-list {
+      ul {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        list-style: none;
+        li {
+          padding: 0px 10px;
+          font-size: 20px;
+        }
+        .text {
+          text-transform: uppercase;
+          font-size: 18px;
+        }
+      }
+    }
+  }
+  .side-header {
+    box-shadow: 0 0 20px 0 rgba(62, 28, 131, 0.1);
+    border-radius: 3px;
+    .header {
+      padding: 15px 20px;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 1;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      background-color: #2e2751;
+    }
+    .list {
+      padding: 20px;
+      display: flex;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      .image-container {
+        margin-right: 10px;
+      }
+      .text {
+        color: rgba(0, 0, 0, 0.75);
+        font-size: 14px;
+        font-weight: 600;
+        span {
+          a {
+            display: block;
+            color: rgba(0, 0, 0, 0.5);
+            font-weight: 400;
+            font-size: 13px;
+          }
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 576px) {
+    .products-detail {
+      .header {
+        h1 {
+          font-size: 26px;
+          padding: 10px;
+        }
+      }
+      .details {
+        padding-bottom: 20px;
+      }
+      .para {
+        padding: 40px 10px;
+      }
+    }
+  }
+}
+
+// esewa
+.esewa_btn {
+  display: block;
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  width: 100%;
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+  text-align: center;
+  margin-bottom: 30px;
+}
+.esewa_btn:hover {
+  background-color: #449d44;
+  border-color: #398439;
+}
+
+.no_room {
+  text-align: center;
+  .no_room_sec {
+    display: inline-block;
+    box-shadow: 0px 2px 4px 0px #d9d9d9;
+    background: #ffffff;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 20px;
+    text-align: center;
+  }
 }

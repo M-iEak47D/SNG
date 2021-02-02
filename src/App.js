@@ -17,6 +17,7 @@ import Room from "./pages/Room";
 import Checkout from "./pages/Checkout";
 import CommingSoon from "./components/Ads/commingSoon";
 import PackageSingle from "./pages/PackageSingle";
+import SingleBlog from "./pages/SingleBlog";
 
 function App() {
   return (
@@ -39,8 +40,11 @@ function App() {
         <Route path="/restaurant">
           <Restaurant />
         </Route>
-        <Route exact path="/blog">
+        <Route exact path="/blogs">
           <Blog />
+        </Route>
+        <Route exact path="/blog/:slug">
+          <SingleBlog />
         </Route>
         <Route path="/image_gallery">
           <ImageGallery />
