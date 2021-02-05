@@ -10,6 +10,10 @@ function Checkout() {
   const location = useLocation();
   const history = useHistory();
   useEffect(() => {
+    window.scrollTo(0, 0);
+    document.getElementById("mySidenav").style.width = "0";
+  }, []);
+  useEffect(() => {
     if (location.state) {
       setRoomData(location.state.roomData);
       setFormData(location.state.formData);

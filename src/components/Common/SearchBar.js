@@ -31,26 +31,22 @@ function SearchBar(props) {
     values.startDate = dateStart;
     values.endDate = dateEnd;
 
-    console.log(initialValues, "new");
-
     axiosInstance
       .post("/booking", values)
       .then((response) => {
-        console.log(response, "hello");
         history.push({
           pathname: "/room_details",
           state: { roomData: response.data.rooms, formData: values },
         });
       })
-      .error((response) => {
-        console.log(response);
-      });
+      .error((response) => {});
   };
 
   return (
     <div>
       <div className="search-wrapper" id="searchBar">
         {initialValues && (
+          <>
           <Formik initialValues={initialValues} onSubmit={onSubmit}>
             {(formik) => (
               <Form>
@@ -73,9 +69,14 @@ function SearchBar(props) {
               </Form>
             )}
           </Formik>
+          <WhereTo
+            initialValues={initialValues}
+            validationSchema={validationSchema}
+          />
+          </>
         )}
 
-        <WhereTo />
+        
       </div>
     </div>
   );

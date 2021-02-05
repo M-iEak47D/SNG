@@ -5,6 +5,7 @@ import BlogSection from "../components/Blog/BlogSection";
 function Blog() {
   useEffect(() => {
     window.scrollTo(0, 0);
+    document.getElementById("mySidenav").style.width = "0";
   }, []);
   return (
     <div id="main">

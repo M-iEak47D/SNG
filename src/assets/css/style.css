@@ -194,7 +194,7 @@ a:hover {
 .banner .sticky {
   -webkit-transition: all 0.3s linear;
   transition: all 0.3s linear;
-  background: #62668e !important;
+  background: #2f1333 !important;
   padding: 0px;
 }
 
@@ -1827,9 +1827,8 @@ a:hover {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   color: #989898;
   margin-top: 10px;
   border-bottom: 1.5px solid #777777;

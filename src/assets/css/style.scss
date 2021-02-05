@@ -177,7 +177,7 @@ a:hover {
   }
   .sticky {
     transition: all 0.3s linear;
-    background: #62668e !important;
+    background: #2f1333 !important;
     padding: 0px;
   }
 }
@@ -1585,7 +1585,7 @@ a:hover {
   .room-facility {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     color: #989898;
     margin-top: 10px;
     border-bottom: 1.5px solid #777777;

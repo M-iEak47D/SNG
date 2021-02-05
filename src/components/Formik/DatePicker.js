@@ -44,21 +44,19 @@ function DatePicker(props) {
 
                 <Field name={name}>
                   {({ form, field }) => {
-                    console.log(form);
-                    console.log(field);
                     const { setFieldValue, values } = form;
+                    console.log(values, "vall");
 
-                    console.log(values);
                     const { value } = field;
                     return (
                       <>
                         <input
                           type="text"
-                          // value={format(
-                          //   values.selectionRange.startDate,
-                          //   "MMM dd yyyy"
-                          // )}
-                          value={values.selectionRange.startDate}
+                          value={format(
+                            values.selectionRange.startDate,
+                            "MMM dd yyyy"
+                          )}
+                          // value={values && values.selectionRange.startDate}
                           onClick={() => setOpen(!open)}
                         ></input>
                       </>
@@ -79,11 +77,11 @@ function DatePicker(props) {
                       <>
                         <input
                           type="text"
-                          // value={format(
-                          //   values.selectionRange.endDate,
-                          //   "MMM dd yyyy"
-                          // )}
-                          value={values.selectionRange.endDate}
+                          value={format(
+                            values.selectionRange.endDate,
+                            "MMM dd yyyy"
+                          )}
+                          // value={values && values.selectionRange.endDate}
                           onClick={() => setOpen(!open)}
                         ></input>
                       </>

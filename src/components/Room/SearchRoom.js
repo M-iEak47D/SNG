@@ -53,7 +53,14 @@ function SearchRoom() {
                                   "/images/png/guests.png"
                                 }
                               />
-                              &nbsp;2 Guests
+                              &nbsp;
+                              {formData &&
+                                formData.occupancy
+                                  .map((item) => item.adult)
+                                  .reduce(
+                                    (curval, newval) => curval + newval
+                                  )}{" "}
+                              Guests
                             </div>
                             <div className="facility-item">
                               <img
@@ -61,18 +68,11 @@ function SearchRoom() {
                                   process.env.PUBLIC_URL + "/images/png/bed.png"
                                 }
                               />
-                              &nbsp;2 Bedrooms
-                            </div>
-                            <div className="facility-item">
-                              <img
-                                src={
-                                  process.env.PUBLIC_URL +
-                                  "/images/png/shower.png"
-                                }
-                              />
-                              &nbsp;2 Bathrooms
+                              &nbsp;{formData && formData.occupancy.length}{" "}
+                              Rooms
                             </div>
                           </div>
+
                           <div className="amenities">
                             <p>Amenities:</p>
                             <div className="amenities-content">

@@ -23,7 +23,6 @@ function RoomSelector(props) {
       newOccupancy[index].child -= 1;
     }
     set("occupancy", newOccupancy);
-    console.log(index);
   };
 
   const handleClick = (e) => {
@@ -53,13 +52,19 @@ function RoomSelector(props) {
           <Field type="text" name={name}>
             {({ form }) => {
               const { values } = form;
-              console.log(values.occupancy, "check");
+
               return (
                 <>
                   <input
                     type="text"
                     // value = {values.occupancy.length}
-                    value={`${values.occupancy.length} Room `}
+                    // value={`${values.occupancy.length} Room `}
+                    value={`${values && values.occupancy.length} Room ${
+                      values &&
+                      values.occupancy
+                        .map((item) => item.adult)
+                        .reduce((curval, newval) => curval + newval)
+                    } Adult`}
                     onClick={() => setOpen(!open)}
                   />
                 </>

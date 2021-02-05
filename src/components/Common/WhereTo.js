@@ -12,23 +12,42 @@ import { addDays, set, format } from "date-fns";
 import FormikControl from "../Formik/FormikControl";
 import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css";
+import axiosInstance from "../../helper/axios";
+import { useHistory } from "react-router-dom";
+import $ from "jquery";
 
-function WhereTo() {
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(addDays(new Date(), 1));
-  const initialValues = {
-    occupancy: [{ adult: 1, child: 0, id: "" + Math.random() }],
-    selectionRange: {
-      startDate: startDate,
-      endDate: endDate,
-      key: "selection",
-    },
-  };
-  const validationSchema = Yup.object({
-    destination: Yup.string().required("This Field Cannot be Empty"),
-  });
+function WhereTo(props) {
+  const { initialValues, validationSchema } = props;
+  const [loading, setLoading] = useState(false);
+
+  const history = useHistory();
+
   const onSubmit = (values) => {
-    console.log("form data", values);
+    console.log(initialValues.selectionRange, "iv");
+    setLoading(true);
+
+    var dateStart = format(values.selectionRange.startDate, "yyyy-MM-d");
+    var dateEnd = format(values.selectionRange.endDate, "yyyy-MM-d");
+
+    values.startDate = dateStart;
+    values.endDate = dateEnd;
+
+    axiosInstance
+      .post("/booking", values)
+      .then((response) => {
+        console.log(response, "hello");
+        history.push({
+          pathname: "/room_details",
+          state: { roomData: response.data.rooms, formData: values },
+        });
+        $(".modal-backdrop").remove();
+        $("body").removeClass("modal-open");
+        $("#myModal .close").click();
+        setLoading(false);
+      })
+      .error((response) => {
+        console.log(response);
+      });
   };
   return (
     <div>
@@ -58,13 +77,26 @@ function WhereTo() {
                   {(formik) => (
                     <Form>
                       <FormikControl
-                        control="date"
+                        control="datepicker"
                         type="text"
                         name="selectionRange"
+                        startDate={
+                          initialValues.selectionRange.startDate
+                        }
+                        endDate={
+                          initialValues.selectionRange.endDate
+                        }
                       />
                       <FormikControl control="occupancy" name="occupancy" />
                       <div className="button-container">
-                        <button>Search</button>
+                        <button type="submit">
+                          Search
+                          {/* {loading && (
+                            <span class="spinner-border" role="status">
+                              <span class="sr-only">Loading...</span>
+                            </span>
+                          )} */}
+                        </button>
                       </div>
                     </Form>
                   )}

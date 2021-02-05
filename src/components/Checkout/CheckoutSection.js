@@ -25,19 +25,18 @@ function CheckoutSection({ room, form }) {
                       <img
                         src={process.env.PUBLIC_URL + "/images/png/guests.png"}
                       />
-                      &nbsp;2 Guests
+                      &nbsp;
+                      {form &&
+                        form.occupancy
+                          .map((item) => item.adult)
+                          .reduce((curval, newval) => curval + newval)}{" "}
+                      Guests
                     </div>
                     <div className="facility-item">
                       <img
                         src={process.env.PUBLIC_URL + "/images/png/bed.png"}
                       />
-                      &nbsp;2 Bedrooms
-                    </div>
-                    <div className="facility-item">
-                      <img
-                        src={process.env.PUBLIC_URL + "/images/png/shower.png"}
-                      />
-                      &nbsp;2 Bathrooms
+                      &nbsp;{form && form.occupancy.length} Rooms
                     </div>
                   </div>
 
@@ -48,7 +47,14 @@ function CheckoutSection({ room, form }) {
 
                     <div>
                       <h3>Occupancy</h3>
-                      <p>{form && form.occupancy.length} Room </p>
+                      <p>
+                        {form && form.occupancy.length} Room{" "}
+                        {form &&
+                          form.occupancy
+                            .map((item) => item.adult)
+                            .reduce((curval, newval) => curval + newval)}{" "}
+                        Guests{" "}
+                      </p>
                     </div>
                     <div>
                       <h3>Check-in</h3>
@@ -76,7 +82,6 @@ function CheckoutSection({ room, form }) {
                     </div>
                   </div>
                 </div>
-                
               </div>
             </div>
           </div>

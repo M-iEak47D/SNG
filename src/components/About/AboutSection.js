@@ -93,7 +93,7 @@ function AboutSection() {
         <div className="container">
           <div className="why-smg">
             <div className="why-smg-title">
-              <p>Why choose Hotel SMG</p>
+              <p>Why choose Hotel SNG</p>
             </div>
             <div
               className="why-smg-text"

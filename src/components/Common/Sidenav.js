@@ -47,17 +47,19 @@ function Sidenav() {
               className="dropbtn"
               data-target="roomsDropdown"
             >
-              Rooms <i className="fa fa-caret-down"></i>
+              About <i className="fa fa-caret-down"></i>
             </button>
           </div>
           <div id="roomsDropdown" className="dropdown-content">
-            <Link to="/room_details">Grand Deluxe</Link>
-            <Link to="/room_details">Superior Deluxe</Link>
-            <Link to="/room_details">Deluxe King Room</Link>
+            <Link to="/about_us">About Us</Link>
+            <Link to="/our_team">Our Team</Link>
           </div>
         </div>
         <div className="nav-content">
           <Link to="/packages">Packages</Link>
+        </div>
+        <div className="nav-content">
+          <Link to="/restaurant">Restaurant</Link>
         </div>
         <div className="nav-content">
           <div className="dropdown">
@@ -75,7 +77,7 @@ function Sidenav() {
           </div>
         </div>
         <div className="nav-content">
-          <Link to="/contact">Contact</Link>
+          <Link to="/blogs">Blog</Link>
         </div>
         <div className="nav-content">
           <div className="dropdown">
@@ -84,14 +86,11 @@ function Sidenav() {
               className="dropbtn"
               data-target="buttonDropdownContent"
             >
-              More <i className="fa fa-caret-down"></i>
+              Contact <i className="fa fa-caret-down"></i>
             </button>
           </div>
           <div id="buttonDropdownContent" className="dropdown-content">
-            <Link to="/restaurant">Restaurant</Link>
-            <Link to="/blog">Blog</Link>
-            <Link to="/about_us">About Us</Link>
-            <Link to="/team">Our Team</Link>
+            <Link to="/contact">Contact Us</Link>
             <Link to="/reach">How to Reach</Link>
           </div>
         </div>

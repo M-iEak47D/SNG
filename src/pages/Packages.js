@@ -5,6 +5,7 @@ import Allpackages from "../components/Packages/Allpackages";
 function Packages() {
   useEffect(() => {
     window.scrollTo(0, 0);
+    document.getElementById("mySidenav").style.width = "0";
   }, []);
   
   return (

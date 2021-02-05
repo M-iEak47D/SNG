@@ -3,9 +3,10 @@ import Banner from "../components/Common/Banner";
 import SearchRoom from "../components/Room/SearchRoom";
 
 function Room() {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+ useEffect(() => {
+   window.scrollTo(0, 0);
+   document.getElementById("mySidenav").style.width = "0";
+ }, []);
   return (
     <div id="main">
       <Banner title="Single Rooms" home="Home" bread="Single Rooms" />

@@ -5,6 +5,7 @@ import AboutSection from "../components/About/AboutSection";
 function About() {
   useEffect(() => {
     window.scrollTo(0, 0);
+    document.getElementById("mySidenav").style.width = "0";
   }, []);
   return (
     <div id="main">

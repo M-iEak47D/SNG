@@ -69,11 +69,26 @@ function Navbar() {
                           Home <span className="sr-only">(current)</span>
                         </Link>
                       </li>
-                      <li className="nav-item active">
-                        <Link className="nav-link" to="/about_us">
-                          About us <span class="sr-only">(current)</span>
-                        </Link>
+                      <li className="nav-item dropdown">
+                        <a
+                          className="nav-link dropdown-toggle"
+                          id="navbarDropdown"
+                        >
+                          About
+                        </a>
+                        <div
+                          className="dropdown-menu"
+                          aria-labelledby="navbarDropdown"
+                        >
+                          <Link class="dropdown-item" to="/about_us">
+                            About us
+                          </Link>
+                          <Link className="dropdown-item" to="/our_team">
+                            Our Team
+                          </Link>
+                        </div>
                       </li>
+
                       <li className="nav-item active">
                         <Link className="nav-link" to="/restaurant">
                           Restaurant <span class="sr-only">(current)</span>
@@ -84,29 +99,6 @@ function Navbar() {
                           Packages
                           <span className="sr-only">(current)</span>
                         </Link>
-                      </li>
-                      <li className="nav-item dropdown">
-                        <a
-                          className="nav-link dropdown-toggle"
-                          id="navbarDropdown"
-                        >
-                          Rooms
-                        </a>
-                        <div
-                          className="dropdown-menu"
-                          aria-labelledby="navbarDropdown"
-                        >
-                          <div className="dropdown-divider"></div>
-                          <Link className="dropdown-item" to="/room_details">
-                            Grand Deluxe
-                          </Link>
-                          <Link className="dropdown-item" to="/room_details">
-                            Superior Deluxe
-                          </Link>
-                          <Link className="dropdown-item" to="/room_details">
-                            Deluxe King Room
-                          </Link>
-                        </div>
                       </li>
 
                       <li className="nav-item dropdown">
@@ -129,33 +121,27 @@ function Navbar() {
                         </div>
                       </li>
 
-                      {/* <li className="nav-item active">
-                        <Link className="nav-link" to="/contact">
-                          Contact <span class="sr-only">(current)</span>
+                      <li className="nav-item active">
+                        <Link className="nav-link" to="/blogs">
+                          Blog<span class="sr-only">(current)</span>
                         </Link>
-                      </li> */}
+                      </li>
 
                       <li className="nav-item dropdown">
                         <a
                           className="nav-link dropdown-toggle"
                           id="navbarDropdown"
                         >
-                          More
+                          Contact
                         </a>
                         <div
                           className="dropdown-menu"
                           aria-labelledby="navbarDropdown"
                         >
                           <Link className="dropdown-item" to="/contact">
-                            Contact
-                          </Link>
-                          <Link className="dropdown-item" to="/blogs">
-                            Blog
+                            Contact Us
                           </Link>
 
-                          <Link className="dropdown-item" to="/our_team">
-                            Our Team
-                          </Link>
                           <Link className="dropdown-item" to="/reach">
                             How to Reach
                           </Link>

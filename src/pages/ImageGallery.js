@@ -3,9 +3,10 @@ import Banner from "../components/Common/Banner";
 import Image from "../components/Gallery/Image";
 
 function ImageGallery() {
-   useEffect(() => {
-     window.scrollTo(0, 0);
-   }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    document.getElementById("mySidenav").style.width = "0";
+  }, []);
   return (
     <div id="main">
       <Banner title="Images Gallery" home="Home" bread="Images Gallery" />
