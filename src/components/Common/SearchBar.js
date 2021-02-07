@@ -24,22 +24,25 @@ function SearchBar(props) {
   const validationSchema = Yup.object({
     destination: Yup.string().required("This Field Cannot be Empty"),
   });
+
   const onSubmit = (values, onSubmitProps) => {
     var dateStart = format(values.selectionRange.startDate, "yyyy-MM-d");
     var dateEnd = format(values.selectionRange.endDate, "yyyy-MM-d");
 
+    dateStart === dateEnd
+      ? alert("select date")
+      : axiosInstance
+          .post("/booking", values)
+          .then((response) => {
+            history.push({
+              pathname: "/room_details",
+              state: { roomData: response.data.rooms, formData: values },
+            });
+          })
+          .error((response) => {});
+
     values.startDate = dateStart;
     values.endDate = dateEnd;
-
-    axiosInstance
-      .post("/booking", values)
-      .then((response) => {
-        history.push({
-          pathname: "/room_details",
-          state: { roomData: response.data.rooms, formData: values },
-        });
-      })
-      .error((response) => {});
   };
 
   return (
@@ -47,36 +50,35 @@ function SearchBar(props) {
       <div className="search-wrapper" id="searchBar">
         {initialValues && (
           <>
-          <Formik initialValues={initialValues} onSubmit={onSubmit}>
-            {(formik) => (
-              <Form>
-                <div className="bottom-search-bar d-none d-lg-flex">
-                  <FormikControl
-                    control="datepicker"
-                    type="text"
-                    name="selectionRange"
-                    startDate={initialValues.selectionRange.startDate}
-                    endDate={initialValues.selectionRange.endDate}
-                  />
-                  <FormikControl control="occupancy" name="occupancy" />
+            <Formik initialValues={initialValues} onSubmit={onSubmit}>
+              {(formik) => (
+                <Form>
+                  <div className="bottom-search-bar d-none d-lg-flex">
+                    <FormikControl
+                      control="datepicker"
+                      type="text"
+                      name="selectionRange"
+                      startDate={initialValues.selectionRange.startDate}
+                      endDate={initialValues.selectionRange.endDate}
+                    />
 
-                  <div className="button-container">
-                    <div className="search-button">
-                      <button type="submit">Search</button>
+                    <FormikControl control="occupancy" name="occupancy" />
+
+                    <div className="button-container">
+                      <div className="search-button">
+                        <button type="submit">Search</button>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </Form>
-            )}
-          </Formik>
-          <WhereTo
-            initialValues={initialValues}
-            validationSchema={validationSchema}
-          />
+                </Form>
+              )}
+            </Formik>
+            <WhereTo
+              initialValues={initialValues}
+              validationSchema={validationSchema}
+            />
           </>
         )}
-
-        
       </div>
     </div>
   );

@@ -4385,3 +4385,146 @@ footer {
 .comming_modal {
   top: 50px;
 }
+
+// invoice
+
+// .invoice_container {
+//   display: flex;
+//   justify-content: center;
+//   .invoice_border {
+//     border: 1px solid black;
+//     padding: 20px;
+
+
+//   }
+// }
+
+table.invoice {
+  background: #fff;
+  .num {
+    font-weight: 200;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 0.8em;
+  }
+  tr,
+  td {
+    background: #fff;
+    text-align: left;
+    font-weight: 400;
+    color: black;
+  }
+  tr {
+    &.header {
+      td {
+        img {
+          max-width: 300px;
+        }
+        h2 {
+          text-align: right;
+          font-family: $sans;
+          font-weight: 200;
+          font-size: 2rem;
+          color: #1779ba;
+        }
+      }
+    }
+    &.intro {
+      td {
+        &:nth-child(2) {
+          text-align: right;
+        }
+      }
+    }
+    &.details {
+      > td {
+        padding-top: 4rem;
+        padding-bottom: 0;
+      }
+      td,
+      th {
+        &.id,
+        &.qty {
+          text-align: center;
+        }
+        &:last-child {
+          text-align: right;
+        }
+      }
+      table {
+        thead,
+        tbody {
+          position: relative;
+          &:after {
+            content: "";
+            height: 1px;
+            position: absolute;
+            width: 100%;
+            left: 0;
+            margin-top: -1px;
+            background: #c8c3be;
+          }
+        }
+      }
+    }
+    &.totals {
+      td {
+        padding-top: 0;
+      }
+      table {
+        tr {
+          td {
+            padding-top: 0;
+            padding-bottom: 0;
+            &:nth-child(1) {
+              font-weight: 500;
+            }
+            &:nth-child(2) {
+              text-align: right;
+              font-weight: 200;
+            }
+          }
+          &:nth-last-child(2) {
+            td {
+              padding-bottom: 0.5em;
+              &:last-child {
+                position: relative;
+                &:after {
+                  content: "";
+                  height: 4px;
+                  width: 110%;
+                  border-top: 1px solid #1779ba;
+                  border-bottom: 1px solid #1779ba;
+                  position: relative;
+                  right: 0;
+                  bottom: -0.575rem;
+                  display: block;
+                }
+              }
+            }
+          }
+          &.total {
+            td {
+              font-size: 1.2em;
+              padding-top: 0.5em;
+              font-weight: 700;
+              &:last-child {
+                font-weight: 700;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// .additional-info {
+//   h5 {
+//     font-size: 0.8em;
+//     font-weight: 700;
+//     text-transform: uppercase;
+//     letter-spacing: 2px;
+//     color: #1779ba;
+//   }
+// }

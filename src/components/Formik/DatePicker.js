@@ -102,6 +102,7 @@ function DatePicker(props) {
                       showMonthAndYearPickers={false}
                       direction="horizontal"
                       minDate={new Date()}
+                      moveRangeOnFirstSelection={true}
                       onChange={({ ...ranges }) => {
                         setFieldValue(
                           "selectionRange.startDate",

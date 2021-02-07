@@ -18,6 +18,7 @@ import Checkout from "./pages/Checkout";
 import CommingSoon from "./components/Ads/commingSoon";
 import PackageSingle from "./pages/PackageSingle";
 import SingleBlog from "./pages/SingleBlog";
+import Invoice from "./pages/Invoice";
 
 function App() {
   return (
@@ -36,6 +37,9 @@ function App() {
         </Route>
         <Route exact path="/reach">
           <Reach />
+        </Route>
+        <Route exact path="/invoice">
+          <Invoice />
         </Route>
         <Route path="/restaurant">
           <Restaurant />
