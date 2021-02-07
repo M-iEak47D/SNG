@@ -58,42 +58,28 @@ function Footer() {
         <div className="footer-content">
           <div className="container">
             <div className="row">
-              <div className="col-md-3 col-6">
+              <div className="col-md-4 col-6">
                 <div className="footer-item-list">
                   <p>QUICK LINKS</p>
                   <Link to="/">Home</Link>
-                  <Link to="/about_us">About</Link>
                   <Link to="/restaurant">Restaurant</Link>
                   <Link to="/packages">Packages</Link>
-                  <Link to="/blogs">Blog</Link>
+                </div>
+              </div>
+              <div className="col-md-4 col-6">
+                <div className="footer-item-list">
+                  <p>ABOUT</p>
+                  <Link to="/about_us">About Us</Link>
                   <Link to="/our_team">Our Team</Link>
+                  <Link to="/blogs">Blog</Link>
                 </div>
               </div>
-              <div className="col-md-3 col-6">
-                <div className="footer-item-list">
-                  <p>CORPORATE</p>
-                  <a href="#">Careers</a>
-                  <a href="">Business Partnership</a>
-                  <a href="">Development Opportunities</a>
-                </div>
-              </div>
-              <div className="col-md-3 col-6">
-                <div className="footer-item-list">
-                  <p>LEGAL</p>
-                  <a href="">Ad and Cookie policy</a>
-                  <a href="">Digital Millennium copyright Act</a>
-                  <a href="">Legal notice</a>
-                  <a href="">Privacy Policy</a>
-                  <a href="">Site Usage Agreement</a>
-                </div>
-              </div>
-              <div className="col-md-3 col-6">
+
+              <div className="col-md-4 col-6">
                 <div className="footer-item-list">
                   <p>HELP</p>
-                  <a href="">Consumer Alert</a>
-                  <a href="contact.html">Contact</a>
-                  <a href="">FAQ</a>
-                  <a href="">How to Reach us?</a>
+                  <Link to="/contact">Contact Us</Link>
+                  <Link to="/reach">How to Reach us?</Link>
                 </div>
               </div>
             </div>
@@ -103,7 +89,7 @@ function Footer() {
           <div className="copyright-container-wrapper">
             <div>
               <strong>&#169; 2020 Hotel SNG.</strong> All rights reserved.
-              <a href="#">
+              <a href="https://an4soft.com/" target="_blank">
                 <strong>By An4soft Pvt. Ltd.</strong>
               </a>
             </div>

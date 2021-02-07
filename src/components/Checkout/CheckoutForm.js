@@ -1,10 +1,13 @@
-import React from "react";
+import { React, useState, useEffect } from "react";
 import { Formik, Form, Field } from "formik";
 import FormikControl from "../Formik/FormikControl";
 import * as Yup from "yup";
 import axiosInstance from "../../helper/axios";
+import { useHistory } from "react-router-dom";
 
 function CheckoutForm({ roomData, formData }) {
+  const history = useHistory();
+  const [loading, setLoading] = useState(false);
   const regionOption = [
     { key: "Country or Region", value: "" },
     { key: "Nepal", value: "nepal" },
@@ -37,7 +40,9 @@ function CheckoutForm({ roomData, formData }) {
     regionOption: Yup.string().required("Region is required"),
   });
 
-  function onSubmit(data) {
+  function onSubmit(data, onSubmitProps) {
+    setLoading(true);
+    document.getElementById("checkout_btn").disabled = true;
     data.room_id = roomData && roomData.id;
     data.room_price = roomData && roomData.price;
     data.occupancy = formData && formData.occupancy;
@@ -47,12 +52,17 @@ function CheckoutForm({ roomData, formData }) {
     axiosInstance
       .post("/create/booking", data)
       .then((response) => {
+        setLoading(false);
+        document.getElementById("checkout_btn").disabled = false;
+        onSubmitProps.resetForm();
         console.log(response, "res");
+        // history.push("/");
       })
       .error((response) => {
-        // setLoadings(false);
+        setLoading(false);
       });
   }
+
   return (
     <>
       <Formik
@@ -121,7 +131,14 @@ function CheckoutForm({ roomData, formData }) {
               </select> */}
             </div>
             <div class="form-btn">
-              <button type="submit"> Book Now </button>
+              <button type="submit" id="checkout_btn">
+                Book Now{" "}
+                {loading && (
+                  <span class="spinner-border" role="status">
+                    <span class="sr-only">Loading...</span>
+                  </span>
+                )}{" "}
+              </button>
             </div>
           </Form>
         )}

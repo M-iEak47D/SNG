@@ -33,11 +33,9 @@ function ContactForm() {
           setSend(false);
         }, 2000);
         onSubmitProps.resetForm();
-        console.log(response, "hello");
       })
       .error((response) => {
         setLoading(false);
-        console.log(response);
       });
   };
 

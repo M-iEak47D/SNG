@@ -75,6 +75,11 @@ function Allpackages() {
                             </p>
                             <p>{trip.offer_price}</p>
                           </div>
+                          <div>
+                            <button className="package_booknow">
+                              Book Now
+                            </button>
+                          </div>
                         </div>
                       </div>
                     </div>

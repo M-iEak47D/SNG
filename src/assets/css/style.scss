@@ -4365,3 +4365,23 @@ footer {
     text-align: center;
   }
 }
+
+// all package
+
+.package_booknow {
+  border: none;
+  background-color: #ff6a00;
+  color: white;
+  text-align: center;
+  padding: 5px 10px;
+  text-transform: uppercase;
+}
+.package_booknow:active {
+  border: none;
+  outline: none;
+}
+
+//comming-soon
+.comming_modal {
+  top: 50px;
+}

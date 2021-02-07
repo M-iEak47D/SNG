@@ -7,7 +7,7 @@ const CommingSoon = () => {
   };
   return (
     <div className="comming-soon-section">
-      <div className="modal" id="commingModal">
+      <div className="modal comming_modal" id="commingModal">
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="text-right pr-2">

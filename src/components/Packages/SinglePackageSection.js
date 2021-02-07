@@ -112,7 +112,7 @@ function SinglePackageSection() {
               id="modal_btn"
               disabled={sending}
             >
-              Enquiry{" "}
+              Book Now{" "}
               {sending && (
                 <div class="spinner-border" role="status">
                   <span class="sr-only">Loading...</span>
