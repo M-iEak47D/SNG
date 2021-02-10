@@ -28,21 +28,18 @@ function SearchBar(props) {
   const onSubmit = (values, onSubmitProps) => {
     var dateStart = format(values.selectionRange.startDate, "yyyy-MM-d");
     var dateEnd = format(values.selectionRange.endDate, "yyyy-MM-d");
-
-    dateStart === dateEnd
-      ? alert("select date")
-      : axiosInstance
-          .post("/booking", values)
-          .then((response) => {
-            history.push({
-              pathname: "/room_details",
-              state: { roomData: response.data.rooms, formData: values },
-            });
-          })
-          .error((response) => {});
-
     values.startDate = dateStart;
     values.endDate = dateEnd;
+
+    axiosInstance
+      .post("/booking", values)
+      .then((response) => {
+        history.push({
+          pathname: "/room_details",
+          state: { roomData: response.data.rooms, formData: values },
+        });
+      })
+      .error((response) => {});
   };
 
   return (

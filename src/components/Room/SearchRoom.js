@@ -25,7 +25,7 @@ function SearchRoom() {
     });
   };
 
-  console.log(roomData, "roomdata");
+  console.log(formData && formData, "roomdata");
 
   return (
     <>
@@ -33,7 +33,10 @@ function SearchRoom() {
         <SearchBar formData={formData} />
 
         <div className="room-section-wrapper">
-          {roomData && roomData.length > 0 ? (
+          {roomData &&
+          roomData.length > 0 &&
+          formData &&
+          formData.startDate != formData.endDate ? (
             roomData.map((room) => (
               <div className="room-section">
                 <div className="container">
@@ -92,7 +95,6 @@ function SearchRoom() {
                       </div>
                       <div className="col-md-6">
                         <div className="room-description">
-                          {/* <!-- <div className="room-description-title">Description:</div> --> */}
                           <p>
                             We’re halfway through the summer, but while plenty
                             of people are kicking back and enjoying their

@@ -1,63 +1,185 @@
-import React from "react";
+import { React, useState, useEffect } from "react";
+import { useHistory, useLocation, Link } from "react-router-dom";
+import { format } from "date-fns";
+import Skeleton from "react-loading-skeleton";
+import { Page, Text, View, Document, StyleSheet } from "@react-pdf/renderer";
+import { PDFViewer } from "@react-pdf/renderer";
 
 function Invoice() {
-  return (
-    <>
-      <div className="invoice_container">
-          <div className="invoice_border">
+  const [booking, setBooking] = useState();
+  const [room, setRoom] = useState();
+  const [form, setForm] = useState();
+  const history = useHistory();
+  const location = useLocation();
+  const [newDate, setNewDate] = useState(new Date());
 
-          </div>
-        
-      </div>
-      {/* <div class="row expanded">
-        <div class="columns">
-          <div class="inner-container">
-            <header class="row align-center">
-              <a class="button hollow secondary">
-                <i class="ion ion-chevron-left"></i> Go Back to Purchases
-              </a>
-              &nbsp;&nbsp;
-              <a class="button">
-                <i class="ion ion-ios-printer-outline"></i> Print Invoice
-              </a>
-            </header>
-            <section class="row">
-              <div class="callout large invoice-container">
-                
-                <section class="additional-info">
-                  <div class="row">
-                    <div class="columns">
-                      <h5>Billing Information</h5>
-                      <p>
-                        Philip Brooks
-                        <br />
-                        134 Madison Ave.
-                        <br />
-                        New York NY 00102
-                        <br />
-                        United States
-                      </p>
-                    </div>
-                    <div class="columns">
-                      <h5>Payment Information</h5>
-                      <p>
-                        Credit Card
-                        <br />
-                        Card Type: Visa
-                        <br />
-                        &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull;
-                        &bull;&bull;&bull;&bull; 1234
-                      </p>
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    document.getElementById("mySidenav").style.width = "0";
+  }, []);
+
+  useEffect(() => {
+    if (location.state) {
+      setBooking(location.state.bookingData);
+      setRoom(location.state.roomData);
+      setForm(location.state.formData);
+    } else {
+      history.push("/");
+    }
+  }, [location]);
+
+  console.log(form && form, "form");
+  console.log(booking && booking, "booking");
+
+  const MyDocument = () => (
+    <Document>
+      <Page size="A4">
+        <View>
+          <Text>Section #1</Text>
+        </View>
+        <View>
+          <Text>Section #2</Text>
+        </View>
+      </Page>
+    </Document>
+  );
+  return (
+    <div>
+    
+      {booking ? (
+        <div class="receipt-content">
+          <div class="container bootstrap snippets bootdey">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="invoice-wrapper">
+                  <div class="intro">
+                    Hi{" "}
+                    <strong>
+                      {booking.data.first_name} {booking.data.last_name}
+                    </strong>
+                  </div>
+
+                  <div class="payment-info">
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <span>Payment No.</span>
+                        <strong>{booking.data.id}</strong>
+                      </div>
+                      <div class="col-sm-6 text-right">
+                        <span> Date</span>
+                        <strong>{format(newDate, "yyyy-MM-d")}</strong>
+                      </div>
                     </div>
                   </div>
-                </section>
+
+                  <div class="payment-details">
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <span>Client</span>
+                        <strong>
+                          {booking.data.first_name} {booking.data.last_name}
+                        </strong>
+                        <p>
+                          {booking.data.country} <br />
+                          <a href="#">{booking.data.email}</a>
+                        </p>
+                      </div>
+                      <div class="col-sm-6 text-right">
+                        <span>Payment To</span>
+                        <strong>SNG Hotel</strong>
+                        <p>
+                          Anamnagar, Kathmandu <br />
+                          99383 <br />
+                          Nepal <br />
+                          <a href="#">sng@gmail.com</a>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="line-items">
+                    <div class="headers clearfix">
+                      <div class="row">
+                        <div class="col-md-4">Description</div>
+                        <div class="col-md-3">Quantity</div>
+                        <div class="col-md-5 text-right">Amount</div>
+                      </div>
+                    </div>
+                    <div class="items">
+                      {room && (
+                        <div class="row item">
+                          <div class="col-md-4 desc">{room.title}</div>
+                          <div class="col-md-3 qty">
+                            {form && form.occupancy.length}{" "}
+                          </div>
+
+                          <div class="col-md-5 amount text-right">
+                            Rs. {room.price}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+
+                    <div class="total text-right">
+                      <p class="extra-notes">
+                        <div className="extra_date">
+                          <strong>Check-in : </strong>{" "}
+                          <span> {booking.data.check_in}</span>
+                        </div>
+                        <div className="extra_date">
+                          <strong>Check-out : </strong>{" "}
+                          <span>{booking.data.check_out}</span>
+                        </div>
+                        <div className="extra_date">
+                          <strong>Occupancy : </strong>{" "}
+                          <span>
+                            {" "}
+                            {`${form && form.occupancy.length} Room ${
+                              form &&
+                              form.occupancy
+                                .map((item) => item.adult)
+                                .reduce((curval, newval) => curval + newval)
+                            } Adult`}
+                          </span>
+                        </div>
+
+                        <div className="extra_date">
+                          <strong>Extra Notes </strong>
+                          <br />
+                          {booking.data.message}
+                        </div>
+                      </p>
+                      <div class="field">
+                        Subtotal <span>Rs. {room && room.price}</span>
+                      </div>
+
+                      <div class="field">
+                        Discount <span>0%</span>
+                      </div>
+                      <div class="field grand-total">
+                        Total <span>Rs. {room && room.price}</span>
+                      </div>
+                    </div>
+
+                    {/* <div class="print">
+                      <a href="#">
+                        <i class="fa fa-print"></i>
+                        Print this receipt
+                      </a>
+                    </div> */}
+                    <div class="print">
+                      <Link to="/">Back to Home Page</Link>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </section>
+            </div>
           </div>
         </div>
-      </div>
-    */}
-    </>
+      ) : (
+        <Skeleton height={400} />
+      )}
+    </div>
   );
 }
 

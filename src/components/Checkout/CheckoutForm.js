@@ -56,7 +56,18 @@ function CheckoutForm({ roomData, formData }) {
         document.getElementById("checkout_btn").disabled = false;
         onSubmitProps.resetForm();
         console.log(response, "res");
-        // history.push("/");
+        if (response.data.status == 200) {
+          history.push({
+            pathname: "/invoice",
+            state: {
+              bookingData: response.data,
+              roomData: roomData,
+              formData: formData,
+            },
+          });
+        } else {
+          history.push("/");
+        }
       })
       .error((response) => {
         setLoading(false);
