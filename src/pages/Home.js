@@ -18,8 +18,9 @@ function Home() {
   const [testimonials, setTestimonials] = useState();
   const [banner, setBanner] = useState();
   const [welcome, setWelcome] = useState();
+  const [discover, setDiscover] = useState();
   useEffect(() => {
-    $("#commingModal").toggle();
+    
     let source = Axios.CancelToken.source();
     const loadData = async () => {
       try {
@@ -30,6 +31,7 @@ function Home() {
         setTestimonials((await response).data.testimonials);
         setBanner((await response).data.data);
         setWelcome((await response).data.welcome);
+        setDiscover((await response).data.discover)
       } catch (error) {
         if (!Axios.isCancel(error)) {
           throw error;
@@ -48,7 +50,7 @@ function Home() {
     <div id="main">
       <HomeBanner banner={banner} />
       <HomeWelcome welcome={welcome} />
-      <HomeDiscover />
+      <HomeDiscover discover={discover}/>
       <HomeSummer />
       <HomeRooms rooms={rooms} />
       <HomeNewsletter />
