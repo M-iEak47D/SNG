@@ -1,6 +1,7 @@
 import React from "react";
 
-function HomeDiscover() {
+function HomeDiscover(discover) {
+  const props = discover.discover
   return (
     <>
       <div className="discover-locations">
@@ -8,15 +9,12 @@ function HomeDiscover() {
           <div className="row">
             <div className="col-md-6">
               <div className="discover-location-content">
-                <div className="best-resort-title">BEST RESORT</div>
+                <div className="best-resort-title">SNG Hotel</div>
                 <p className="discover-location-title">
-                  Discover
-                  <br />
-                  Our Hotel
+                 {props && props.title}
                 </p>
                 <p className="discover-location-text">
-                  A lovely place to relax and enjoy the serenity of the city and away 
-                  from the crowd of Kathmandu.
+                  {props && props.discover_desctiption}
                 </p>
               </div>
             </div>
@@ -24,8 +22,7 @@ function HomeDiscover() {
               <div className="discover-location-image">
                 <img
                   src={
-                    process.env.PUBLIC_URL +
-                    "/images/discover-location-hotel-room.jpg"
+                    props && props.discover_image
                   }
                 />
               </div>
@@ -37,23 +34,21 @@ function HomeDiscover() {
             <div className="row">
               <div className="col-md-4">
                 <div className="hotel-facility-item">
-                  <img src={process.env.PUBLIC_URL + "/images/bar-icon.JPG"} />
-                  <p className="facility-title">Bar and Restaurant</p>
+                  <img src={props && props.discover_1_image} />
+                  <p className="facility-title">{props && props.discover_1_title}</p>
                   <p className="facility-text">
-                     Enjoy different types of liquors and drinks alongside best cuisine
-                     prepared by our chef. 
+                    {props && props.discover_1_description}
                   </p>
                 </div>
               </div>
               <div className="col-md-4">
                 <div className="hotel-facility-item">
                   <img
-                    src={process.env.PUBLIC_URL + "/images/spa-salon-icon.JPG"}
-                  />
-                  <p className="facility-title">Parking Space</p>
+                    src={props && props.discover_2_image}
+                  /> 
+                  <p className="facility-title">{props && props.discover_2_title}</p>
                   <p className="facility-text">
-                    Plenty of space for your vehicles to park for over night with 
-                    security built in for your ride.
+                  {props && props.discover_2_description}
                   </p>
                 </div>
               </div>
@@ -61,12 +56,11 @@ function HomeDiscover() {
               <div className="col-md-4">
                 <div className="hotel-facility-item">
                   <img
-                    src={process.env.PUBLIC_URL + "/images/swimming-icon.JPG"}
+                    src={props && props.discover_3_image}
                   />
-                  <p className="facility-title">Meeting Hall</p>
+                  <p className="facility-title">{props && props.discover_3_title}</p>
                   <p className="facility-text">
-                   A entire place for meeting hall that can be used for occasions like
-                   office meetings & birthday parties.
+                   {props && props.discover_3_description}
                   </p>
                 </div>
               </div>
