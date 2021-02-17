@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from "react";
 import Banner from "../Common/Banner";
-import { useParams } from "react-router-dom";
 import Axios from "axios";
 import axiosInstance from "../../helper/axios";
 import Skeleton from "react-loading-skeleton";
+import { FacebookShareButton, TwitterShareButton } from "react-share";
+import { FacebookIcon, TwitterIcon } from "react-share";
+import { Link, useParams } from "react-router-dom";
 
 function SingleBlogSection() {
   const { slug } = useParams();
   const [blogs, setBlogs] = useState();
+  const [recents, setRecents] = useState();
   console.log(slug, "heybba");
 
   useEffect(() => {
@@ -28,9 +31,28 @@ function SingleBlogSection() {
       };
     };
     loadData();
+  }, [slug]);
+
+  useEffect(() => {
+    let source = Axios.CancelToken.source();
+    const loadData = async () => {
+      try {
+        const response = axiosInstance.get(`/recent_blogs`, {
+          cancelToken: source.token,
+        });
+        setRecents((await response).data.recent_blogs);
+      } catch (error) {
+        if (!Axios.isCancel(error)) {
+          throw error;
+        }
+      }
+      return () => {
+        source.cancel();
+      };
+    };
+    loadData();
   }, []);
 
-  console.log(blogs && blogs, "hello");
   return (
     <>
       <main className="blog_single blog-detail">
@@ -39,7 +61,7 @@ function SingleBlogSection() {
             <div className="products products-detail">
               <div className="header">
                 {blogs ? (
-                  <h1>An Exclusive Interview with Radu Plugaru!</h1>
+                  <h1>{blogs.title}</h1>
                 ) : (
                   <h1>
                     <Skeleton />
@@ -51,7 +73,7 @@ function SingleBlogSection() {
                   <>
                     <h2>by {blogs.author}</h2>
                     <div className="line">|</div>
-                    <h2>Jul 28, 2020</h2>
+                    <h2>{blogs.date}</h2>
                   </>
                 ) : (
                   <h2>
@@ -67,103 +89,48 @@ function SingleBlogSection() {
                 )}
               </div>
 
-              <div className="para">
-                {blogs ? (
-                  <p
-                    dangerouslySetInnerHTML={{ __html: blogs.description }}
-                  ></p>
-                ) : (
-                  <Skeleton count={10} />
-                )}
-              </div>
+              {blogs ? (
+                <div
+                  className="para"
+                  dangerouslySetInnerHTML={{ __html: blogs.description }}
+                ></div>
+              ) : (
+                <Skeleton count={10} />
+              )}
             </div>
             <div className="product-footer">
               <div className="share-list">
                 <ul>
                   <li className="text">Share :</li>
                   <li>
-                    <i className="fab fa-facebook-square"></i>
+                    <FacebookShareButton url={""} quote={""} hashtag="">
+                      <FacebookIcon size={32} round={true} />
+                    </FacebookShareButton>
                   </li>
+
                   <li>
-                    <i className="fab fa-twitter-square"></i>
-                  </li>
-                  <li>
-                    <i className="fab fa-linkedin"></i>
-                  </li>
-                  <li>
-                    <i className="fab fa-google-plus-square"></i>
+                    <TwitterShareButton url={""}>
+                      <TwitterIcon size={32} round={true} />
+                    </TwitterShareButton>
                   </li>
                 </ul>
               </div>
             </div>
           </div>
+
           <div className="col-lg-4">
             <div className="side-header">
               <div className="header">Recent Posts</div>
-              <div className="list">
-                <div className="image-container">
-                  <img
-                    className="img-fluid"
-                    src="assets/images/bottom.png"
-                    alt=""
-                  />
-                </div>
-                <div className="text">
-                  The term “Work From Home Without Investment”
-                  <span>
-                    {" "}
-                    <a href="">News</a>{" "}
-                  </span>
-                </div>
-              </div>
-              <div className="list">
-                <div className="image-container">
-                  <img
-                    className="img-fluid"
-                    src="assets/images/bottom.png"
-                    alt=""
-                  />
-                </div>
-                <div className="text">
-                  The term “Work From Home Without Investment”
-                  <span>
-                    {" "}
-                    <a href="">News</a>{" "}
-                  </span>
-                </div>
-              </div>
-              <div className="list">
-                <div className="image-container">
-                  <img
-                    className="img-fluid"
-                    src="assets/images/bottom.png"
-                    alt=""
-                  />
-                </div>
-                <div className="text">
-                  The term “Work From Home Without Investment”
-                  <span>
-                    {" "}
-                    <a href="">News</a>{" "}
-                  </span>
-                </div>
-              </div>
-              <div className="list">
-                <div className="image-container">
-                  <img
-                    className="img-fluid"
-                    src="assets/images/bottom.png"
-                    alt=""
-                  />
-                </div>
-                <div className="text">
-                  The term “Work From Home Without Investment”
-                  <span>
-                    {" "}
-                    <a href="">News</a>{" "}
-                  </span>
-                </div>
-              </div>
+
+              {recents &&
+                recents.map((recent) => (
+                  <Link to={"/blog/" + recent.slug}>
+                    <div className="list">
+                      <div className="text">{recent.title}</div>
+                      <div className="date">{recent.date}</div>
+                    </div>
+                  </Link>
+                ))}
             </div>
           </div>
         </div>

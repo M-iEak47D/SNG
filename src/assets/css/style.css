@@ -4032,15 +4032,19 @@ footer .social-media-icons ul li a:hover {
 
 .blog-section .blog {
   background-color: #f9f8fd;
-  margin-bottom: 10px;
+  margin-bottom: 40px;
 }
 
 .blog-section .blog .blog-image {
   overflow: hidden;
+  height: 230px;
 }
 
 .blog-section .blog .blog-image img {
   width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .blog-section .blog .blog-title {
@@ -4080,6 +4084,18 @@ footer .social-media-icons ul li a:hover {
   font-size: 12px;
   font-weight: 300;
   font-family: sans-serif;
+}
+
+@media (max-width: 768px) {
+  .blog-section .blog .blog-image {
+    height: 430px;
+  }
+}
+
+@media (max-width: 576px) {
+  .blog-section .blog .blog-image {
+    height: 330px;
+  }
 }
 
 .about-us-divider {
@@ -4667,13 +4683,15 @@ footer .social-media-icons ul li a:hover {
   text-align: center;
   height: 600px;
   display: block;
+  padding: 0px 20px;
 }
 
 .blog_single .products .image-coantainer img {
   width: 100%;
   height: 100%;
-  -o-object-fit: contain;
-     object-fit: contain;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 5px;
 }
 
 .blog_single .products .header h1 {
@@ -4704,13 +4722,11 @@ footer .social-media-icons ul li a:hover {
 }
 
 .blog_single .products .para {
-  margin: 0px 20px;
-}
-
-.blog_single .products .para p {
+  overflow: hidden;
   text-align: justify;
   color: rgba(0, 0, 0, 0.75);
   line-height: 1.7;
+  margin: 0px 20px;
 }
 
 .blog_single .products .line {
@@ -4772,9 +4788,6 @@ footer .social-media-icons ul li a:hover {
 
 .blog_single .side-header .list {
   padding: 20px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
@@ -4788,11 +4801,17 @@ footer .social-media-icons ul li a:hover {
   font-weight: 600;
 }
 
-.blog_single .side-header .list .text span a {
+.blog_single .side-header .list .date {
   display: block;
   color: rgba(0, 0, 0, 0.5);
   font-weight: 400;
   font-size: 13px;
+}
+
+@media screen and (max-width: 576px) {
+  .blog_single .products .image-coantainer {
+    height: 400px;
+  }
 }
 
 .blog-detail {
@@ -4884,6 +4903,8 @@ footer .social-media-icons ul li a:hover {
       -ms-flex-align: center;
           align-items: center;
   list-style: none;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .blog-detail .product-footer .share-list ul li {
@@ -4915,9 +4936,6 @@ footer .social-media-icons ul li a:hover {
 
 .blog-detail .side-header .list {
   padding: 20px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 

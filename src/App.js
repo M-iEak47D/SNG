@@ -19,6 +19,7 @@ import CommingSoon from "./components/Ads/commingSoon";
 import PackageSingle from "./pages/PackageSingle";
 import SingleBlog from "./pages/SingleBlog";
 import Invoice from "./pages/Invoice";
+import Test from "./pages/Test";
 
 function App() {
   return (
@@ -67,6 +68,9 @@ function App() {
         </Route>
         <Route exact path="/checkout">
           <Checkout />
+        </Route>
+        <Route exact path="/test">
+          <Test />
         </Route>
         <Route exact path="/">
           <Home />

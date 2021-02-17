@@ -33,34 +33,34 @@ function BlogSection() {
       <div className="blog-section">
         <div className="container">
           <div className="row">
-            {blogs ? (
-              blogs.map((blog) => (
-                <Link to={"/blog/" + blog.slug}>
+            {blogs
+              ? blogs.map((blog) => (
+                  <div className="col-md-3">
+                    <Link to={"/blog/" + blog.slug}>
+                      <div className="blog">
+                        <div className="blog-image">
+                          <img src={blog.image} />
+                        </div>
+                        <div className="blog-title">
+                          <a href="#">{blog.title}</a>
+                        </div>
+                        <div className="blog-date">
+                          <a href="#">News</a> / <span>{blog.date}</span>
+                        </div>
+                      </div>
+                    </Link>
+                  </div>
+                ))
+              : [1, 2, 3].map((a) => (
                   <div className="col-md-3">
                     <div className="blog">
                       <div className="blog-image">
-                        <img src={blog.image} />
+                        <Skeleton height={200} />
                       </div>
-                      <div className="blog-title">
-                        <a href="#">{blog.title}</a>
-                      </div>
-                      <div className="blog-date">
-                        <a href="#">News</a> / <span>{blog.date}</span>
-                      </div>
+                      <Skeleton height={50} />
                     </div>
                   </div>
-                </Link>
-              ))
-            ) : (
-              <div className="col-md-3">
-                <div className="blog">
-                  <div className="blog-image">
-                    <Skeleton height={200} />
-                  </div>
-                  <Skeleton height={50} />
-                </div>
-              </div>
-            )}
+                ))}
           </div>
         </div>
       </div>
