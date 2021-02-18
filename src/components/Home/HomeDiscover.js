@@ -1,7 +1,8 @@
 import React from "react";
 
 function HomeDiscover(discover) {
-  const props = discover.discover
+  const props = discover.discover;
+  console.log(props, "props");
   return (
     <>
       <div className="discover-locations">
@@ -11,20 +12,19 @@ function HomeDiscover(discover) {
               <div className="discover-location-content">
                 <div className="best-resort-title">SNG Hotel</div>
                 <p className="discover-location-title">
-                 {props && props.title}
+                  {props && props.title}
                 </p>
-                <p className="discover-location-text">
-                  {props && props.discover_description}
-                </p>
+                <p
+                  className="discover-location-text"
+                  dangerouslySetInnerHTML={{
+                    __html: props && props.discover_description,
+                  }}
+                ></p>
               </div>
             </div>
             <div className="col-lg-6 ">
               <div className="discover-location-image d-none d-lg-block">
-                <img
-                  src={
-                    props && props.discover_image
-                  }
-                />
+                <img src={props && props.discover_image} />
               </div>
             </div>
           </div>
@@ -35,7 +35,9 @@ function HomeDiscover(discover) {
               <div className="col-lg-4">
                 <div className="hotel-facility-item">
                   <img src={props && props.discover_1_image} />
-                  <p className="facility-title">{props && props.discover_1_title}</p>
+                  <p className="facility-title">
+                    {props && props.discover_1_title}
+                  </p>
                   <p className="facility-text">
                     {props && props.discover_1_description}
                   </p>
@@ -43,24 +45,24 @@ function HomeDiscover(discover) {
               </div>
               <div className="col-lg-4">
                 <div className="hotel-facility-item">
-                  <img
-                    src={props && props.discover_2_image}
-                  /> 
-                  <p className="facility-title">{props && props.discover_2_title}</p>
+                  <img src={props && props.discover_2_image} />
+                  <p className="facility-title">
+                    {props && props.discover_2_title}
+                  </p>
                   <p className="facility-text">
-                  {props && props.discover_2_description}
+                    {props && props.discover_2_description}
                   </p>
                 </div>
               </div>
 
               <div className="col-lg-4">
                 <div className="hotel-facility-item">
-                  <img
-                    src={props && props.discover_3_image}
-                  />
-                  <p className="facility-title">{props && props.discover_3_title}</p>
+                  <img src={props && props.discover_3_image} />
+                  <p className="facility-title">
+                    {props && props.discover_3_title}
+                  </p>
                   <p className="facility-text">
-                   {props && props.discover_3_description}
+                    {props && props.discover_3_description}
                   </p>
                 </div>
               </div>

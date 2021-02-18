@@ -1,14 +1,14 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useRef, useState } from "react";
 import $ from "jquery";
 import axiosInstance from "../../helper/axios";
-import Axios from "axios"
+import Axios from "axios";
 
 const CommingSoon = () => {
   const closeModal = (id) => {
-    $("#commingModal_"+id).toggle();
+    $("#commingModal_" + id).toggle();
   };
 
-  const [popup, setPopup] = useState()
+  const [popup, setPopup] = useState();
 
   useEffect(() => {
     let source = Axios.CancelToken.source();
@@ -18,7 +18,7 @@ const CommingSoon = () => {
           cancelToken: source.token,
         });
         setPopup((await response).data.data);
-        console.log((await response).data.data)
+        console.log((await response).data.data);
         $(".comming_modal").toggle();
       } catch (error) {
         if (!Axios.isCancel(error)) {
@@ -32,37 +32,40 @@ const CommingSoon = () => {
     loadData();
   }, []);
 
-
   return (
     <>
-    {popup && popup.map((popup)=>
-    <div className="comming-soon-section">
-      <div className="modal comming_modal" id={`commingModal_${popup.id}`}>
-        <div className="modal-dialog">
-          <div className="modal-content">
-            <div className="text-right pr-2">
-              <button
-                type="button"
-                className="close"
-                onClick={() => closeModal(popup.id)}
-              >
-                &times;
-              </button>
-            </div>
+      {popup &&
+        popup.map((popup) => (
+          <div className="comming-soon-section">
+            <div
+              className="modal comming_modal"
+              id={`commingModal_${popup.id}`}
+            >
+              <div className="modal-dialog">
+                <div className="modal-content">
+                  <div className="text-right pr-2">
+                    <button
+                      type="button"
+                      className="close"
+                      onClick={() => closeModal(popup.id)}
+                    >
+                      &times;
+                    </button>
+                  </div>
 
-            <div className="modal-body">
-              <img
-                src={popup && popup.image}
-                className="img-fluid"
-                alt=""
-              />
+                  <div className="modal-body">
+                    <img
+                      src={popup && popup.image}
+                      className="img-fluid"
+                      alt=""
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-    )}
+        ))}
     </>
- );
+  );
 };
 export default CommingSoon;

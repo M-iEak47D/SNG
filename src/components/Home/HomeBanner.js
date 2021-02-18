@@ -1,11 +1,19 @@
-import React, { useEffect , useState} from "react";
+import React, { useEffect, useState } from "react";
 import SearchBar from "../Common/SearchBar";
 import Navbar from "../Common/Navbar";
 import { Link } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 import { addDays, set, format } from "date-fns";
+import Slider from "react-slick";
 
 function HomeBanner({ banner }) {
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(addDays(new Date(), 1));
 
@@ -19,27 +27,27 @@ function HomeBanner({ banner }) {
   };
   return (
     <>
+      <Navbar />
       {banner ? (
-        <div
-          className="banner"
-          style={{ backgroundImage: `url(${banner.banner_image})` }}
-        >
-          <div className="background-overlay">
-            <Navbar />
-            <div className="text-in-banner">
-              <p className="banner-subtitle">BEST HOTEL AND RESORT</p>
-              <p className="banner-title">HOTEL SNG</p>
-              <p className="banner-description">
-                {banner && banner.banner_text}
-              </p>
-              <div className="room-suite-link">
-                <Link to="/contact">Contact</Link>
+        <Slider {...settings}>
+          <div
+            className="banner"
+            style={{ backgroundImage: `url(${banner.banner_image})` }}
+          >
+            <div className="background-overlay">
+              <div className="text-in-banner">
+                <p className="banner-subtitle">BEST HOTEL AND RESORT</p>
+                <p className="banner-title">HOTEL SNG</p>
+                <p className="banner-description">
+                  {banner && banner.banner_text}
+                </p>
+                <div className="room-suite-link">
+                  <Link to="/contact">Contact</Link>
+                </div>
               </div>
             </div>
-
-            <SearchBar formData={initialValues} />
           </div>
-        </div>
+        </Slider>
       ) : (
         <>
           <Skeleton height={500}>
@@ -49,6 +57,7 @@ function HomeBanner({ banner }) {
           </Skeleton>
         </>
       )}
+      <SearchBar formData={initialValues} />
     </>
   );
 }

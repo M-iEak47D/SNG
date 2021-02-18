@@ -2,8 +2,6 @@ import { React, useState, useEffect } from "react";
 import { useHistory, useLocation, Link } from "react-router-dom";
 import { format } from "date-fns";
 import Skeleton from "react-loading-skeleton";
-import { Page, Text, View, Document, StyleSheet } from "@react-pdf/renderer";
-import { PDFViewer } from "@react-pdf/renderer";
 
 function Invoice() {
   const [booking, setBooking] = useState();
@@ -28,24 +26,8 @@ function Invoice() {
     }
   }, [location]);
 
-  console.log(form && form, "form");
-  console.log(booking && booking, "booking");
-
-  const MyDocument = () => (
-    <Document>
-      <Page size="A4">
-        <View>
-          <Text>Section #1</Text>
-        </View>
-        <View>
-          <Text>Section #2</Text>
-        </View>
-      </Page>
-    </Document>
-  );
   return (
     <div>
-    
       {booking ? (
         <div class="receipt-content">
           <div class="container bootstrap snippets bootdey">
@@ -114,7 +96,11 @@ function Invoice() {
                           </div>
 
                           <div class="col-md-5 amount text-right">
-                            Rs. {room.price}
+                            Rs.{" "}
+                            {(form && form.occupancy.length) > 0
+                              ? (form && form.occupancy.length) *
+                                (room && room.price)
+                              : room && room.price}{" "}
                           </div>
                         </div>
                       )}
@@ -139,7 +125,16 @@ function Invoice() {
                               form.occupancy
                                 .map((item) => item.adult)
                                 .reduce((curval, newval) => curval + newval)
-                            } Adult`}
+                            } Adult `}{" "}
+                            {form &&
+                            form.occupancy
+                              .map((item) => item.child)
+                              .reduce((curval, newval) => curval + newval) > 0
+                              ? form.occupancy
+                                  .map((item) => item.child)
+                                  .reduce((curval, newval) => curval + newval) +
+                                " Child"
+                              : ""}{" "}
                           </span>
                         </div>
 
@@ -150,14 +145,29 @@ function Invoice() {
                         </div>
                       </p>
                       <div class="field">
-                        Subtotal <span>Rs. {room && room.price}</span>
+                        Subtotal{" "}
+                        <span>
+                          Rs.{" "}
+                          {(form && form.occupancy.length) > 0
+                            ? (form && form.occupancy.length) *
+                              (room && room.price)
+                            : room && room.price}{" "}
+                        </span>
                       </div>
 
                       <div class="field">
                         Discount <span>0%</span>
                       </div>
                       <div class="field grand-total">
-                        Total <span>Rs. {room && room.price}</span>
+                        Total{" "}
+                        <span>
+                          {" "}
+                          Rs.{" "}
+                          {(form && form.occupancy.length) > 0
+                            ? (form && form.occupancy.length) *
+                              (room && room.price)
+                            : room && room.price}{" "}
+                        </span>
                       </div>
                     </div>
 

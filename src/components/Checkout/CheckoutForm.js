@@ -11,6 +11,7 @@ function CheckoutForm({ roomData, formData }) {
   const regionOption = [
     { key: "Country or Region", value: "" },
     { key: "Nepal", value: "nepal" },
+    { key: "India", value: "india" },
   ];
   const radioOption = [
     { key: "Mr.", value: "male" },

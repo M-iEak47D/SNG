@@ -157,29 +157,29 @@ a:hover {
   width: 100%;
   // position: absolute;
   font-family: monospace;
-  .primary-navbar {
-    margin-top: 20px;
-    font-family: "Fira Sans";
-    background: linear-gradient(black, rgba(4, 0, 0, 0.04));
-    margin-top: 0;
-    font-weight: 600;
-    position: fixed;
-    top: 0px;
-    left: 0;
-    right: 0;
-    z-index: 90;
+}
+.primary-navbar {
+  margin-top: 20px;
+  font-family: "Fira Sans";
+  background: linear-gradient(black, rgba(4, 0, 0, 0.04));
+  margin-top: 0;
+  font-weight: 600;
+  position: fixed;
+  top: 0px;
+  left: 0;
+  right: 0;
+  z-index: 90;
 
-    .nav-logo {
-      img {
-        width: 80%;
-      }
+  .nav-logo {
+    img {
+      width: 80%;
     }
   }
-  .sticky {
-    transition: all 0.3s linear;
-    background: #2f1333 !important;
-    padding: 0px;
-  }
+}
+.sticky {
+  transition: all 0.3s linear;
+  background: #2f1333 !important;
+  padding: 0px;
 }
 
 #single-room-text-in-banner {
@@ -225,16 +225,16 @@ a:hover {
 @media (max-width: 992px) {
   .banner {
     height: 590px;
-    .primary-navbar {
-      margin-top: 0px;
-      font-family: "FontAwesome", sans-serif;
-      background: #2f1333;
-      padding-bottom: 5px;
-      .nav-logo {
-        text-align: left;
-        img {
-          width: 60%;
-        }
+  }
+  .primary-navbar {
+    margin-top: 0px;
+    font-family: "FontAwesome", sans-serif;
+    background: #2f1333;
+    padding-bottom: 5px;
+    .nav-logo {
+      text-align: left;
+      img {
+        width: 60%;
       }
     }
   }
@@ -301,7 +301,13 @@ a:hover {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 1;
+  z-index: 2;
+}
+
+.image-container {
+  img {
+    object-fit: cover;
+  }
 }
 
 //----------------- Navbar ---------------------//
@@ -1538,6 +1544,7 @@ a:hover {
       img {
         width: 100%;
         border-radius: 8px;
+        margin-left: 5px;
       }
       img:hover {
         border-radius: 8px;
@@ -1759,13 +1766,20 @@ a:hover {
 }
 
 .room-description {
-  p {
+  #read {
     color: #777c81;
     font-family: sans-serif;
     letter-spacing: 0.5px;
     font-size: 14px;
   }
-  button {
+  .readless {
+    -webkit-line-clamp: 4;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+  }
+
+  #read_more_btn {
     outline: none;
     border: 0px;
     background: transparent;
@@ -1774,9 +1788,15 @@ a:hover {
     font-size: 12px;
     font-weight: 500;
   }
-  button:focus {
+  #read_more_btn:focus {
     border: 0px;
     outline: 0px;
+  }
+  .more_btn::before {
+    content: "Read More";
+  }
+  .less_btn::before {
+    content: "Read Less";
   }
 }
 .room-description-title {
@@ -3026,6 +3046,9 @@ footer {
   img {
     border-radius: 5px;
     opacity: 0.8;
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
   }
 }
 .image_gallery:hover {

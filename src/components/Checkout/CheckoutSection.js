@@ -30,7 +30,16 @@ function CheckoutSection({ room, form }) {
                         form.occupancy
                           .map((item) => item.adult)
                           .reduce((curval, newval) => curval + newval)}{" "}
-                      Guests
+                      Adult &nbsp;
+                      {form &&
+                      form.occupancy
+                        .map((item) => item.child)
+                        .reduce((curval, newval) => curval + newval) > 0
+                        ? form.occupancy
+                            .map((item) => item.child)
+                            .reduce((curval, newval) => curval + newval) +
+                          " Child"
+                        : ""}{" "}
                     </div>
                     <div className="facility-item">
                       <img
@@ -53,7 +62,16 @@ function CheckoutSection({ room, form }) {
                           form.occupancy
                             .map((item) => item.adult)
                             .reduce((curval, newval) => curval + newval)}{" "}
-                        Guests{" "}
+                        Adult &nbsp;
+                        {form &&
+                        form.occupancy
+                          .map((item) => item.child)
+                          .reduce((curval, newval) => curval + newval) > 0
+                          ? form.occupancy
+                              .map((item) => item.child)
+                              .reduce((curval, newval) => curval + newval) +
+                            " Child"
+                          : ""}{" "}
                       </p>
                     </div>
                     <div>
@@ -67,6 +85,16 @@ function CheckoutSection({ room, form }) {
                     <div>
                       <h3>{room && room.title}</h3>
                       <p>Dream Deals - Superior Room - Breakfast included</p>
+                    </div>
+                    <div>
+                      <h3>Total Price </h3>
+                      <p>
+                        Rs.{" "}
+                        {(form && form.occupancy.length) > 0
+                          ? (form && form.occupancy.length) *
+                            (room && room.price)
+                          : room && room.price}{" "}
+                      </p>
                     </div>
                   </div>
                 </div>

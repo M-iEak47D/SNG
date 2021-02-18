@@ -173,7 +173,7 @@ a:hover {
   font-family: monospace;
 }
 
-.banner .primary-navbar {
+.primary-navbar {
   margin-top: 20px;
   font-family: "Fira Sans";
   background: -webkit-gradient(linear, left top, left bottom, from(black), to(rgba(4, 0, 0, 0.04)));
@@ -187,11 +187,11 @@ a:hover {
   z-index: 90;
 }
 
-.banner .primary-navbar .nav-logo img {
+.primary-navbar .nav-logo img {
   width: 80%;
 }
 
-.banner .sticky {
+.sticky {
   -webkit-transition: all 0.3s linear;
   transition: all 0.3s linear;
   background: #2f1333 !important;
@@ -243,16 +243,16 @@ a:hover {
   .banner {
     height: 590px;
   }
-  .banner .primary-navbar {
+  .primary-navbar {
     margin-top: 0px;
     font-family: "FontAwesome", sans-serif;
     background: #2f1333;
     padding-bottom: 5px;
   }
-  .banner .primary-navbar .nav-logo {
+  .primary-navbar .nav-logo {
     text-align: left;
   }
-  .banner .primary-navbar .nav-logo img {
+  .primary-navbar .nav-logo img {
     width: 60%;
   }
 }
@@ -330,7 +330,12 @@ a:hover {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 1;
+  z-index: 2;
+}
+
+.image-container img {
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .first-navbar {
@@ -1750,6 +1755,7 @@ a:hover {
 .room-section .room-section-details .room-search-photo img {
   width: 100%;
   border-radius: 8px;
+  margin-left: 5px;
 }
 
 .room-section .room-section-details .room-search-photo img:hover {
@@ -2029,14 +2035,21 @@ a:hover {
   }
 }
 
-.room-description p {
+.room-description #read {
   color: #777c81;
   font-family: sans-serif;
   letter-spacing: 0.5px;
   font-size: 14px;
 }
 
-.room-description button {
+.room-description .readless {
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+}
+
+.room-description #read_more_btn {
   outline: none;
   border: 0px;
   background: transparent;
@@ -2046,9 +2059,17 @@ a:hover {
   font-weight: 500;
 }
 
-.room-description button:focus {
+.room-description #read_more_btn:focus {
   border: 0px;
   outline: 0px;
+}
+
+.room-description .more_btn::before {
+  content: "Read More";
+}
+
+.room-description .less_btn::before {
+  content: "Read Less";
 }
 
 .room-description-title {
@@ -3483,6 +3504,10 @@ footer .social-media-icons ul li a:hover {
 .image_gallery img {
   border-radius: 5px;
   opacity: 0.8;
+  height: 200px;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .image_gallery:hover img {

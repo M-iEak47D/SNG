@@ -15,6 +15,7 @@ import $ from "jquery";
 
 function Home() {
   const [rooms, setRooms] = useState();
+  const [roomtext, setRoomtext] = useState();
   const [testimonials, setTestimonials] = useState();
   const [banner, setBanner] = useState();
   const [welcome, setWelcome] = useState();
@@ -27,6 +28,7 @@ function Home() {
           cancelToken: source.token,
         });
         setRooms((await response).data.rooms);
+        setRoomtext((await response).data.room_text);
         setTestimonials((await response).data.testimonials);
         setBanner((await response).data.data);
         setWelcome((await response).data.welcome);
@@ -51,7 +53,7 @@ function Home() {
       <HomeWelcome welcome={welcome} />
       <HomeDiscover discover={discover} />
       <HomeSummer />
-      <HomeRooms rooms={rooms} />
+      <HomeRooms rooms={rooms} roomText={roomtext} />
       <HomeNewsletter />
       <HomeSpecial />
       <div className="container">

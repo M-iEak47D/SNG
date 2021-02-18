@@ -20,6 +20,7 @@ import PackageSingle from "./pages/PackageSingle";
 import SingleBlog from "./pages/SingleBlog";
 import Invoice from "./pages/Invoice";
 import Test from "./pages/Test";
+import SingleRoom from "./pages/SingleRoom";
 
 function App() {
   return (
@@ -56,6 +57,9 @@ function App() {
         </Route>
         <Route exact path="/room_details">
           <Room />
+        </Route>
+        <Route exact path="/single_room">
+          <SingleRoom />
         </Route>
         <Route exact path="/video_gallery">
           <VideoGallery />
