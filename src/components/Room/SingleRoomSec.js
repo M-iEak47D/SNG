@@ -1,6 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import Slider from "react-slick";
 
 function SingleRoomSec() {
+  let { id } = useParams();
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
+  const [room, setroom] = useState();
+
+  //   useEffect(() => {
+  //     let source = Axios.CancelToken.source();
+  //     const loadData = async () => {
+  //       try {
+  //         const response = axiosInstance.get(`/package/single/${slug}`, {
+  //           cancelToken: source.token,
+  //         });
+  //         setRoom((await response).data.packages);
+  //       } catch (error) {
+  //         if (!Axios.isCancel(error)) {
+  //           throw error;
+  //         }
+  //       }
+  //       return () => {
+  //         source.cancel();
+  //       };
+  //     };
+  //     loadData();
+  //   }, []);
   return (
     <div>
       <div className="room-section" id="room-section-for-single-room">
@@ -78,8 +109,19 @@ function SingleRoomSec() {
           </div>
         </div>
       </div>
-  
-  
+
+      <div class="room-photos-slider">
+        <div class="room-slide">
+          <Slider {...settings}>
+            <div class="room-content">
+              <img src={process.env.PUBLIC_URL + "/images/a.jpg"} />
+            </div>
+            <div class="room-content">
+              <img src={process.env.PUBLIC_URL + "/images/a.jpg"} />
+            </div>
+          </Slider>
+        </div>
+      </div>
     </div>
   );
 }

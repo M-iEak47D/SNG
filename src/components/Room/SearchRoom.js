@@ -42,6 +42,8 @@ function SearchRoom() {
     });
   };
 
+  console.log(roomData, "roomdata");
+
   const readMore = () => {
     var para = document.querySelector("#read");
     var btn = document.querySelector("#read_more_btn");
@@ -128,23 +130,8 @@ function SearchRoom() {
                                 }
                               />
                               &nbsp;
-                              {formData &&
-                                formData.occupancy
-                                  .map((item) => item.adult)
-                                  .reduce(
-                                    (curval, newval) => curval + newval
-                                  )}{" "}
-                              Adult &nbsp;
-                              {formData &&
-                              formData.occupancy
-                                .map((item) => item.child)
-                                .reduce((curval, newval) => curval + newval) > 0
-                                ? formData.occupancy
-                                    .map((item) => item.child)
-                                    .reduce(
-                                      (curval, newval) => curval + newval
-                                    ) + " Child"
-                                : ""}{" "}
+                              {room.no_adult} Adult &nbsp;
+                              {room.no_child} Child
                             </div>
                             <div className="facility-item">
                               <img
@@ -152,8 +139,7 @@ function SearchRoom() {
                                   process.env.PUBLIC_URL + "/images/png/bed.png"
                                 }
                               />
-                              &nbsp;{formData && formData.occupancy.length}{" "}
-                              Rooms
+                              &nbsp;{room.no_of_rooms} Rooms
                             </div>
                           </div>
 
@@ -161,14 +147,9 @@ function SearchRoom() {
                             <p>Amenities:</p>
                             <div className="amenities-content">
                               <ul>
-                                <li>BUTLER SERVICE</li>
-                                <li>DIRECT DIAL PHONE</li>
-                                <li>FREE WIFI</li>
-                              </ul>
-                              <ul>
-                                <li>HAIR DRYER</li>
-                                <li>PRIVATE POOL</li>
-                                <li>SAFE DEPOSIT BOX</li>
+                                {room.amenities.map((amenitie) => (
+                                  <li>{amenitie.title}</li>
+                                ))}
                               </ul>
                             </div>
                           </div>
@@ -177,29 +158,7 @@ function SearchRoom() {
                       <div className="col-md-6">
                         <div className="room-description">
                           <p id="read" className="readless">
-                            We’re halfway through the summer, but while plenty
-                            of people are kicking back and enjoying their
-                            vacations, the social media development teams likely
-                            aren’t doing the same. In the past two weeks alone,
-                            we’ve seen four big new updates that can directly
-                            impact the social marketing campaigns of hotels,
-                            resorts, and other businesses in the hospitality
-                            industry. Let’s take a close look at each one.
-                            <br />
-                            We’ve gotten yet another new feature for Instagram
-                            Stories, and this time it’s the Chat sticker, which
-                            allows you to invite Story followers to join in on a
-                            new group chat. Instagram is currently advertising
-                            this as a way to jumpstart big group conversations
-                            or make plans. Lorem ipsum dolor sit amet
-                            consectetur adipisicing elit. Enim obcaecati vero
-                            aperiam, corrupti ab laudantium voluptate sit ipsum
-                            quis explicabo voluptas qui omnis nulla praesentium,
-                            facilis unde officiis perferendis atque! Lorem ipsum
-                            dolor sit amet consectetur adipisicing elit. Quidem
-                            odio, ex architecto neque vero a enim minus libero
-                            omnis commodi culpa, mollitia sequi nemo explicabo
-                            quae impedit consectetur? Reiciendis, animi.
+                            {room.description}
                           </p>
                           <button
                             id="read_more_btn"

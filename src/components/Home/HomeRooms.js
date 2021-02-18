@@ -1,19 +1,15 @@
 import React from "react";
 import Skeleton from "react-loading-skeleton";
+import { Link } from "react-router-dom";
 
 function HomeRooms({ rooms, roomText }) {
-  console.log(roomText, "rooms");
   return (
     <>
       <div className="our-rooms">
         <div className="our-rooms-content">
           <p className="luxury-hotel-title">LUXURY HOTEL</p>
           <p className="our-rooms-title">Our Rooms</p>
-          <p className="our-rooms-text">
-            A wonderful serenity has taken my entire soul, like sweet <br />
-            morning spring which I enjoy with my whole heart this spot, which
-            was created.
-          </p>
+          <p className="our-rooms-text">{roomText && roomText}</p>
         </div>
         <div className="container">
           <div className="our-rooms-details-wrapper">
@@ -27,27 +23,29 @@ function HomeRooms({ rooms, roomText }) {
                           backgroundImage: `url(${room.feature_image})`,
                         }}
                       >
-                        <div className="hotel-room-overlay"></div>
-                        {/* <a href="#"></a> */}
-                        <div className="hotel-room-price">
-                          <span style={{ fontSize: "10px", color: "orange" }}>
-                            FROM:
-                          </span>
-                          <span style={{ fontSize: "14px", color: "orange" }}>
-                            {room.price}
-                          </span>
-                          <br />
+                        <Link to={"/single_room/" + room.id}>
+                          <div className="hotel-room-overlay"></div>
+                          {/* <a href="#"></a> */}
+                          <div className="hotel-room-price">
+                            <span style={{ fontSize: "10px", color: "orange" }}>
+                              FROM:
+                            </span>
+                            <span style={{ fontSize: "14px", color: "orange" }}>
+                              {room.price}
+                            </span>
+                            <br />
 
-                          <span
-                            style={{
-                              fontSize: "14px",
-                              color: "white",
-                              fontWeight: "700",
-                            }}
-                          >
-                            {room.title}
-                          </span>
-                        </div>
+                            <span
+                              style={{
+                                fontSize: "14px",
+                                color: "white",
+                                fontWeight: "700",
+                              }}
+                            >
+                              {room.title}
+                            </span>
+                          </div>
+                        </Link>
                       </div>
                     </div>
                   ))

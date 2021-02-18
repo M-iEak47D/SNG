@@ -1,6 +1,6 @@
 import React from "react";
 
-function HomeSpecial() {
+function HomeSpecial({ special }) {
   return (
     <>
       <div className="special-offer-wrapper">
@@ -9,11 +9,9 @@ function HomeSpecial() {
             <div className="row">
               <div className="col-md-3">
                 <p className="start-here">START HERE</p>
-                <p className="offer-title">Special Offer</p>
+                <p className="offer-title">{special && special.title}</p>
                 <p className="offer-description">
-                  A wonderful serenity has taken my entire soul, like sweet
-                  morning spring which I enjoy with my whole heart. I am alone,
-                  discover the most.
+                  {special && special.description}
                 </p>
               </div>
               <div className="col-md-3">
@@ -24,18 +22,18 @@ function HomeSpecial() {
                         className="offer-image-overlay"
                         style={{
                           backgroundImage: `url(${
-                            process.env.PUBLIC_URL + "/images/BREAKFAST.jpg"
+                            special && special.image_1
                           } )`,
                         }}
                       ></div>
                     </div>
                     <div className="offer-content">
-                      <p>SALE 20% OFF</p>
+                      <p>{special && special.title_1}</p>
                       BREAKFAST
-                      <div className="offer-price">
+                      {/* <div className="offer-price">
                         <p>From</p>
                         Rs. 299
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 </div>
@@ -46,19 +44,13 @@ function HomeSpecial() {
                     <div
                       className="offer-image-overlay"
                       style={{
-                        backgroundImage: `url(${
-                          process.env.PUBLIC_URL + "/images/sauna.jpg"
-                        } )`,
+                        backgroundImage: `url(${special && special.image_2} )`,
                       }}
                     ></div>
                   </div>
                   <div className="offer-content">
                     <p>SALE 20% OFF</p>
                     SAUNA
-                    <div className="offer-price">
-                      <p>From</p>
-                      Rs. 299
-                    </div>
                   </div>
                 </div>
               </div>
@@ -68,19 +60,13 @@ function HomeSpecial() {
                     <div
                       className="offer-image-overlay"
                       style={{
-                        backgroundImage: `url(${
-                          process.env.PUBLIC_URL + "/images/parking.jpg"
-                        } )`,
+                        backgroundImage: `url(${special && special.image_3} )`,
                       }}
                     ></div>
                   </div>
                   <div className="offer-content">
                     <p>SALE 20% OFF</p>
                     PARKING
-                    <div className="offer-price">
-                      <p>From</p>
-                      Rs. 299
-                    </div>
                   </div>
                 </div>
               </div>

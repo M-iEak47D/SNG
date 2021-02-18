@@ -1,6 +1,6 @@
 import React from "react";
 
-function HomeSummer() {
+function HomeSummer({ deal }) {
   return (
     <>
       <div className="summer-deals">
@@ -8,9 +8,7 @@ function HomeSummer() {
           <div className="row">
             <div className="col-md-6">
               <div className="summer-deals-image">
-                <img
-                  src={process.env.PUBLIC_URL + "/images/beachside-pool.jpg"}
-                />
+                <img src={deal && deal.image} />
               </div>
             </div>
             <div className="col-md-4">
@@ -18,11 +16,10 @@ function HomeSummer() {
                 <div className="summer-deals-wrapper">
                   <p className="summer-deals-title">SUMMER DEALS</p>
                   <p className="summer-deals-bold-title">
-                    A Simply Perfect Place To Get Lost. Up to 50% Discount!
+                    {deal && deal.title}
                   </p>
                   <p className="summer-deals-text">
-                    A wonderful serenity has taken my entire soul, like sweet
-                    morning spring which I enjoy with my whole.
+                    {deal && deal.description}
                   </p>
                   <button type="button">BOOK NOW</button>
                 </div>

@@ -58,7 +58,7 @@ function App() {
         <Route exact path="/room_details">
           <Room />
         </Route>
-        <Route exact path="/single_room">
+        <Route exact path="/single_room/:id">
           <SingleRoom />
         </Route>
         <Route exact path="/video_gallery">

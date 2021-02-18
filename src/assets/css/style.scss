@@ -148,7 +148,7 @@ a:hover {
 // ------------------ Banner -------------------- //
 
 .banner {
-  background-image: url(../images/hotelroom.jpg);
+  // background-image: url(../images/hotelroom.jpg);
   background-size: cover;
   background-attachment: fixed;
   background-position-x: center;
@@ -1766,6 +1766,8 @@ a:hover {
 }
 
 .room-description {
+  padding-top: 40px;
+  min-height: 200px;
   #read {
     color: #777c81;
     font-family: sans-serif;
@@ -3750,11 +3752,15 @@ footer {
       box-shadow: 0px 2px 4px 0px #bebebe;
       .team-member-image {
         overflow: hidden;
+        height: 100%;
         img {
           width: 100%;
+          object-fit: cover;
+          height: 100%;
         }
       }
       .team-member-text {
+        padding: 10px 0px;
         font-size: 12px;
         font-family: "Raleway";
         color: black;
@@ -3771,6 +3777,9 @@ footer {
           font-weight: 600;
           font-family: "FontAwesome", sans-serif;
           letter-spacing: 1px;
+        }
+        .para {
+          padding-right: 10px;
         }
       }
     }

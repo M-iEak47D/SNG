@@ -20,6 +20,8 @@ function Home() {
   const [banner, setBanner] = useState();
   const [welcome, setWelcome] = useState();
   const [discover, setDiscover] = useState();
+  const [deal, setDeal] = useState();
+  const [special, setSpecial] = useState();
   useEffect(() => {
     let source = Axios.CancelToken.source();
     const loadData = async () => {
@@ -30,9 +32,11 @@ function Home() {
         setRooms((await response).data.rooms);
         setRoomtext((await response).data.room_text);
         setTestimonials((await response).data.testimonials);
-        setBanner((await response).data.data);
+        setBanner((await response).data.banner);
         setWelcome((await response).data.welcome);
         setDiscover((await response).data.discover);
+        setDeal((await response).data.deals_section);
+        setSpecial((await response).data.special_offer);
       } catch (error) {
         if (!Axios.isCancel(error)) {
           throw error;
@@ -52,10 +56,10 @@ function Home() {
       <HomeBanner banner={banner} />
       <HomeWelcome welcome={welcome} />
       <HomeDiscover discover={discover} />
-      <HomeSummer />
+      <HomeSummer deal={deal} />
       <HomeRooms rooms={rooms} roomText={roomtext} />
       <HomeNewsletter />
-      <HomeSpecial />
+      <HomeSpecial special={special} />
       <div className="container">
         <div className="vertical-divider"></div>
       </div>

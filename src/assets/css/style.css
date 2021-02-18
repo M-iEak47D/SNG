@@ -163,7 +163,6 @@ a:hover {
 }
 
 .banner {
-  background-image: url(../images/hotelroom.jpg);
   background-size: cover;
   background-attachment: fixed;
   background-position-x: center;
@@ -2033,6 +2032,11 @@ a:hover {
   .room-photos-slider .room-slide .room-content img {
     width: 100%;
   }
+}
+
+.room-description {
+  padding-top: 40px;
+  min-height: 200px;
 }
 
 .room-description #read {
@@ -4287,13 +4291,18 @@ footer .social-media-icons ul li a:hover {
 
 .team-section .team-all .team-member .team-member-image {
   overflow: hidden;
+  height: 100%;
 }
 
 .team-section .team-all .team-member .team-member-image img {
   width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 100%;
 }
 
 .team-section .team-all .team-member .team-member-text {
+  padding: 10px 0px;
   font-size: 12px;
   font-family: "Raleway";
   color: black;
@@ -4313,6 +4322,10 @@ footer .social-media-icons ul li a:hover {
   font-weight: 600;
   font-family: "FontAwesome", sans-serif;
   letter-spacing: 1px;
+}
+
+.team-section .team-all .team-member .team-member-text .para {
+  padding-right: 10px;
 }
 
 @media (max-width: 768px) {

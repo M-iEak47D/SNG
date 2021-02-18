@@ -10,7 +10,7 @@ function RestaurantTab({ foodItem }) {
             {foodItem
               ? foodItem.foods.map((food) => {
                   return (
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                       <div class="menu-content">
                         <div class="image-for-food">
                           <img src={food.image} />
@@ -30,7 +30,7 @@ function RestaurantTab({ foodItem }) {
                   );
                 })
               : [1, 2, 3, 4].map((a) => (
-                  <div class="col-md-6">
+                  <div class="col-md-4">
                     <Skeleton height={50} width={200} />
                   </div>
                 ))}

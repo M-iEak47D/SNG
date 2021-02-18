@@ -25,24 +25,65 @@ function HomeBanner({ banner }) {
       key: "selection",
     },
   };
+
   return (
     <>
       <Navbar />
       {banner ? (
         <Slider {...settings}>
-          <div
-            className="banner"
-            style={{ backgroundImage: `url(${banner.banner_image})` }}
-          >
-            <div className="background-overlay">
-              <div className="text-in-banner">
-                <p className="banner-subtitle">BEST HOTEL AND RESORT</p>
-                <p className="banner-title">HOTEL SNG</p>
-                <p className="banner-description">
-                  {banner && banner.banner_text}
-                </p>
-                <div className="room-suite-link">
-                  <Link to="/contact">Contact</Link>
+          <div>
+            <div
+              className="banner"
+              style={{ backgroundImage: `url(${banner.banner_image_1})` }}
+            >
+              <div className="background-overlay">
+                <div className="text-in-banner">
+                  <p className="banner-subtitle">BEST HOTEL AND RESORT</p>
+                  <p className="banner-title">HOTEL SNG</p>
+                  <p className="banner-description">
+                    {banner && banner.banner_text_1}
+                  </p>
+                  <div className="room-suite-link">
+                    <Link to="/contact">Contact</Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div
+              className="banner"
+              style={{ backgroundImage: `url(${banner.banner_image_2})` }}
+            >
+              <div className="background-overlay">
+                <div className="text-in-banner">
+                  <p className="banner-subtitle">BEST HOTEL AND RESORT</p>
+                  <p className="banner-title">HOTEL SNG</p>
+                  <p className="banner-description">
+                    {banner && banner.banner_text_2}
+                  </p>
+                  <div className="room-suite-link">
+                    <Link to="/contact">Contact</Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div
+              className="banner"
+              style={{ backgroundImage: `url(${banner.banner_image_3})` }}
+            >
+              <div className="background-overlay">
+                <div className="text-in-banner">
+                  <p className="banner-subtitle">BEST HOTEL AND RESORT</p>
+                  <p className="banner-title">HOTEL SNG</p>
+                  <p className="banner-description">
+                    {banner && banner.banner_text_3}
+                  </p>
+                  <div className="room-suite-link">
+                    <Link to="/contact">Contact</Link>
+                  </div>
                 </div>
               </div>
             </div>

@@ -8,8 +8,10 @@ import Skeleton from "react-loading-skeleton";
 
 function ResturantSection() {
   const [foods, setFoods] = useState();
+  const [sliders, setSliders] = useState();
   const [foodItem, setFoodItem] = useState();
   const [active, setActive] = useState();
+  const [title, setTitle] = useState();
 
   const handleActive = (slug) => {
     const foodFilter = foods.filter((food) => food.slug === slug)[0];
@@ -23,7 +25,9 @@ function ResturantSection() {
         const response = axiosInstance.get(`/restaurant`, {
           cancelToken: source.token,
         });
+        setTitle((await response).data.title);
         setFoods((await response).data.foodCategories);
+        setSliders((await response).data.sliders);
         setFoodItem((await response).data.foodCategories[0]);
         setActive((await response).data.foodCategories[0].slug);
         // console.log((await response).data.foodCategories[0].slug, 'hello')
@@ -43,11 +47,7 @@ function ResturantSection() {
     <div>
       <div className="restaurant-section">
         <div className="happy-hours">
-          <div className="happy-hours-title">HAPPY HOURS</div>
-          <div className="happy-hours-time">
-            Mon - Fri : 9am - 11am & 2pm - 8pm <br />
-            Sun 10pm - Midnight
-          </div>
+          <div dangerouslySetInnerHTML={{ __html: title && title }} />
           <div class="restaurant-menu">
             {/* <!-- Tab links --> */}
 
@@ -75,7 +75,7 @@ function ResturantSection() {
           </div>
         </div>
       </div>
-      <RestaurantSlider foods={foods} />
+      <RestaurantSlider sliders={sliders} />
     </div>
   );
 }

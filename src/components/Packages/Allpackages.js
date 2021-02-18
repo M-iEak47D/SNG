@@ -27,8 +27,6 @@ function Allpackages() {
     loadData();
   }, []);
 
-  console.log(packages);
-
   return (
     <div>
       <div className="all-packages-background">
