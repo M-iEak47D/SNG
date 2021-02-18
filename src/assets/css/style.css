@@ -3050,23 +3050,25 @@ footer .social-media-icons ul li a:hover {
   padding-bottom: 10px;
 }
 
-.restaurant-menu .menu-tab-content-all .menu-content .image-for-food {
-  width: 75px;
-}
-
 .restaurant-menu .menu-tab-content-all .menu-content .image-for-food img {
-  width: 100%;
+  width: 90px;
   border-radius: 10px;
   margin-top: 5px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .restaurant-menu .menu-tab-content-all .menu-content .food {
   padding-left: 20px;
   padding-right: 20px;
+  padding-top: 2px;
   font-weight: 600;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -3078,7 +3080,13 @@ footer .social-media-icons ul li a:hover {
   font-weight: 400;
   color: grey;
   font-family: revert;
-  padding-top: 5px;
+}
+
+.restaurant-menu .menu-tab-content-all .menu-content .food .food-description p {
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
 }
 
 .restaurant-menu .menu-tab-content-all .menu-content .food-price {
@@ -3086,6 +3094,7 @@ footer .social-media-icons ul li a:hover {
   font-size: 14px;
   font-weight: 600;
   color: #ff6a00;
+  padding-top: 2px;
 }
 
 #banner-for-other-pages {

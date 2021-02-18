@@ -2645,25 +2645,32 @@ footer {
       padding-top: 10px;
       padding-bottom: 10px;
       .image-for-food {
-        width: 75px;
         img {
-          width: 100%;
+          width: 90px;
           border-radius: 10px;
           margin-top: 5px;
+          object-fit: cover;
         }
       }
       .food {
         padding-left: 20px;
         padding-right: 20px;
+        padding-top: 2px;
         font-weight: 600;
         display: flex;
+        flex: 1;
         flex-direction: column;
         .food-description {
           font-size: 11px;
           font-weight: 400;
           color: grey;
           font-family: revert;
-          padding-top: 5px;
+          p {
+            -webkit-line-clamp: 2;
+            overflow: hidden;
+            -webkit-box-orient: vertical;
+            display: -webkit-box;
+          }
         }
       }
       .food-price {
@@ -2671,6 +2678,7 @@ footer {
         font-size: 14px;
         font-weight: 600;
         color: $primary-color;
+        padding-top: 2px;
       }
     }
   }
