@@ -3034,6 +3034,8 @@ footer .social-media-icons ul li a:hover {
 }
 
 .restaurant-menu .menu-tab-content-all .menu-content {
+  position: relative;
+  z-index: 1;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3054,7 +3056,7 @@ footer .social-media-icons ul li a:hover {
 
 .restaurant-menu .menu-tab-content-all .menu-content .image-for-food img {
   width: 100%;
-  border-radius: 50%;
+  border-radius: 10px;
   margin-top: 5px;
 }
 
@@ -5058,9 +5060,12 @@ footer .social-media-icons ul li a:hover {
   top: 50px;
 }
 
-.receipt-content .logo a:hover {
-  text-decoration: none;
-  color: #7793c4;
+.receipt-content .invoice_logo {
+  width: 100px;
+}
+
+.receipt-content .invoice_logo img {
+  width: 100%;
 }
 
 .receipt-content .invoice-wrapper {
@@ -5074,13 +5079,20 @@ footer .social-media-icons ul li a:hover {
 }
 
 .receipt-content .invoice-wrapper .payment-details span {
-  color: #a9b0bb;
+  color: #596475;
   display: block;
+  font-weight: lighter;
+  margin-bottom: 5px;
+}
+
+.receipt-content .invoice-wrapper .payment-details strong {
+  font-weight: normal;
 }
 
 .receipt-content .invoice-wrapper .payment-details a {
   display: inline-block;
   margin-top: 5px;
+  color: #2c527b;
 }
 
 .receipt-content .invoice-wrapper .line-items .print a {
@@ -5136,13 +5148,15 @@ footer .social-media-icons ul li a:hover {
 }
 
 .receipt-content .invoice-wrapper .payment-info span {
-  color: #a9b0bb;
+  color: #596475;
+  font-weight: lighter;
 }
 
 .receipt-content .invoice-wrapper .payment-info strong {
   display: block;
   color: #444;
   margin-top: 3px;
+  font-weight: normal;
 }
 
 @media (max-width: 767px) {
@@ -5171,7 +5185,7 @@ footer .social-media-icons ul li a:hover {
 }
 
 .receipt-content .invoice-wrapper .line-items .headers {
-  color: #a9b0bb;
+  color: #596475;
   font-size: 13px;
   letter-spacing: 0.3px;
   border-bottom: 2px solid #ebecee;
@@ -5251,7 +5265,7 @@ footer .social-media-icons ul li a:hover {
 }
 
 .receipt-content .invoice-wrapper .line-items .total .field.grand-total span {
-  color: #20a720;
+  color: #2c527b;
   font-size: 16px;
 }
 

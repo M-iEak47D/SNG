@@ -25,7 +25,7 @@ function Invoice() {
       history.push("/");
     }
   }, [location]);
-
+  console.log(booking && booking);
   return (
     <div>
       {booking ? (
@@ -34,12 +34,20 @@ function Invoice() {
             <div class="row">
               <div class="col-md-12">
                 <div class="invoice-wrapper">
-                  <div class="intro">
+                  <div className="invoice_logo">
+                    <img
+                      src={
+                        process.env.PUBLIC_URL +
+                        "/images/hotel sng logo color.png"
+                      }
+                    />
+                  </div>
+                  {/* <div class="intro">
                     Hi{" "}
                     <strong>
                       {booking.data.first_name} {booking.data.last_name}
                     </strong>
-                  </div>
+                  </div> */}
 
                   <div class="payment-info">
                     <div class="row">
@@ -57,7 +65,7 @@ function Invoice() {
                   <div class="payment-details">
                     <div class="row">
                       <div class="col-sm-6">
-                        <span>Client</span>
+                        <span>Client Details</span>
                         <strong>
                           {booking.data.first_name} {booking.data.last_name}
                         </strong>
@@ -138,11 +146,11 @@ function Invoice() {
                           </span>
                         </div>
 
-                        <div className="extra_date">
+                        {/* <div className="extra_date">
                           <strong>Extra Notes </strong>
                           <br />
                           {booking.data.message}
-                        </div>
+                        </div> */}
                       </p>
                       <div class="field">
                         Subtotal{" "}

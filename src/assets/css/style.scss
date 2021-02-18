@@ -2637,6 +2637,8 @@ footer {
     padding-top: 40px;
     text-align: left;
     .menu-content {
+      position: relative;
+      z-index: 1;
       display: flex;
       flex-direction: row;
       justify-content: space-between;
@@ -2646,7 +2648,7 @@ footer {
         width: 75px;
         img {
           width: 100%;
-          border-radius: 50%;
+          border-radius: 10px;
           margin-top: 5px;
         }
       }
@@ -4452,9 +4454,11 @@ footer {
 
 // invoice
 
-.receipt-content .logo a:hover {
-  text-decoration: none;
-  color: #7793c4;
+.receipt-content .invoice_logo {
+  width: 100px;
+  img {
+    width: 100%;
+  }
 }
 
 .receipt-content .invoice-wrapper {
@@ -4467,12 +4471,18 @@ footer {
 }
 
 .receipt-content .invoice-wrapper .payment-details span {
-  color: #a9b0bb;
+  color: #596475;
   display: block;
+  font-weight: lighter;
+  margin-bottom: 5px;
+}
+.receipt-content .invoice-wrapper .payment-details strong {
+  font-weight: normal;
 }
 .receipt-content .invoice-wrapper .payment-details a {
   display: inline-block;
   margin-top: 5px;
+  color: #2c527b;
 }
 
 .receipt-content .invoice-wrapper .line-items .print a {
@@ -4533,13 +4543,15 @@ footer {
 }
 
 .receipt-content .invoice-wrapper .payment-info span {
-  color: #a9b0bb;
+  color: #596475;
+  font-weight: lighter;
 }
 
 .receipt-content .invoice-wrapper .payment-info strong {
   display: block;
   color: #444;
   margin-top: 3px;
+  font-weight: normal;
 }
 
 @media (max-width: 767px) {
@@ -4565,7 +4577,8 @@ footer {
   margin-top: 40px;
 }
 .receipt-content .invoice-wrapper .line-items .headers {
-  color: #a9b0bb;
+  color: #596475;
+
   font-size: 13px;
   letter-spacing: 0.3px;
   border-bottom: 2px solid #ebecee;
@@ -4639,7 +4652,7 @@ footer {
 }
 
 .receipt-content .invoice-wrapper .line-items .total .field.grand-total span {
-  color: #20a720;
+  color: #2c527b;
   font-size: 16px;
 }
 

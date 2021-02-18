@@ -10,7 +10,7 @@ function RestaurantTab({ foodItem }) {
             {foodItem
               ? foodItem.foods.map((food) => {
                   return (
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                       <div class="menu-content">
                         <div class="image-for-food">
                           <img src={food.image} />
