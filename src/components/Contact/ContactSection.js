@@ -28,17 +28,27 @@ function ContactSection() {
 
     document.getElementById("mySidenav").style.width = "0";
   }, []);
+  console.log(settings && settings.contact.image);
   return (
     <div>
       <div className="contact-section">
         <div className="container">
           <div className="row">
             <div className="col-md-3">
-              <div className="hotel-image-in-contact"></div>
+              <div
+                className="hotel-image-in-contact"
+                style={{
+                  backgroundImage: `url(${settings && settings.contact.image})`,
+                }}
+              ></div>
             </div>
             <div className="col-md-6">
-              
-              <div className="need-help-title">NEED HELP?</div>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: settings && settings.contact.description,
+                }}
+              />
+              {/* <div className="need-help-title">NEED HELP?</div>
               <div className="read-our-faq">
                 <p>
                   Please take the time to read our
@@ -63,7 +73,7 @@ function ContactSection() {
                   laborum laudantium. Voluptas temporibus modi odio minus
                   debitis excepturi eligendi quam?
                 </p>
-              </div>
+              </div> */}
             </div>
             <div className="col-md-3">
               <div className="contact-panel">
@@ -72,8 +82,7 @@ function ContactSection() {
                     <i className="fa fa-map-marker"></i>Our Location
                   </p>
                   <div className="contact-panel-item-description">
-                    Mid Baneswor, Kathmandu <br />
-                    Bagmati, Nepal.
+                    {settings && settings.contact.address}
                   </div>
                 </div>
 
@@ -82,9 +91,9 @@ function ContactSection() {
                     <i className="fa fa-phone"></i>Contact Us
                   </p>
                   <div className="contact-panel-item-description">
-                    Phone:&nbsp;+977-01-4612345 <br />
-                    Mobile:&nbsp;+977-9812345678 <br />
-                    Fax:&nbsp;+977-014612345
+                    Phone:&nbsp;{settings && settings.contact.primary_phone}
+                    <br />
+                    Mobile:&nbsp;{settings && settings.contact.secondary_phone}
                   </div>
                 </div>
 
@@ -93,8 +102,8 @@ function ContactSection() {
                     <i className="fa fa-paper-plane"></i>Write some words
                   </p>
                   <div className="contact-panel-item-description">
-                    support24/7@hotelsng.com <br />
-                    info@hotelsng.com
+                    {settings && settings.contact.primary_email} <br />
+                    {settings && settings.contact.secondary_email}
                   </div>
                 </div>
               </div>
