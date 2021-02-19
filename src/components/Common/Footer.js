@@ -1,55 +1,74 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import Axios from "axios";
+import axiosInstance from "../../helper/axios";
 
 function Footer() {
+  const [settings, setSettings] = useState();
+
+  useEffect(() => {
+    let source = Axios.CancelToken.source();
+    const loadData = async () => {
+      try {
+        const response = axiosInstance.get(`/contact_page`, {
+          cancelToken: source.token,
+        });
+        setSettings((await response).data);
+      } catch (error) {
+        if (!Axios.isCancel(error)) {
+          throw error;
+        }
+      }
+      return () => {
+        source.cancel();
+      };
+    };
+    loadData();
+    window.scrollTo(0, 0);
+
+    document.getElementById("mySidenav").style.width = "0";
+  }, []);
+
   return (
     <>
       <footer>
         <div id="google_translate_element"></div>
         <div className="footer-logo">
-          <img
-            src={process.env.PUBLIC_URL + "/images/hotel sng logo color.png"}
-          />
+          <img src={settings && settings.contact.image} />
         </div>
         <div className="footer-title">Hotel SNG</div>
         <div className="vertical-divider"></div>
         <div className="address-contact">
-          Anamnagar, Kathmandu <br />
-          info@hotelsng.com
-          <br />
-          +977 9812345678
+          {settings && settings.contact.address} <br />
+          {settings && settings.contact.primary_email} <br />
+          {settings && settings.contact.primary_phone}
         </div>
         <div className="social-media-icons">
           <div className="icons-list">
             <ul>
               <li>
-                <a href="#">
+                <a href={settings && settings.social_setting.facebook_url}>
                   <i className="fab fa-facebook-f"></i>
                 </a>
               </li>
               <li>
-                <a href="#">
+                <a href={settings && settings.social_setting.twitter_url}>
                   <i className="fab fa-twitter"></i>
                 </a>
               </li>
               <li>
-                <a href="#">
+                <a href={settings && settings.social_setting.linkedin_url}>
                   <i className="fab fa-linkedin"></i>
                 </a>
               </li>
               <li>
-                <a href="#">
-                  <i className="fab fa-pinterest"></i>
+                <a href={settings && settings.social_setting.instagram_url}>
+                  <i class="fab fa-instagram"></i>
                 </a>
               </li>
               <li>
-                <a href="#">
+                <a href={settings && settings.social_setting.youtube_url}>
                   <i className="fab fa-youtube"></i>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <i className="fab fa-google-plus"></i>
                 </a>
               </li>
             </ul>

@@ -1561,6 +1561,9 @@ a:hover {
         font-weight: 600;
         font-family: revert;
       }
+      .amentities_icon img {
+        height: 16px;
+      }
       .amenities-content {
         display: flex;
         flex-direction: row;
@@ -2633,7 +2636,7 @@ footer {
     }
   }
   .menu-tab-content-all {
-    width: 70%;
+    width: 100%;
     margin: 0 auto;
     padding-top: 40px;
     text-align: left;
@@ -4007,6 +4010,7 @@ footer {
       color: #53565a;
       fill: #53565a;
       font-size: 14px;
+      font-weight: bold;
     }
   }
   .register-form-container {
@@ -4463,7 +4467,19 @@ footer {
 .comming_modal {
   top: 50px;
 }
-
+.modal_div {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background-color: #00000080;
+  z-index: 9999;
+  display: none;
+}
+.modal_div.active {
+  display: block;
+}
 // invoice
 
 .receipt-content .invoice_logo {

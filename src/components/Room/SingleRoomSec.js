@@ -8,6 +8,10 @@ import Skeleton from "react-loading-skeleton";
 function SingleRoomSec() {
   let { id } = useParams();
   console.log(id);
+  const [nav1, setNav1] = useState();
+  const [nav2, setNav2] = useState();
+  let slider1 = [];
+  let slider2 = [];
   const settings = {
     dots: true,
     infinite: true,
@@ -44,12 +48,54 @@ function SingleRoomSec() {
           {room ? (
             <div className="room-row">
               <div className="row">
-                <div className="col-md-5">
+                <div className="col-md-6">
                   <div className="room-section-details">
-                    <div className="room-pricing">
-                      FROM <span>{room.price}</span>/PER NIGHT
-                    </div>
                     <p className="room-title">{room.title}</p>
+
+                    <Slider
+                      asNavFor={nav2}
+                      ref={(slider) => (slider1 = slider)}
+                    >
+                      <div className="room-search-photo">
+                        <img src={room.feature_image} />
+                      </div>
+                      <div className="room-search-photo">
+                        <img src={room.feature_image} />
+                      </div>
+                      <div className="room-search-photo">
+                        <img src={room.feature_image} />
+                      </div>
+                      <div className="room-search-photo">
+                        <img src={room.feature_image} />
+                      </div>
+                      <div className="room-search-photo">
+                        <img src={room.feature_image} />
+                      </div>
+                    </Slider>
+                    <Slider
+                      asNavFor={nav1}
+                      ref={(slider) => (slider2 = slider)}
+                      slidesToShow={3}
+                      swipeToSlide={true}
+                      focusOnSelect={true}
+                    >
+                      <div className="room-search-photo">
+                        <img src={room.feature_image} />
+                      </div>
+                      <div className="room-search-photo">
+                        <img src={room.feature_image} />
+                      </div>
+                      <div className="room-search-photo">
+                        <img src={room.feature_image} />
+                      </div>
+                      <div className="room-search-photo">
+                        <img src={room.feature_image} />
+                      </div>
+                      <div className="room-search-photo">
+                        <img src={room.feature_image} />
+                      </div>
+                    </Slider>
+
                     <div className="room-facility">
                       <div className="facility-item">
                         <img
@@ -57,29 +103,65 @@ function SingleRoomSec() {
                             process.env.PUBLIC_URL + "/images/png/guests.png"
                           }
                         />
-                        &nbsp;{room.max_occupancy} Guests
+                        &nbsp;
+                        {room.no_adult} Adult &nbsp;
+                        {room.no_child} Child
                       </div>
                       <div className="facility-item">
                         <img
                           src={process.env.PUBLIC_URL + "/images/png/bed.png"}
                         />
-                        &nbsp;{room.no_of_rooms} Bedrooms
+                        &nbsp;{room.no_of_rooms} Rooms
                       </div>
                     </div>
+
                     <div className="amenities">
                       <p>Amenities:</p>
                       <div className="amenities-content">
                         <ul>
                           {room.amenities.map((amenitie) => (
-                            <li>{amenitie.title}</li>
+                            <li>
+                              <span
+                                className="amentities_icon"
+                                dangerouslySetInnerHTML={{
+                                  __html: amenitie.icon,
+                                }}
+                              />
+                              {"  "}
+                              {amenitie.title}
+                            </li>
                           ))}
                         </ul>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div className="col-md-7">
+                <div className="col-md-6">
                   <div className="room-description">{room.description}</div>
+                  <div className="price-selection">
+                    <div className="price-selection-top">
+                      <div className="price-selection-title">
+                        King bed (qty)
+                      </div>
+                      <div className="price-selection-cost">
+                        Rs. {room.price}
+                      </div>
+                    </div>
+                    <div className="price-selection-bottom">
+                      <div className="price-selection-description">
+                        <ul>
+                          <li>
+                            <i className="fa fa-check"></i>&nbsp;Free
+                            cancellation before 6 pm
+                          </li>
+                          <li>
+                            <i className="fa fa-check"></i>&nbsp;Breakfast
+                            included
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -88,7 +170,7 @@ function SingleRoomSec() {
           )}
         </div>
       </div>
-
+      {/* 
       <div class="room-photos-slider">
         <div class="room-slide">
           <Slider {...settings}>
@@ -100,7 +182,7 @@ function SingleRoomSec() {
             </div>
           </Slider>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

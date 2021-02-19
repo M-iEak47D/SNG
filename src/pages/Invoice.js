@@ -2,6 +2,8 @@ import { React, useState, useEffect } from "react";
 import { useHistory, useLocation, Link } from "react-router-dom";
 import { format } from "date-fns";
 import Skeleton from "react-loading-skeleton";
+import axiosInstance from "../helper/axios";
+import Axios from "axios";
 
 function Invoice() {
   const [booking, setBooking] = useState();
@@ -10,11 +12,33 @@ function Invoice() {
   const history = useHistory();
   const location = useLocation();
   const [newDate, setNewDate] = useState(new Date());
+  const [settings, setSettings] = useState();
 
   useEffect(() => {
+    let source = Axios.CancelToken.source();
+    const loadData = async () => {
+      try {
+        const response = axiosInstance.get(`/contact_page`, {
+          cancelToken: source.token,
+        });
+        setSettings((await response).data);
+      } catch (error) {
+        if (!Axios.isCancel(error)) {
+          throw error;
+        }
+      }
+      return () => {
+        source.cancel();
+      };
+    };
+    loadData();
+
     window.scrollTo(0, 0);
+
     document.getElementById("mySidenav").style.width = "0";
   }, []);
+
+  console.log(settings && settings, "hello");
 
   useEffect(() => {
     if (location.state) {
@@ -35,19 +59,8 @@ function Invoice() {
               <div class="col-md-12">
                 <div class="invoice-wrapper">
                   <div className="invoice_logo">
-                    <img
-                      src={
-                        process.env.PUBLIC_URL +
-                        "/images/hotel sng logo color.png"
-                      }
-                    />
+                    <img src={settings && settings.contact.image} />
                   </div>
-                  {/* <div class="intro">
-                    Hi{" "}
-                    <strong>
-                      {booking.data.first_name} {booking.data.last_name}
-                    </strong>
-                  </div> */}
 
                   <div class="payment-info">
                     <div class="row">
@@ -71,17 +84,17 @@ function Invoice() {
                         </strong>
                         <p>
                           {booking.data.country} <br />
-                          <a href="#">{booking.data.email}</a>
+                          <a>{booking.data.email}</a>
                         </p>
                       </div>
                       <div class="col-sm-6 text-right">
                         <span>Payment To</span>
-                        <strong>SNG Hotel</strong>
+                        <strong>{settings && settings.contact.title}</strong>
                         <p>
-                          Anamnagar, Kathmandu <br />
-                          99383 <br />
-                          Nepal <br />
-                          <a href="#">sng@gmail.com</a>
+                          {settings && settings.contact.registration_number} <br/>
+                          {settings && settings.contact.address} <br />
+                          {settings && settings.contact.primary_phone} <br />
+                          <a>{settings && settings.contact.primary_email}</a>
                         </p>
                       </div>
                     </div>

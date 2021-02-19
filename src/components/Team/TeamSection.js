@@ -24,22 +24,19 @@ function TeamSection() {
     };
     loadData();
   }, []);
-  console.log(team);
+
   return (
     <div>
       <div className="team-section">
-        <div className="team-heading">
-          <p className="team-heading-title">Meet our team</p>
-          <p>
-            We have a team of experienced staffs worked on different fields of
-            hotel management for more than 5 years. The team is friendly,
-            dedicated and highly service oriented. Our staffs will be more than
-            happy to welcome you.
-          </p>
-        </div>
+        <div
+          className="team-heading"
+          dangerouslySetInnerHTML={{
+            __html: team && team.heading.team_description,
+          }}
+        ></div>
         <div className="team-all">
           {team &&
-            team.map((team) => (
+            team.teams.map((team) => (
               <div className="team-member">
                 <div className="row">
                   <div className="col-md-3">

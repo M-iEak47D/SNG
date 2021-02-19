@@ -1,10 +1,43 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "./Navbar";
+import Axios from "axios";
+import axiosInstance from "../../helper/axios";
 
 function Banner({ title, bread, home }) {
+
+  const [banner, setBanner] = useState();
+  useEffect(() => {
+    let source = Axios.CancelToken.source();
+    const loadData = async () => {
+      try {
+        const response = axiosInstance.get(`/homepage`, {
+          cancelToken: source.token,
+        });
+
+        setBanner((await response).data.banner);
+      } catch (error) {
+        if (!Axios.isCancel(error)) {
+          throw error;
+        }
+      }
+      return () => {
+        source.cancel();
+      };
+    };
+    loadData();
+    window.scrollTo(0, 0);
+
+    document.getElementById("mySidenav").style.width = "0";
+  }, []);
+
+  console.log(banner && banner, "bammer");
   return (
     <>
-      <div class="banner" id="banner-for-other-pages">
+      <div
+        class="banner"
+        id="banner-for-other-pages"
+        style={{ backgroundImage: `url(${banner && banner.banner_image_1})` }}
+      >
         <div class="background-overlay">
           <Navbar />
           <div class="text-in-banner">

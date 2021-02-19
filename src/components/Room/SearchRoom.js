@@ -148,7 +148,15 @@ function SearchRoom() {
                             <div className="amenities-content">
                               <ul>
                                 {room.amenities.map((amenitie) => (
-                                  <li>{amenitie.title}</li>
+                                  <li>
+                                    {" "}
+                                    <span className="amentities_icon"
+                                      dangerouslySetInnerHTML={{
+                                        __html: amenitie.icon,
+                                      }}
+                                    />{"  "}
+                                    {amenitie.title}
+                                  </li>
                                 ))}
                               </ul>
                             </div>

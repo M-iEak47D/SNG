@@ -7,6 +7,9 @@ const CommingSoon = () => {
   const closeModal = (id) => {
     $("#commingModal_" + id).toggle();
   };
+  const clickModal = () => {
+    $(".modal_div").toggleClass("active");
+  };
 
   const [popup, setPopup] = useState();
 
@@ -36,29 +39,31 @@ const CommingSoon = () => {
     <>
       {popup &&
         popup.map((popup) => (
-          <div className="comming-soon-section" >
-            <div
-              className="modal comming_modal"
-              id={`commingModal_${popup.id}`}
-            >
-              <div className="modal-dialog">
-                <div className="modal-content">
-                  <div className="text-right pr-2">
-                    <button
-                      type="button"
-                      className="close"
-                      onClick={() => closeModal(popup.id)}
-                    >
-                      &times;
-                    </button>
-                  </div>
+          <div className="modal_div active" onClick={clickModal}>
+            <div className="comming-soon-section">
+              <div
+                className="modal comming_modal"
+                id={`commingModal_${popup.id}`}
+              >
+                <div className="modal-dialog">
+                  <div className="modal-content">
+                    <div className="text-right pr-2">
+                      <button
+                        type="button"
+                        className="close"
+                        onClick={() => closeModal(popup.id)}
+                      >
+                        &times;
+                      </button>
+                    </div>
 
-                  <div className="modal-body">
-                    <img
-                      src={popup && popup.image}
-                      className="img-fluid"
-                      alt=""
-                    />
+                    <div className="modal-body">
+                      <img
+                        src={popup && popup.image}
+                        className="img-fluid"
+                        alt=""
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
