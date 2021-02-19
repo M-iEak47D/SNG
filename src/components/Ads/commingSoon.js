@@ -36,7 +36,7 @@ const CommingSoon = () => {
     <>
       {popup &&
         popup.map((popup) => (
-          <div className="comming-soon-section">
+          <div className="comming-soon-section" >
             <div
               className="modal comming_modal"
               id={`commingModal_${popup.id}`}

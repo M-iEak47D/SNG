@@ -164,7 +164,6 @@ a:hover {
 
 .banner {
   background-size: cover;
-  background-attachment: fixed;
   background-position-x: center;
   background-position-y: bottom;
   height: 95vh;
@@ -3073,6 +3072,10 @@ footer .social-media-icons ul li a:hover {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+
+.restaurant-menu .menu-tab-content-all .menu-content .food .food-name {
+  font-size: 15px;
 }
 
 .restaurant-menu .menu-tab-content-all .menu-content .food .food-description {

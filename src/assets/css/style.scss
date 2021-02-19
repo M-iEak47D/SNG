@@ -150,7 +150,7 @@ a:hover {
 .banner {
   // background-image: url(../images/hotelroom.jpg);
   background-size: cover;
-  background-attachment: fixed;
+
   background-position-x: center;
   background-position-y: bottom;
   height: 95vh;
@@ -2660,6 +2660,9 @@ footer {
         display: flex;
         flex: 1;
         flex-direction: column;
+        .food-name {
+          font-size: 15px;
+        }
         .food-description {
           font-size: 11px;
           font-weight: 400;

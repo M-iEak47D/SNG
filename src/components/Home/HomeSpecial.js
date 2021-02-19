@@ -8,7 +8,6 @@ function HomeSpecial({ special }) {
           <div className="container">
             <div className="row">
               <div className="col-md-3">
-                <p className="start-here">START HERE</p>
                 <p className="offer-title">{special && special.title}</p>
                 <p className="offer-description">
                   {special && special.description}

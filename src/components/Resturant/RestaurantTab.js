@@ -24,7 +24,9 @@ function RestaurantTab({ foodItem }) {
                             }}
                           ></div>
                         </div>
-                        <div class="food-price">Rs. {food.price}</div>
+                        <div class="food-price">
+                          {food.price != null ? "Rs." : ""} {food.price}
+                        </div>
                       </div>
                     </div>
                   );
