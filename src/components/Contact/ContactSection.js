@@ -34,7 +34,7 @@ function ContactSection() {
       <div className="contact-section">
         <div className="container">
           <div className="row">
-            <div className="col-md-3">
+            <div className="col-lg-3">
               <div
                 className="hotel-image-in-contact"
                 style={{
@@ -42,7 +42,7 @@ function ContactSection() {
                 }}
               ></div>
             </div>
-            <div className="col-md-6">
+            <div className="col-lg-6">
               <div className="read-our-faq">
                 <p>{settings && settings.contact.title}</p>
               </div>
@@ -52,7 +52,7 @@ function ContactSection() {
                 }}
               />
             </div>
-            <div className="col-md-3">
+            <div className="col-lg-3">
               <div className="contact-panel">
                 <div className="contact-panel-item">
                   <p>

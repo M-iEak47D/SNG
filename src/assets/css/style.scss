@@ -2829,10 +2829,9 @@ footer {
     }
   }
 }
-
-@media (max-width: 426px) {
-  .contact-panel-item {
-    width: 50%;
+@media (max-width: 992px) {
+  .contact-panel {
+    margin-top: 30px;
   }
 }
 

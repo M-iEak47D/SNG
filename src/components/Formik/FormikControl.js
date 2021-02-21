@@ -13,6 +13,7 @@ import Radio from "./Radio";
 import Select from "./Select";
 import FirstName from "./FirstName";
 import LastName from "./LastName";
+import Address from "./Address";
 
 function FormikControl(props) {
   const { control, ...rest } = props;
@@ -44,6 +45,8 @@ function FormikControl(props) {
       return <FirstName {...rest} />;
     case "lastName":
       return <LastName {...rest} />;
+    case "address":
+      return <Address {...rest} />;
     default:
       return null;
   }

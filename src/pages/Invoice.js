@@ -18,10 +18,10 @@ function Invoice() {
     let source = Axios.CancelToken.source();
     const loadData = async () => {
       try {
-        const response = axiosInstance.get(`/contact_page`, {
+        const response = axiosInstance.get(`/basicinfo`, {
           cancelToken: source.token,
         });
-        setSettings((await response).data);
+        setSettings((await response).data.data);
       } catch (error) {
         if (!Axios.isCancel(error)) {
           throw error;
@@ -59,7 +59,7 @@ function Invoice() {
               <div class="col-md-12">
                 <div class="invoice-wrapper">
                   <div className="invoice_logo">
-                    <img src={settings && settings.contact.image} />
+                    <img src={settings && settings.logo} />
                   </div>
 
                   <div class="payment-info">
@@ -83,18 +83,18 @@ function Invoice() {
                           {booking.data.first_name} {booking.data.last_name}
                         </strong>
                         <p>
-                          {booking.data.country} <br />
+                          {booking.data.address} <br />
                           <a>{booking.data.email}</a>
                         </p>
                       </div>
                       <div class="col-sm-6 text-right">
                         <span>Payment To</span>
-                        <strong>{settings && settings.contact.title}</strong>
+                        <strong>{settings && settings.title}</strong>
                         <p>
-                          {settings && settings.contact.registration_number} <br/>
-                          {settings && settings.contact.address} <br />
-                          {settings && settings.contact.primary_phone} <br />
-                          <a>{settings && settings.contact.primary_email}</a>
+                          {settings && settings.registration_number} <br />
+                          {settings && settings.address} <br />
+                          {settings && settings.primary_phone} <br />
+                          <a>{settings && settings.primary_email}</a>
                         </p>
                       </div>
                     </div>

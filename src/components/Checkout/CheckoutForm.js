@@ -27,10 +27,10 @@ function CheckoutForm({ roomData, formData }) {
     email: "",
     contact: "",
     message: "",
-    regionOption: "",
     occupancy: "",
     startDate: "",
     endDate: "",
+    address: "",
   };
   const validationSchema = Yup.object({
     radioOption: Yup.string().required("Gender is required"),
@@ -38,10 +38,12 @@ function CheckoutForm({ roomData, formData }) {
     last_name: Yup.string().required("Last Name is required"),
     email: Yup.string().required("Email is required"),
     contact: Yup.string().required("Contact is required"),
-    regionOption: Yup.string().required("Region is required"),
+    address: Yup.string().required("Address is required"),
+    // regionOption: Yup.string().required("Region is required"),
   });
 
   function onSubmit(data, onSubmitProps) {
+  
     setLoading(true);
     document.getElementById("checkout_btn").disabled = true;
     data.room_id = roomData && roomData.id;
@@ -125,23 +127,27 @@ function CheckoutForm({ roomData, formData }) {
             </div>
             <div className="form-group">
               <FormikControl
+                control="address"
+                type="text"
+                name="address"
+                placeholder="Address"
+              />
+            </div>
+            <div className="form-group">
+              <FormikControl
                 control="message"
                 name="message"
                 placeholder="Your message"
               />
             </div>
 
-            <div className="form-group">
+            {/* <div className="form-group">
               <FormikControl
                 control="select"
                 name="regionOption"
                 options={regionOption}
               />
-              {/* <select class="form-control" id="select">
-                <option>Country or Region</option>
-                <option>Nepal</option>
-              </select> */}
-            </div>
+            </div> */}
             <div class="form-btn">
               <button type="submit" id="checkout_btn">
                 Book Now{" "}
