@@ -56,7 +56,7 @@ function WhereTo(props) {
         data-toggle="modal"
         data-target="#myModal"
       >
-        <span>Where to</span>
+        <span className="mobile_booknow">Book Now</span>
         <span>
           <i className="fa fa-ellipsis-v"></i>
         </span>
@@ -80,12 +80,8 @@ function WhereTo(props) {
                         control="datepicker"
                         type="text"
                         name="selectionRange"
-                        startDate={
-                          initialValues.selectionRange.startDate
-                        }
-                        endDate={
-                          initialValues.selectionRange.endDate
-                        }
+                        startDate={initialValues.selectionRange.startDate}
+                        endDate={initialValues.selectionRange.endDate}
                       />
                       <FormikControl control="occupancy" name="occupancy" />
                       <div className="button-container">

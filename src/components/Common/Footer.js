@@ -10,10 +10,10 @@ function Footer() {
     let source = Axios.CancelToken.source();
     const loadData = async () => {
       try {
-        const response = axiosInstance.get(`/contact_page`, {
+        const response = axiosInstance.get(`/basicinfo`, {
           cancelToken: source.token,
         });
-        setSettings((await response).data);
+        setSettings((await response).data.data);
       } catch (error) {
         if (!Axios.isCancel(error)) {
           throw error;
@@ -28,21 +28,20 @@ function Footer() {
 
     document.getElementById("mySidenav").style.width = "0";
   }, []);
-  console.log(settings && settings.contact.image);
 
   return (
     <>
       <footer>
         <div id="google_translate_element"></div>
         <div className="footer-logo">
-          <img src={settings && settings.contact.image} />
+          <img src={settings && settings.logo} />
         </div>
-        <div className="footer-title">Hotel SNG</div>
+        <div className="footer-title">{settings && settings.title}</div>
         <div className="vertical-divider"></div>
         <div className="address-contact">
-          {settings && settings.contact.address} <br />
-          {settings && settings.contact.primary_email} <br />
-          {settings && settings.contact.primary_phone}
+          {settings && settings.address} <br />
+          {settings && settings.primary_email} <br />
+          {settings && settings.primary_phone}
         </div>
         <div className="social-media-icons">
           <div className="icons-list">

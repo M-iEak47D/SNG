@@ -880,6 +880,13 @@ a:hover {
   margin: 0px 20px;
 }
 
+.search-wrapper .bottom-search-bar-mobile .mobile_booknow {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  text-align: center;
+}
+
 .search-wrapper .bottom-search-bar-mobile i {
   color: #ff9800;
   font-size: 20px;

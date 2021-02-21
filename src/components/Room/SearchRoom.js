@@ -130,8 +130,23 @@ function SearchRoom() {
                                 }
                               />
                               &nbsp;
-                              {room.no_adult} Adult &nbsp;
-                              {room.no_child} Child
+                              {formData &&
+                                formData.occupancy
+                                  .map((item) => item.adult)
+                                  .reduce(
+                                    (curval, newval) => curval + newval
+                                  )}{" "}
+                              Adult &nbsp;
+                              {formData &&
+                              formData.occupancy
+                                .map((item) => item.child)
+                                .reduce((curval, newval) => curval + newval) > 0
+                                ? formData.occupancy
+                                    .map((item) => item.child)
+                                    .reduce(
+                                      (curval, newval) => curval + newval
+                                    ) + " Child"
+                                : ""}{" "}
                             </div>
                             <div className="facility-item">
                               <img
@@ -139,7 +154,8 @@ function SearchRoom() {
                                   process.env.PUBLIC_URL + "/images/png/bed.png"
                                 }
                               />
-                              &nbsp;{room.no_of_rooms} Rooms
+                              &nbsp;{formData && formData.occupancy.length}{" "}
+                              Rooms
                             </div>
                           </div>
 
