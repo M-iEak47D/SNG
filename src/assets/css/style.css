@@ -3983,17 +3983,21 @@ footer .social-media-icons ul li a:hover {
 
 .all-packages-section .package-item .package-item-image {
   width: 100%;
-  height: 232px;
+  height: 100%;
   overflow: hidden;
 }
 
 .all-packages-section .package-item .package-item-image img {
   width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .all-packages-section .package-item .package-item-description {
   margin-top: 30px;
   margin-bottom: 30px;
+  padding: 0px 30px;
 }
 
 .all-packages-section .package-item .package-item-description .package-item-title {
@@ -4079,22 +4083,16 @@ footer .social-media-icons ul li a:hover {
   .all-packages-section .package-item .package-item-description {
     margin-top: 30px;
     margin-bottom: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
   .all-packages-section .package-item .package-item-description .package-item-description-text {
     border-bottom: 1.5px solid #d8d8d8;
     padding-bottom: 20px;
   }
-  .all-packages-section .package-item .package-item-pricing {
-    padding-top: 0px;
-    padding-bottom: 0px;
-  }
   .all-packages-section .package-item .package-item-pricing .package-item-pricing-box {
     border-left: 0px;
     width: 100%;
-    text-align: left;
-    padding-left: 10px;
   }
 }
 

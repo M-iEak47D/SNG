@@ -36,12 +36,12 @@ function Allpackages() {
               <Link to={"/package/" + trip.slug}>
                 <div className="package-item">
                   <div className="row">
-                    <div className="col-md-3">
+                    <div className="col-lg-3">
                       <div className="package-item-image">
                         <img src={trip.image} alt={trip.slug} />
                       </div>
                     </div>
-                    <div className="col-md-6">
+                    <div className="col-lg-6">
                       <div className="package-item-description ">
                         <div className="package-item-title package-item-duration-location">
                           <i className="fa fa-map-marker"></i>&nbsp;&nbsp;
@@ -63,7 +63,7 @@ function Allpackages() {
                         ></div>
                       </div>
                     </div>
-                    <div className="col-md-3">
+                    <div className="col-lg-3">
                       <div className="package-item-pricing">
                         <div className="package-item-pricing-box">
                           <div>
