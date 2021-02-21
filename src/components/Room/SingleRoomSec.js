@@ -118,20 +118,24 @@ function SingleRoomSec() {
                     <div className="amenities">
                       <p>Amenities:</p>
                       <div className="amenities-content">
-                        <ul>
+                        <div className="row amentities_row ">
                           {room.amenities.map((amenitie) => (
-                            <li>
-                              <span
-                                className="amentities_icon"
-                                dangerouslySetInnerHTML={{
-                                  __html: amenitie.icon,
-                                }}
-                              />
-                              {"  "}
-                              {amenitie.title}
-                            </li>
+                            <div className="col-6">
+                              <ul>
+                                <li>
+                                  <span
+                                    className="amentities_icon"
+                                    dangerouslySetInnerHTML={{
+                                      __html: amenitie.icon,
+                                    }}
+                                  />
+                                  {"  "}
+                                  {amenitie.title}
+                                </li>
+                              </ul>
+                            </div>
                           ))}
-                        </ul>
+                        </div>
                       </div>
                     </div>
                   </div>

@@ -1795,6 +1795,10 @@ a:hover {
           justify-content: space-between;
 }
 
+.room-section .room-section-details .amenities .amenities-content .amentities_row {
+  width: 100%;
+}
+
 .room-section .room-section-details .amenities ul {
   padding-left: 15px;
 }

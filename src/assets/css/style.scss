@@ -1568,6 +1568,9 @@ a:hover {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        .amentities_row {
+          width: 100%;
+        }
       }
       ul {
         padding-left: 15px;
