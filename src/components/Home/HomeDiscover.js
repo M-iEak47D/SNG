@@ -2,7 +2,7 @@ import React from "react";
 
 function HomeDiscover(discover) {
   const props = discover.discover;
-  console.log(props, "props");
+  console.log(props && props.discover_2_title, "title");
   return (
     <>
       <div className="discover-locations">
