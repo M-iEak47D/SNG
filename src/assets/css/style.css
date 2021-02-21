@@ -33,7 +33,7 @@ a:hover {
   border-radius: 32px !important;
   -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 20px !important;
           box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 20px !important;
-  padding: 16px;
+  padding: 16px 0px;
 }
 
 .rdrDateDisplayWrapper {
@@ -75,6 +75,19 @@ a:hover {
     -webkit-box-direction: normal !important;
         -ms-flex-direction: column !important;
             flex-direction: column !important;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .rdrMonths {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  .rdrMonths div:nth-child(2) {
+    display: none;
   }
 }
 

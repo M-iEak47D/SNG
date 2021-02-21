@@ -41,7 +41,7 @@ a:hover {
   background: rgb(255, 255, 255) none repeat scroll 0% 0% !important;
   border-radius: 32px !important;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 20px !important;
-  padding: 16px;
+  padding: 16px 0px;
   // margin-left: -75px;
 }
 .rdrDateDisplayWrapper {
@@ -76,6 +76,16 @@ a:hover {
     flex-direction: column !important;
   }
 }
+@media screen and (max-width: 992px) {
+  .rdrMonths {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .rdrMonths div:nth-child(2) {
+    display: none;
+  }
+}
+
 .mobileDateBar,
 .occupancyBar {
   height: 100%; /* 100% Full-height */
