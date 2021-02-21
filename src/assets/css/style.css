@@ -3322,6 +3322,7 @@ footer .social-media-icons ul li a:hover {
   font-weight: 700;
   font-family: ui-monospace;
   line-height: 110%;
+  margin-bottom: 30px;
 }
 
 .leave-message-section .leave-message-text {

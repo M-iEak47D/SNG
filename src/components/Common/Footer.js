@@ -28,7 +28,7 @@ function Footer() {
 
     document.getElementById("mySidenav").style.width = "0";
   }, []);
-    console.log(settings && settings.contact.image);
+  console.log(settings && settings.contact.image);
 
   return (
     <>

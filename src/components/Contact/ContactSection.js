@@ -43,37 +43,14 @@ function ContactSection() {
               ></div>
             </div>
             <div className="col-md-6">
+              <div className="read-our-faq">
+                <p>{settings && settings.contact.title}</p>
+              </div>
               <div
                 dangerouslySetInnerHTML={{
                   __html: settings && settings.contact.description,
                 }}
               />
-              {/* <div className="need-help-title">NEED HELP?</div>
-              <div className="read-our-faq">
-                <p>
-                  Please take the time to read our
-                  <br />
-                  Frequently Asked Questions.
-                </p>
-              </div>
-              <div className="read-our-faq-description">
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi
-                  est, soluta culpa fugit adipisci perferendis, hic sequi et
-                  consequatur laborum laudantium. Voluptas temporibus modi odio
-                  minus debitis excepturi eligendi quam?
-                </p>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  Distinctio nesciunt obcaecati possimus quae dolore ducimus
-                  nihil nemo, ex, unde quas ratione aut corrupti consequatur,
-                  animi cupiditate nobis amet. Mollitia, debitis. Lorem ipsum
-                  dolor sit amet consectetur adipisicing elit. Modi est, soluta
-                  culpa fugit adipisci perferendis, hic sequi et consequatur
-                  laborum laudantium. Voluptas temporibus modi odio minus
-                  debitis excepturi eligendi quam?
-                </p>
-              </div> */}
             </div>
             <div className="col-md-3">
               <div className="contact-panel">
@@ -112,12 +89,6 @@ function ContactSection() {
         </div>
         <div className="leave-message-section">
           <div className="leave-message-title">Leave a message</div>
-          <div className="leave-message-text">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sapiente,
-            ducimus facere dignissimos voluptatibus dolore recusandae. Assumenda
-            sapiente distinctio molestiae! Velit suscipit doloribus est, ut
-            nostrum facilis. Illum, minus. Fuga, corporis.
-          </div>
           <div className="leave-message-input-fields">
             <ContactForm />
           </div>
@@ -125,7 +96,7 @@ function ContactSection() {
       </div>
       <div className="map-iframe">
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3531.8621268799197!2d85.37760131494571!3d27.721542882786142!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb1bb999675103%3A0x6cb7399caebd476d!2sNarayantar!5e0!3m2!1sen!2snp!4v1607856602614!5m2!1sen!2snp"
+          src={settings && settings.contact.map_location}
           width="100%"
           height="300"
           frameborder="0"
