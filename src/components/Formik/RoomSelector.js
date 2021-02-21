@@ -42,11 +42,9 @@ function RoomSelector(props) {
     };
   }, []);
 
-
-
   return (
     <>
-      <div className="item">
+      <div className="item" >
         <span className="search-logo">
           <i className="fas fa-users"></i>
         </span>
@@ -223,7 +221,6 @@ function RoomSelector(props) {
             </FieldArray>
           )}
         </div>
-
         <div className="item-sup">Occupancy</div>
       </div>
     </>
