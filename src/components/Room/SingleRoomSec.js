@@ -20,6 +20,13 @@ function SingleRoomSec() {
     slidesToScroll: 1,
   };
   const [room, setRoom] = useState();
+  const readMore = (e) => {
+    var btn = e.target;
+    var para = btn.previousElementSibling;
+
+    para.classList.toggle("active");
+    btn.classList.toggle("active");
+  };
 
   useEffect(() => {
     let source = Axios.CancelToken.source();
@@ -141,7 +148,15 @@ function SingleRoomSec() {
                   </div>
                 </div>
                 <div className="col-md-6">
-                  <div className="room-description">{room.description}</div>
+                  <div className="room-description">
+                    <p className="read active">{room.description}</p>
+                    <button
+                      className="read_more_btn active"
+                      onClick={(e) => readMore(e)}
+                    >
+                      &nbsp;<i className="fa fa-angle-down"></i>
+                    </button>
+                  </div>
                   <div className="price-selection">
                     <div className="price-selection-top">
                       <div className="price-selection-title">

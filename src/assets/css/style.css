@@ -2069,21 +2069,22 @@ a:hover {
   min-height: 200px;
 }
 
-.room-description #read {
+.room-description .read {
   color: #777c81;
   font-family: sans-serif;
   letter-spacing: 0.5px;
   font-size: 14px;
+  text-align: justify;
 }
 
-.room-description .readless {
+.room-description .read.active {
   -webkit-line-clamp: 4;
   overflow: hidden;
   -webkit-box-orient: vertical;
   display: -webkit-box;
 }
 
-.room-description #read_more_btn {
+.room-description .read_more_btn {
   outline: none;
   border: 0px;
   background: transparent;
@@ -2093,16 +2094,16 @@ a:hover {
   font-weight: 500;
 }
 
-.room-description #read_more_btn:focus {
+.room-description .read_more_btn:focus {
   border: 0px;
   outline: 0px;
 }
 
-.room-description .more_btn::before {
+.room-description .read_more_btn.active::before {
   content: "Read More";
 }
 
-.room-description .less_btn::before {
+.room-description .read_more_btn::before {
   content: "Read Less";
 }
 
@@ -3785,6 +3786,8 @@ footer .social-media-icons ul li a:hover {
           justify-content: space-between;
   padding-bottom: 10px;
   padding-bottom: 35px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .package-section .package-quick-info .package-quick-info-content .package-quick-info-fact {
@@ -3792,12 +3795,13 @@ footer .social-media-icons ul li a:hover {
   font-size: 12px;
   letter-spacing: 1px;
   color: grey;
+  margin: 10px 0px;
 }
 
 .package-section .package-quick-info .package-quick-info-content .package-quick-info-fact i {
   color: #ff6a00;
-  margin-right: 2px;
-  font-size: 18px;
+  margin-right: 4px;
+  font-size: 12px;
 }
 
 .package-section .package-quick-info .package-quick-info-content .package-quick-info-fact span {
@@ -3828,7 +3832,7 @@ footer .social-media-icons ul li a:hover {
 .package-section .package-overview .package-overview-note {
   border: 1px solid #e4e4e4;
   width: 90%;
-  line-height: 45px;
+  line-height: 25px;
   background: #ffe5d3;
   border-radius: 5px;
   font-size: 13px;
@@ -3841,6 +3845,8 @@ footer .social-media-icons ul li a:hover {
 
 .package-section .package-overview .package-overview-description {
   padding-bottom: 10px;
+  text-align: justify;
+  font-size: 15px;
 }
 
 .package-section .package-overview .package-enquiry-modal {
@@ -3915,7 +3921,7 @@ footer .social-media-icons ul li a:hover {
 
 .package-section .package-overview .package-include-list ul {
   list-style-type: none;
-  padding-left: 20px;
+  padding-left: 0px;
 }
 
 .package-section .package-overview .package-include-list ul li {
@@ -3924,12 +3930,9 @@ footer .social-media-icons ul li a:hover {
   font-size: 14px;
 }
 
-.package-section .package-overview .package-include-list ul li:before {
-  position: absolute;
-  left: -20px;
-  content: "\f00c";
-  display: inline-block;
-  color: #87bb26;
+.package-section .package-overview .package-include-list ul li img {
+  height: 14px;
+  margin-right: 5px;
 }
 
 .package-section .package-overview .package-exclude-list p {
@@ -3940,7 +3943,7 @@ footer .social-media-icons ul li a:hover {
 
 .package-section .package-overview .package-exclude-list ul {
   list-style-type: none;
-  padding-left: 20px;
+  padding-left: 0px;
 }
 
 .package-section .package-overview .package-exclude-list ul li {
@@ -3949,12 +3952,9 @@ footer .social-media-icons ul li a:hover {
   font-size: 14px;
 }
 
-.package-section .package-overview .package-exclude-list ul li:before {
-  position: absolute;
-  left: -20px;
-  content: "\f00d";
-  display: inline-block;
-  color: #ce6055;
+.package-section .package-overview .package-exclude-list ul li img {
+  height: 14px;
+  margin-right: 5px;
 }
 
 .package-section .divider-in-package {

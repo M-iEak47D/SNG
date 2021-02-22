@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect, useRef } from "react";
 import SearchBar from "../Common/SearchBar";
 import { useLocation, useHistory, Link, Route, Router } from "react-router-dom";
 import Checkout from "../../pages/Checkout";
@@ -44,18 +44,12 @@ function SearchRoom() {
 
   console.log(roomData, "roomdata");
 
-  const readMore = () => {
-    var para = document.querySelector("#read");
-    var btn = document.querySelector("#read_more_btn");
-    if (para.className == "readless") {
-      para.classList.remove("readless");
-      btn.classList.remove("more_btn");
-      btn.classList.add("less_btn");
-    } else {
-      para.classList.add("readless");
-      btn.classList.remove("less_btn");
-      btn.classList.add("more_btn");
-    }
+  const readMore = (e) => {
+    var btn = e.target;
+    var para = btn.previousElementSibling;
+
+    para.classList.toggle("active");
+    btn.classList.toggle("active");
   };
 
   return (
@@ -186,13 +180,10 @@ function SearchRoom() {
                       </div>
                       <div className="col-md-6">
                         <div className="room-description">
-                          <p id="read" className="readless">
-                            {room.description}
-                          </p>
+                          <p className="read active">{room.description}</p>
                           <button
-                            id="read_more_btn"
-                            className="more_btn"
-                            onClick={readMore}
+                            className="read_more_btn active"
+                            onClick={(e) => readMore(e)}
                           >
                             &nbsp;<i className="fa fa-angle-down"></i>
                           </button>
