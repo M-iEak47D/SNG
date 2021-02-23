@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 import { addDays, set, format } from "date-fns";
 import Slider from "react-slick";
+import { initialValues } from "../Variable/InitialValues";
 
 function HomeBanner({ banner }) {
   const settings = {
@@ -16,21 +17,10 @@ function HomeBanner({ banner }) {
     autoplay: true,
     autoplaySpeed: 3000,
   };
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(addDays(new Date(), 1));
-
-  const initialValues = {
-    occupancy: [{ adult: 1, child: 0, id: "" + Math.random() }],
-    selectionRange: {
-      startDate: startDate,
-      endDate: endDate,
-      key: "selection",
-    },
-  };
 
   return (
     <>
-      <Navbar />
+      <Navbar formData={initialValues} />
       {banner ? (
         <Slider {...settings}>
           <div>

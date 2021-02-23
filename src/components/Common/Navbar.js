@@ -3,14 +3,15 @@ import { Link } from "react-router-dom";
 import $ from "jquery";
 import Axios from "axios";
 import axiosInstance from "../../helper/axios";
+import WhereTo from "./WhereTo";
+import { addDays, set, format } from "date-fns";
+import { initialValues } from "../Variable/InitialValues";
 
 function Navbar() {
   function openNav() {
     document.getElementById("mySidenav").style.width = "250px";
   }
-  function modalOpen() {
-    $("#commingModal").toggle();
-  }
+
   const [settings, setSettings] = useState();
 
   useEffect(() => {
@@ -60,7 +61,7 @@ function Navbar() {
       <div className="primary-navbar">
         <div className="container">
           <div className="row">
-            <div className="col-md-9 col-12">
+            <div className="col-lg-9 col-12">
               <div className="first-navbar">
                 <nav className="navbar navbar-static-top navbar-expand-lg navbar-dark navbar-inverse">
                   <div className="navbar-logo">
@@ -80,6 +81,7 @@ function Navbar() {
                       onClick={openNav}
                     ></span>
                   </button>
+
                   <div
                     className="collapse navbar-collapse"
                     id="navbarSupportedContent"
@@ -176,26 +178,19 @@ function Navbar() {
             </div>
 
             <div
-              className=" d-none col-md-3 d-md-block"
+              className="col-12 col-lg-3"
               style={{ marginTop: "auto", marginBottom: "auto" }}
             >
               <div className="second-navbar-wrapper">
                 <div className="second-navbar">
-                  <div className="phone-no">
-                    <i className="fa fa-phone">&nbsp; Call:</i>
-                    <b>+977 9812345678</b>
-                    &nbsp;|&nbsp;
+                  <div className="search-wrapper book_now_nav" id="searchBar">
+                    <WhereTo initialValues={initialValues} />
                   </div>
-                  <div className="login">
-                    <div className="book-now">
-                      <button onClick={modalOpen}>BOOK NOW</button>
-                    </div>
-                    <div className="select-country">
-                      <select id="country" name="country">
-                        <option value="NP">ENG</option>
-                        <option value="NP">NP</option>
-                      </select>
-                    </div>
+                  <div className="select-country">
+                    <select id="country" name="country">
+                      <option value="NP">ENG</option>
+                      <option value="NP">NP</option>
+                    </select>
                   </div>
                 </div>
               </div>

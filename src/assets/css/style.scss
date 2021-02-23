@@ -506,10 +506,6 @@ a:hover {
       width: 100%;
     }
   }
-  .second-navbar-wrapper {
-    justify-content: flex-end;
-    padding-right: 16px;
-  }
 }
 @media (max-width: 425px) {
   .second-navbar-wrapper {
@@ -526,6 +522,7 @@ a:hover {
     display: flex;
     flex-direction: row;
     height: fit-content;
+    align-items: center;
     .book-now {
       background-color: $primary-color;
       height: 30px;
@@ -621,14 +618,8 @@ a:hover {
 }
 
 @media (max-width: 992px) {
-  .second-navbar .login {
-    display: -webkit-box;
-  }
-}
-
-@media (max-width: 769px) {
-  .second-navbar .login {
-    display: -webkit-box;
+  .select-country {
+    display: none;
   }
 }
 
@@ -763,6 +754,7 @@ a:hover {
     position: relative;
   }
   .bottom-search-bar-mobile {
+    display: none;
     justify-content: space-between;
     line-height: 50px;
     padding: 0px 15px;
@@ -901,7 +893,7 @@ a:hover {
   }
 
   .button-container {
-    width: 15%;
+    width: auto;
     margin: auto 0;
     .search-button {
       margin-right: 10px;
@@ -930,12 +922,49 @@ a:hover {
     }
   }
 }
+.search-wrapper.book_now_nav {
+  position: initial;
+  .bottom-search-bar-mobile {
+    display: inline-block;
+    line-height: normal;
+    padding: 8px 15px;
+    border-radius: 3px;
+    cursor: pointer;
+    background-color: #ff6a00;
+    i {
+      display: none;
+    }
+    .mobile_booknow {
+      background-color: #ff6a00;
+    }
+  }
+}
+@media (max-width: 992px) {
+  .search-wrapper {
+    .bottom-search-bar-mobile {
+      display: flex;
+    }
+  }
+  .search-wrapper.book_now_nav {
+    .bottom-search-bar-mobile {
+      display: none;
+    }
+  }
+}
 
 @media (max-width: 1200px) {
   .bottom-search-bar {
     width: 90% !important;
     padding: 0px !important;
   }
+}
+.modal-body {
+  padding: 2%;
+  padding-top: 0px;
+}
+
+.modal-backdrop {
+  z-index: 0 !important;
 }
 
 @media (max-width: 992px) {

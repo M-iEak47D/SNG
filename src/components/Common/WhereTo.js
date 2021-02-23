@@ -17,13 +17,12 @@ import { useHistory } from "react-router-dom";
 import $ from "jquery";
 
 function WhereTo(props) {
-  const { initialValues, validationSchema } = props;
+  const { initialValues } = props;
   const [loading, setLoading] = useState(false);
 
   const history = useHistory();
 
   const onSubmit = (values) => {
-    console.log(initialValues.selectionRange, "iv");
     setLoading(true);
 
     var dateStart = format(values.selectionRange.startDate, "yyyy-MM-d");
@@ -50,9 +49,9 @@ function WhereTo(props) {
       });
   };
   return (
-    <div>
+    <>
       <div
-        className="bottom-search-bar-mobile d-flex d-lg-none"
+        className="bottom-search-bar-mobile "
         data-toggle="modal"
         data-target="#myModal"
       >
@@ -65,7 +64,7 @@ function WhereTo(props) {
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title">Where to</h5>
+              <h5 className="modal-title">Book Now</h5>
               <button type="button" className="close" data-dismiss="modal">
                 &times;
               </button>
@@ -102,7 +101,7 @@ function WhereTo(props) {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

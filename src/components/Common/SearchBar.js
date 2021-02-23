@@ -21,9 +21,9 @@ function SearchBar(props) {
 
   const initialValues = props.formData;
 
-  const validationSchema = Yup.object({
-    destination: Yup.string().required("This Field Cannot be Empty"),
-  });
+  // const validationSchema = Yup.object({
+  //   destination: Yup.string().required("This Field Cannot be Empty"),
+  // });
 
   const onSubmit = (values, onSubmitProps) => {
     var dateStart = format(values.selectionRange.startDate, "yyyy-MM-d");
@@ -44,7 +44,7 @@ function SearchBar(props) {
 
   return (
     <div>
-      <div className="search-wrapper" id="searchBar">
+      <div className="search-wrapper">
         {initialValues && (
           <>
             <Formik initialValues={initialValues} onSubmit={onSubmit}>
@@ -70,10 +70,7 @@ function SearchBar(props) {
                 </Form>
               )}
             </Formik>
-            <WhereTo
-              initialValues={initialValues}
-              validationSchema={validationSchema}
-            />
+            <WhereTo initialValues={initialValues} />
           </>
         )}
       </div>

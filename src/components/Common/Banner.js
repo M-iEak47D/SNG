@@ -4,7 +4,6 @@ import Axios from "axios";
 import axiosInstance from "../../helper/axios";
 
 function Banner({ title, bread, home }) {
-
   const [banner, setBanner] = useState();
   useEffect(() => {
     let source = Axios.CancelToken.source();
@@ -33,13 +32,13 @@ function Banner({ title, bread, home }) {
   console.log(banner && banner, "bammer");
   return (
     <>
+      <Navbar />
       <div
         class="banner"
         id="banner-for-other-pages"
         style={{ backgroundImage: `url(${banner && banner.banner_image_1})` }}
       >
         <div class="background-overlay">
-          <Navbar />
           <div class="text-in-banner">
             <p class="banner-title">{title}</p>
             <div class="banner-subpage">
@@ -51,6 +50,7 @@ function Banner({ title, bread, home }) {
           </div>
         </div>
       </div>
+  
     </>
   );
 }
