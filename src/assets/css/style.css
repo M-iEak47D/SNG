@@ -68,7 +68,7 @@ a:hover {
     margin-left: 0px;
     left: 0;
     right: 0;
-    top: 170px;
+    top: 100px;
   }
   .rdrMonthsVertical {
     -webkit-box-orient: vertical !important;
@@ -913,6 +913,26 @@ a:hover {
 
 .search-wrapper .modal-dialog .modal-content .bottom-search-bar .item {
   margin: 0 auto;
+  padding-bottom: 10px;
+}
+
+.search-wrapper .modal-dialog .modal-content .bottom-search-bar .item .item-sup {
+  line-height: 0px;
+  margin-top: 25px;
+}
+
+.search-wrapper .modal-dialog .modal-content .bottom-search-bar .item i {
+  position: absolute;
+  top: 20px;
+}
+
+.search-wrapper .modal-dialog .modal-content .bottom-search-bar .item input {
+  height: 60px;
+  line-height: 60px;
+}
+
+.search-wrapper .modal-dialog .modal-content .bottom-search-bar .button-container {
+  padding: 15px 0px;
 }
 
 .search-wrapper .mobile-where-flex {
@@ -3133,6 +3153,11 @@ footer .social-media-icons ul li a:hover {
   padding-top: 2px;
 }
 
+.restaurant-menu .menu-tab-content-all .menu-content .food-price .price_cut {
+  text-decoration: line-through;
+  color: #938989;
+}
+
 #banner-for-other-pages {
   height: 310px;
 }
@@ -4431,7 +4456,7 @@ footer .social-media-icons ul li a:hover {
 .option-content {
   margin: 0px auto;
   -webkit-box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
-  width: 320px;
+  width: 330px;
   position: absolute;
   left: 0px;
   z-index: 9;
@@ -4440,7 +4465,7 @@ footer .social-media-icons ul li a:hover {
   margin-top: 12px;
   max-height: 280px;
   background: white none repeat scroll 0% 0% !important;
-  border-radius: 32px !important;
+  border-radius: 0px 0px 32px 32px !important;
   -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 20px !important;
           box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 20px !important;
   overflow-y: auto;

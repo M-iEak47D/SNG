@@ -47,27 +47,42 @@ function Footer() {
           <div className="icons-list">
             <ul>
               <li>
-                <a href={settings && settings.social_setting.facebook_url}>
+                <a
+                  href={settings && settings.social_setting.facebook_url}
+                  target="_blank"
+                >
                   <i className="fab fa-facebook-f"></i>
                 </a>
               </li>
               <li>
-                <a href={settings && settings.social_setting.twitter_url}>
+                <a
+                  href={settings && settings.social_setting.twitter_url}
+                  target="_blank"
+                >
                   <i className="fab fa-twitter"></i>
                 </a>
               </li>
               <li>
-                <a href={settings && settings.social_setting.linkedin_url}>
+                <a
+                  href={settings && settings.social_setting.linkedin_url}
+                  target="_blank"
+                >
                   <i className="fab fa-linkedin"></i>
                 </a>
               </li>
               <li>
-                <a href={settings && settings.social_setting.instagram_url}>
+                <a
+                  href={settings && settings.social_setting.instagram_url}
+                  target="_blank"
+                >
                   <i class="fab fa-instagram"></i>
                 </a>
               </li>
               <li>
-                <a href={settings && settings.social_setting.youtube_url}>
+                <a
+                  href={settings && settings.social_setting.youtube_url}
+                  target="_blank"
+                >
                   <i className="fab fa-youtube"></i>
                 </a>
               </li>

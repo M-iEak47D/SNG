@@ -23,7 +23,19 @@ function RestaurantTab({ foodItem }) {
                       ></div>
                     </div>
                     <div class="food-price">
-                      {food.price != null ? "Rs." : ""} {food.price}
+                      {food.offer_price ? (
+                        <>
+                          <span className="price_cut">
+                            {food.price != null ? "Rs." : ""} {food.price}
+                          </span>
+                          <br />
+                          Rs. {food.offer_price}
+                        </>
+                      ) : (
+                        <>
+                          {food.price != null ? "Rs." : ""} {food.price}
+                        </>
+                      )}
                     </div>
                   </div>
                 </div>

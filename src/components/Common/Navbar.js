@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import $ from "jquery";
-import CommingSoon from "../Ads/commingSoon";
+import Axios from "axios";
+import axiosInstance from "../../helper/axios";
 
 function Navbar() {
   function openNav() {
@@ -10,6 +11,27 @@ function Navbar() {
   function modalOpen() {
     $("#commingModal").toggle();
   }
+  const [settings, setSettings] = useState();
+
+  useEffect(() => {
+    let source = Axios.CancelToken.source();
+    const loadData = async () => {
+      try {
+        const response = axiosInstance.get(`/basicinfo`, {
+          cancelToken: source.token,
+        });
+        setSettings((await response).data.data);
+      } catch (error) {
+        if (!Axios.isCancel(error)) {
+          throw error;
+        }
+      }
+      return () => {
+        source.cancel();
+      };
+    };
+    loadData();
+  }, []);
   useEffect(() => {
     var navbar = document.querySelector(".primary-navbar");
     var firstNavbar = document.querySelector(".first-navbar");
@@ -165,17 +187,7 @@ function Navbar() {
                     &nbsp;|&nbsp;
                   </div>
                   <div className="login">
-                    {/* <div className="login-text">
-                      &nbsp;&nbsp;
-                      <a href="login.html">
-                        <i className="fa fa-user">&nbsp;</i>Login
-                      </a>
-                      &nbsp;&nbsp;
-                    </div> */}
                     <div className="book-now">
-                      {/* <a href="" onClick={() => modalOpen}>
-                        BOOK NOW&nbsp;{" "}
-                      </a> */}
                       <button onClick={modalOpen}>BOOK NOW</button>
                     </div>
                     <div className="select-country">
@@ -191,15 +203,27 @@ function Navbar() {
           </div>
         </div>
       </div>
+
       <div className="social-icon">
-        <a href="">
+        <a
+          href={settings && settings.social_setting.facebook_url}
+          target="_blank"
+        >
           <i className="fab fa-facebook"></i>
         </a>
-        <a href="">
-          <i className="fab fa-linkedin"></i>
+
+        <a
+          href={settings && settings.social_setting.youtube_url}
+          target="_blank"
+        >
+          <i className="fab fa-youtube"></i>
         </a>
-        <a href="">
-          <i className="fab fa-twitter"></i>
+
+        <a
+          href={settings && settings.social_setting.instagram_url}
+          target="_blank"
+        >
+          <i class="fab fa-instagram"></i>
         </a>
       </div>
     </>
