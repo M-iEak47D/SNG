@@ -29,7 +29,6 @@ function Banner({ title, bread, home }) {
     document.getElementById("mySidenav").style.width = "0";
   }, []);
 
-  console.log(banner && banner, "bammer");
   return (
     <>
       <Navbar />
@@ -50,7 +49,6 @@ function Banner({ title, bread, home }) {
           </div>
         </div>
       </div>
-  
     </>
   );
 }

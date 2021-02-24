@@ -40,6 +40,8 @@ function Invoice() {
     document.getElementById("mySidenav").style.width = "0";
   }, []);
 
+  console.log(booking && booking);
+
   useEffect(() => {
     if (location.state) {
       setBooking(location.state.bookingData);
@@ -95,6 +97,7 @@ function Invoice() {
                         </strong>
                         <p>
                           {booking.data.address} <br />
+                          {booking.data.phone} <br/>
                           <a>{booking.data.email}</a>
                         </p>
                       </div>

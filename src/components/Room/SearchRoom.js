@@ -30,7 +30,7 @@ function SearchRoom() {
     }
   }, [location]);
 
-  console.log(roomData && roomData, "heyy");
+  // console.log(roomData && room.other_image, "heyy");
 
   useEffect(() => {
     setNav1(slider1);
@@ -43,8 +43,6 @@ function SearchRoom() {
       state: { roomData: room, formData: formData },
     });
   };
-
-
 
   const readMore = (e) => {
     var btn = e.target;
@@ -80,18 +78,11 @@ function SearchRoom() {
                             <div className="room-search-photo">
                               <img src={room.feature_image} />
                             </div>
-                            <div className="room-search-photo">
-                              <img src={room.feature_image} />
-                            </div>
-                            <div className="room-search-photo">
-                              <img src={room.feature_image} />
-                            </div>
-                            <div className="room-search-photo">
-                              <img src={room.feature_image} />
-                            </div>
-                            <div className="room-search-photo">
-                              <img src={room.feature_image} />
-                            </div>
+                            {room.other_image.map((image) => (
+                              <div className="room-search-photo">
+                                <img src={image} />
+                              </div>
+                            ))}
                           </Slider>
                           <Slider
                             asNavFor={nav1}
@@ -103,18 +94,11 @@ function SearchRoom() {
                             <div className="room-search-photo">
                               <img src={room.feature_image} />
                             </div>
-                            <div className="room-search-photo">
-                              <img src={room.feature_image} />
-                            </div>
-                            <div className="room-search-photo">
-                              <img src={room.feature_image} />
-                            </div>
-                            <div className="room-search-photo">
-                              <img src={room.feature_image} />
-                            </div>
-                            <div className="room-search-photo">
-                              <img src={room.feature_image} />
-                            </div>
+                           {room.other_image.map((image) => (
+                              <div className="room-search-photo">
+                                <img src={image} />
+                              </div>
+                            ))}
                           </Slider>
 
                           <div className="room-facility">

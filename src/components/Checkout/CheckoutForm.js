@@ -25,25 +25,30 @@ function CheckoutForm({ roomData, formData }) {
     first_name: "",
     last_name: "",
     email: "",
-    contact: "",
+    phone: "",
     message: "",
     occupancy: "",
     startDate: "",
     endDate: "",
     address: "",
   };
+
+  const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
+
   const validationSchema = Yup.object({
     radioOption: Yup.string().required("Gender is required"),
     first_name: Yup.string().required("First Name is required"),
     last_name: Yup.string().required("Last Name is required"),
     email: Yup.string().required("Email is required"),
-    contact: Yup.string().required("Contact is required"),
+    phone: Yup.string()
+      .required("The phone number is required")
+      .matches(phoneRegExp, "Phone number not valid"),
     address: Yup.string().required("Address is required"),
     // regionOption: Yup.string().required("Region is required"),
   });
 
   function onSubmit(data, onSubmitProps) {
-  
+    console.log(data, "onsubmit")
     setLoading(true);
     document.getElementById("checkout_btn").disabled = true;
     data.room_id = roomData && roomData.id;
@@ -119,9 +124,9 @@ function CheckoutForm({ roomData, formData }) {
             </div>
             <div className="form-group">
               <FormikControl
-                control="contact"
+                control="phone"
                 type="text"
-                name="contact"
+                name="phone"
                 placeholder="Phone Number"
               />
             </div>

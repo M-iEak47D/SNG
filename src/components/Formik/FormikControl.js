@@ -35,7 +35,7 @@ function FormikControl(props) {
       return <DatePick {...rest} />;
     case "number":
       return <Number {...rest} />;
-    case "contact":
+    case "phone":
       return <ContactNo {...rest} />;
     case "radio":
       return <Radio {...rest} />;
