@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { initialValues } from "../Variable/InitialValues";
+import WhereTo from "./WhereTo";
 
 function Sidenav() {
   /* Set the width of the side navigation to 0 */
@@ -36,6 +38,9 @@ function Sidenav() {
         <a href="javascript:void(0)" className="closebtn" onClick={closeNav}>
           &times;
         </a>
+        <div className="search-wrapper book_now_nav side_nav" id="searchBar">
+          <WhereTo initialValues={initialValues} />
+        </div>
         <div className="nav-content">
           <Link to="/">Home</Link>
         </div>

@@ -1119,6 +1119,9 @@ a:hover {
   .search-wrapper.book_now_nav .bottom-search-bar-mobile {
     display: none;
   }
+  .search-wrapper.book_now_nav.side_nav .bottom-search-bar-mobile {
+    display: inline-block;
+  }
 }
 
 @media (max-width: 1200px) {

@@ -30,6 +30,8 @@ function SearchRoom() {
     }
   }, [location]);
 
+  console.log(roomData && roomData, "heyy");
+
   useEffect(() => {
     setNav1(slider1);
     setNav2(slider2);
@@ -42,7 +44,7 @@ function SearchRoom() {
     });
   };
 
-  console.log(roomData, "roomdata");
+
 
   const readMore = (e) => {
     var btn = e.target;

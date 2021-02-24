@@ -183,7 +183,7 @@ function Navbar() {
             >
               <div className="second-navbar-wrapper">
                 <div className="second-navbar">
-                  <div className="search-wrapper book_now_nav" id="searchBar">
+                  <div className="search-wrapper book_now_nav " id="searchBar">
                     <WhereTo initialValues={initialValues} />
                   </div>
                   <div className="select-country">

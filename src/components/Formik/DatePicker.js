@@ -45,7 +45,6 @@ function DatePicker(props) {
                 <Field name={name}>
                   {({ form, field }) => {
                     const { setFieldValue, values } = form;
-                    console.log(values, "vall");
 
                     const { value } = field;
                     return (

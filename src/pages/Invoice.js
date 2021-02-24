@@ -13,6 +13,8 @@ function Invoice() {
   const location = useLocation();
   const [newDate, setNewDate] = useState(new Date());
   const [settings, setSettings] = useState();
+  const [subTotal, setSubTotal] = useState(0);
+  const [tax, setTax] = useState(0);
 
   useEffect(() => {
     let source = Axios.CancelToken.source();
@@ -38,18 +40,27 @@ function Invoice() {
     document.getElementById("mySidenav").style.width = "0";
   }, []);
 
-  console.log(settings && settings, "hello");
-
   useEffect(() => {
     if (location.state) {
       setBooking(location.state.bookingData);
       setRoom(location.state.roomData);
       setForm(location.state.formData);
+      setSubTotal(
+        location.state.formData.occupancy.length > 0
+          ? (location.state.formData &&
+              location.state.formData.occupancy.length) *
+              (location.state.roomData && location.state.roomData.price)
+          : location.state.roomData && location.state.roomData.price
+      );
+      setTax(
+        location.state.bookingData &&
+          Number(location.state.bookingData.data.tax)
+      );
     } else {
       history.push("/");
     }
   }, [location]);
-  console.log(booking && booking);
+
   return (
     <div>
       {booking ? (
@@ -117,11 +128,8 @@ function Invoice() {
                           </div>
 
                           <div class="col-md-5 amount text-right">
-                            Rs.{" "}
-                            {(form && form.occupancy.length) > 0
-                              ? (form && form.occupancy.length) *
-                                (room && room.price)
-                              : room && room.price}{" "}
+                            Rs. {""}
+                            {subTotal}
                           </div>
                         </div>
                       )}
@@ -166,29 +174,19 @@ function Invoice() {
                         </div> */}
                       </p>
                       <div class="field">
-                        Subtotal{" "}
-                        <span>
-                          Rs.{" "}
-                          {(form && form.occupancy.length) > 0
-                            ? (form && form.occupancy.length) *
-                              (room && room.price)
-                            : room && room.price}{" "}
-                        </span>
+                        Subtotal <span>Rs. {subTotal} </span>
                       </div>
+                      {tax && tax > 0 ? (
+                        <div class="field">
+                          Tax({tax} %) <span> {(tax * subTotal) / 100} </span>
+                        </div>
+                      ) : (
+                        ""
+                      )}
 
-                      <div class="field">
-                        Discount <span>0%</span>
-                      </div>
                       <div class="field grand-total">
                         Total{" "}
-                        <span>
-                          {" "}
-                          Rs.{" "}
-                          {(form && form.occupancy.length) > 0
-                            ? (form && form.occupancy.length) *
-                              (room && room.price)
-                            : room && room.price}{" "}
-                        </span>
+                        <span>Rs. {subTotal + (tax * subTotal) / 100}</span>
                       </div>
                     </div>
 

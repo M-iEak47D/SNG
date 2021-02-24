@@ -22,6 +22,14 @@ function WhereTo(props) {
 
   const history = useHistory();
 
+  useEffect(() => {
+    document.getElementById("mySidenav").style.width = "0";
+  }, []);
+
+  const close = () => {
+    document.getElementById("mySidenav").style.width = "0";
+  };
+
   const onSubmit = (values) => {
     setLoading(true);
 
@@ -55,7 +63,9 @@ function WhereTo(props) {
         data-toggle="modal"
         data-target="#myModal"
       >
-        <span className="mobile_booknow">Book Now</span>
+        <span onClick={close} className="mobile_booknow">
+          Book Now
+        </span>
         <span>
           <i className="fa fa-ellipsis-v"></i>
         </span>
