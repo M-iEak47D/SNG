@@ -35,9 +35,9 @@ function HomeBanner({ banner }) {
                   <p className="banner-description">
                     {banner && banner.banner_text_1}
                   </p>
-                  <div className="room-suite-link">
+                  {/* <div className="room-suite-link">
                     <Link to="/contact">Contact</Link>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
@@ -54,9 +54,9 @@ function HomeBanner({ banner }) {
                   <p className="banner-description">
                     {banner && banner.banner_text_2}
                   </p>
-                  <div className="room-suite-link">
+                  {/* <div className="room-suite-link">
                     <Link to="/contact">Contact</Link>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
@@ -73,9 +73,9 @@ function HomeBanner({ banner }) {
                   <p className="banner-description">
                     {banner && banner.banner_text_3}
                   </p>
-                  <div className="room-suite-link">
+                  {/* <div className="room-suite-link">
                     <Link to="/contact">Contact</Link>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

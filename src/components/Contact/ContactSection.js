@@ -34,13 +34,19 @@ function ContactSection() {
       <div className="contact-section">
         <div className="container">
           <div className="row">
-            <div className="col-lg-3">
-              <div
+            <div className="col-lg-3 order-1 order-lg-0">
+              {/* <div
                 className="hotel-image-in-contact"
                 style={{
                   backgroundImage: `url(${settings && settings.contact.image})`,
                 }}
-              ></div>
+              ></div> */}
+              <div className="contact_img">
+                <img
+                  className="img-fluid"
+                  src={settings && settings.contact.image}
+                />
+              </div>
             </div>
             <div className="col-lg-6">
               <div className="read-our-faq">
@@ -52,7 +58,7 @@ function ContactSection() {
                 }}
               />
             </div>
-            <div className="col-lg-3">
+            <div className="col-lg-3 order-12">
               <div className="contact-panel">
                 <div className="contact-panel-item">
                   <p>

@@ -21,6 +21,10 @@ a:hover {
   text-decoration: none;
 }
 
+body {
+  position: initial !important;
+}
+
 .rdrDateRangeWrapper {
   z-index: 999;
   position: absolute !important;
@@ -3119,6 +3123,8 @@ footer .social-media-icons ul li a:hover {
   margin: 0 auto;
   padding-top: 40px;
   text-align: left;
+  position: relative;
+  z-index: 0;
 }
 
 .restaurant-menu .menu-tab-content-all .menu-content {
@@ -3253,6 +3259,17 @@ footer .social-media-icons ul li a:hover {
   height: 100%;
 }
 
+.contact-section .contact_img {
+  height: 100%;
+  width: 100%;
+}
+
+.contact-section .contact_img img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 100%;
+}
+
 .contact-section .need-help-title {
   font-family: sans-serif;
   font-size: 9px;
@@ -3317,6 +3334,17 @@ footer .social-media-icons ul li a:hover {
 @media (max-width: 992px) {
   .contact-panel {
     margin-top: 30px;
+  }
+  .contact-section .contact_img {
+    margin-bottom: 30px;
+    height: 200px;
+    width: 100%;
+  }
+  .contact-section .contact_img img {
+    -o-object-fit: cover;
+       object-fit: cover;
+    height: 100%;
+    width: 100%;
   }
 }
 

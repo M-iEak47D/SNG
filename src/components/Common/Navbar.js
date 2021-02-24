@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams, useLocation } from "react-router-dom";
 import $ from "jquery";
 import Axios from "axios";
 import axiosInstance from "../../helper/axios";
@@ -8,6 +8,26 @@ import { addDays, set, format } from "date-fns";
 import { initialValues } from "../Variable/InitialValues";
 
 function Navbar() {
+  // const param = useParams();
+  const { pathname } = useLocation();
+  // console.log(pathname, "hello");
+  const google = window.google;
+  function googleTranslateElementInit() {
+    console.log("clicked");
+    new google.translate.TranslateElement(
+      { pageLanguage: "np" },
+      "google_translate_element"
+    );
+  }
+    window.addEventListener("load", () => {
+      googleTranslateElementInit();
+    });
+  // useEffect(() => {
+  //   window.addEventListener("load", () => {
+  //     googleTranslateElementInit();
+  //   });
+  // }, [pathname]);
+
   function openNav() {
     document.getElementById("mySidenav").style.width = "250px";
   }
@@ -187,10 +207,11 @@ function Navbar() {
                     <WhereTo initialValues={initialValues} />
                   </div>
                   <div className="select-country">
-                    <select id="country" name="country">
+                    {/* <select id="country" name="country">
                       <option value="NP">ENG</option>
                       <option value="NP">NP</option>
-                    </select>
+                    </select> */}
+                    <div id="google_translate_element"></div>
                   </div>
                 </div>
               </div>

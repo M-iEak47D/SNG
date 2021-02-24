@@ -7,7 +7,6 @@ function Number(props) {
   return (
     <>
       <Field
-        as="number"
         id={name}
         name={name}
         {...rest}
