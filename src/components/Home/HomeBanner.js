@@ -20,7 +20,7 @@ function HomeBanner({ banner }) {
 
   return (
     <>
-      <Navbar formData={initialValues} />
+      {/* <Navbar formData={initialValues} /> */}
       {banner ? (
         <Slider {...settings}>
           <div>

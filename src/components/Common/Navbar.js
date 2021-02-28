@@ -6,27 +6,53 @@ import axiosInstance from "../../helper/axios";
 import WhereTo from "./WhereTo";
 import { addDays, set, format } from "date-fns";
 import { initialValues } from "../Variable/InitialValues";
+import Language from "./Language";
 
 function Navbar() {
   // const param = useParams();
   const { pathname } = useLocation();
-  // console.log(pathname, "hello");
+
   const google = window.google;
-  function googleTranslateElementInit() {
-    console.log("clicked");
-    new google.translate.TranslateElement(
-      { pageLanguage: "np" },
-      "google_translate_element"
-    );
-  }
-    window.addEventListener("load", () => {
-      googleTranslateElementInit();
-    });
-  // useEffect(() => {
-  //   window.addEventListener("load", () => {
-  //     googleTranslateElementInit();
+  useEffect(() => {
+    console.log("first load");
+    function googleTranslateElementInit() {
+      console.log('data')
+      new google.translate.TranslateElement(
+        {
+          pageLanguage: "en",
+          includedLanguages: "de,en,es,fr,it,ja",
+          layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+        },
+        "google_translate_element"
+      );
+    }
+    // google && google.translate && googleTranslateElementInit();
+      window.addEventListener("load", () => {
+          console.log("domloaded");
+          googleTranslateElementInit();
+        });
+  }, []);
+
+  // document.addEventListener('load',()=>{
+  //   document.getElementById('google_translate_element').addEventListener('DOMNodeInserted',()=>{
+  //     document.querySelector(".goog-te-menu-value span:first").innerHTML = "Language";
+  //     document.querySelector(".goog-te-menu-frame.skiptranslate").addEventListener('load',()=>{
+
+  //     });
+  //   })
+  //   $("#google_translate_element").bind("DOMNodeInserted", function (event) {
+  //     $(".goog-te-menu-value span:first").html("Language");
+  //     $(".goog-te-menu-frame.skiptranslate").load(function () {
+  //       setTimeout(function () {
+  //         $(".goog-te-menu-frame.skiptranslate")
+  //         .contents()
+  //         .find(".goog-te-menu2-item-selected .text")
+  //         .html("Translate");
+  //       }, 100);
+  //     });
   //   });
-  // }, [pathname]);
+
+  // })
 
   function openNav() {
     document.getElementById("mySidenav").style.width = "250px";
@@ -81,7 +107,7 @@ function Navbar() {
       <div className="primary-navbar">
         <div className="container">
           <div className="row">
-            <div className="col-lg-9 col-12">
+            <div className="col-lg-8 col-12">
               <div className="first-navbar">
                 <nav className="navbar navbar-static-top navbar-expand-lg navbar-dark navbar-inverse">
                   <div className="navbar-logo">
@@ -198,7 +224,7 @@ function Navbar() {
             </div>
 
             <div
-              className="col-12 col-lg-3"
+              className="col-12 col-lg-4"
               style={{ marginTop: "auto", marginBottom: "auto" }}
             >
               <div className="second-navbar-wrapper">
@@ -206,12 +232,9 @@ function Navbar() {
                   <div className="search-wrapper book_now_nav " id="searchBar">
                     <WhereTo initialValues={initialValues} />
                   </div>
-                  <div className="select-country">
-                    {/* <select id="country" name="country">
-                      <option value="NP">ENG</option>
-                      <option value="NP">NP</option>
-                    </select> */}
-                    <div id="google_translate_element"></div>
+
+                  <div className="select-language">
+                    <Language />
                   </div>
                 </div>
               </div>

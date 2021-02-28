@@ -21,12 +21,14 @@ import SingleBlog from "./pages/SingleBlog";
 import Invoice from "./pages/Invoice";
 import Test from "./pages/Test";
 import SingleRoom from "./pages/SingleRoom";
+import Navbar from "./components/Common/Navbar";
 
 function App() {
   return (
     <Router>
       <Sidenav />
       <CommingSoon />
+      <Navbar />
       <Switch>
         <Route exact path="/contact">
           <Contact />

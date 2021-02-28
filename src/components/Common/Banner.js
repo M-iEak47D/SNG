@@ -31,7 +31,6 @@ function Banner({ title, bread, home }) {
 
   return (
     <>
-      <Navbar />
       <div
         class="banner"
         id="banner-for-other-pages"

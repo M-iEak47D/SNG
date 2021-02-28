@@ -3,21 +3,12 @@ import SearchBar from "../Common/SearchBar";
 import { useLocation, useHistory, Link, Route, Router } from "react-router-dom";
 import Checkout from "../../pages/Checkout";
 import Slider from "react-slick";
+import SearchSlider from "./SearchSlider";
 
 function SearchRoom() {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-  };
   const [formData, setFormData] = useState();
   const [roomData, setRoomData] = useState();
-  const [nav1, setNav1] = useState();
-  const [nav2, setNav2] = useState();
-  let slider1 = [];
-  let slider2 = [];
+
   const history = useHistory();
 
   const location = useLocation();
@@ -30,12 +21,7 @@ function SearchRoom() {
     }
   }, [location]);
 
-  // console.log(roomData && room.other_image, "heyy");
-
-  useEffect(() => {
-    setNav1(slider1);
-    setNav2(slider2);
-  }, [slider1, slider2]);
+  console.log(roomData && roomData, "heyy");
 
   const bookNow = (room) => {
     history.push({
@@ -71,36 +57,7 @@ function SearchRoom() {
                         <div className="room-section-details">
                           <p className="room-title">{room.title}</p>
 
-                          <Slider
-                            asNavFor={nav2}
-                            ref={(slider) => (slider1 = slider)}
-                          >
-                            <div className="room-search-photo">
-                              <img src={room.feature_image} />
-                            </div>
-                            {room.other_image.map((image) => (
-                              <div className="room-search-photo">
-                                <img src={image} />
-                              </div>
-                            ))}
-                          </Slider>
-                          <Slider
-                            asNavFor={nav1}
-                            ref={(slider) => (slider2 = slider)}
-                            slidesToShow={3}
-                            swipeToSlide={true}
-                            focusOnSelect={true}
-                          >
-                            <div className="room-search-photo">
-                              <img src={room.feature_image} />
-                            </div>
-                           {room.other_image.map((image) => (
-                              <div className="room-search-photo">
-                                <img src={image} />
-                              </div>
-                            ))}
-                          </Slider>
-
+                          <SearchSlider room={room} />
                           <div className="room-facility">
                             <div className="facility-item">
                               <img
@@ -177,7 +134,7 @@ function SearchRoom() {
                         <div className="price-selection">
                           <div className="price-selection-top">
                             <div className="price-selection-title">
-                              King bed (qty)
+                              {room.title}
                             </div>
                             <div className="price-selection-cost">
                               Rs. {room.price}
@@ -186,14 +143,15 @@ function SearchRoom() {
                           <div className="price-selection-bottom">
                             <div className="price-selection-description">
                               <ul>
-                                <li>
-                                  <i className="fa fa-check"></i>&nbsp;Free
-                                  cancellation before 6 pm
-                                </li>
-                                <li>
-                                  <i className="fa fa-check"></i>&nbsp;Breakfast
-                                  included
-                                </li>
+                                {room.inclusions.length > 0
+                                  ? room.inclusions.map((inclusion) => (
+                                      <li>
+                                        {/* <i className="fa fa-check"></i>&nbsp; */}
+                                        <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJMYXllcl8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCINCgkgdmlld0JveD0iMCAwIDUwNy4yIDUwNy4yIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1MDcuMiA1MDcuMjsiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGNpcmNsZSBzdHlsZT0iZmlsbDojMzJCQTdDOyIgY3g9IjI1My42IiBjeT0iMjUzLjYiIHI9IjI1My42Ii8+DQo8cGF0aCBzdHlsZT0iZmlsbDojMEFBMDZFOyIgZD0iTTE4OC44LDM2OGwxMzAuNCwxMzAuNGMxMDgtMjguOCwxODgtMTI3LjIsMTg4LTI0NC44YzAtMi40LDAtNC44LDAtNy4yTDQwNC44LDE1MkwxODguOCwzNjh6Ii8+DQo8Zz4NCgk8cGF0aCBzdHlsZT0iZmlsbDojRkZGRkZGOyIgZD0iTTI2MCwzMTAuNGMxMS4yLDExLjIsMTEuMiwzMC40LDAsNDEuNmwtMjMuMiwyMy4yYy0xMS4yLDExLjItMzAuNCwxMS4yLTQxLjYsMEw5My42LDI3Mi44DQoJCWMtMTEuMi0xMS4yLTExLjItMzAuNCwwLTQxLjZsMjMuMi0yMy4yYzExLjItMTEuMiwzMC40LTExLjIsNDEuNiwwTDI2MCwzMTAuNHoiLz4NCgk8cGF0aCBzdHlsZT0iZmlsbDojRkZGRkZGOyIgZD0iTTM0OC44LDEzMy42YzExLjItMTEuMiwzMC40LTExLjIsNDEuNiwwbDIzLjIsMjMuMmMxMS4yLDExLjIsMTEuMiwzMC40LDAsNDEuNmwtMTc2LDE3NS4yDQoJCWMtMTEuMiwxMS4yLTMwLjQsMTEuMi00MS42LDBsLTIzLjItMjMuMmMtMTEuMi0xMS4yLTExLjItMzAuNCwwLTQxLjZMMzQ4LjgsMTMzLjZ6Ii8+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8L3N2Zz4NCg==" />
+                                        {inclusion}
+                                      </li>
+                                    ))
+                                  : ""}
                               </ul>
                             </div>
 
