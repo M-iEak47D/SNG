@@ -39,9 +39,9 @@ function Footer() {
         <div className="footer-title">{settings && settings.title}</div>
         <div className="vertical-divider"></div>
         <div className="address-contact">
-          {settings && settings.address} <br />
-          {settings && settings.primary_email} <br />
-          {settings && settings.primary_phone}
+          <div>{settings && settings.address}</div>
+          <div>{settings && settings.primary_email}</div>
+          <div>{settings && settings.primary_phone}</div>
         </div>
         <div className="social-media-icons">
           <div className="icons-list">
