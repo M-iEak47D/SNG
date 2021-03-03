@@ -30,7 +30,7 @@ function App() {
       <Sidenav />
       <CommingSoon />
 
-      <MessengerCustomerChat pageId="191285174975188" appId="187311173194773" />
+      <MessengerCustomerChat pageId="191285174975188" appId="190474329081776" />
 
       <Navbar />
       <Switch>
