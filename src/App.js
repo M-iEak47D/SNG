@@ -30,7 +30,10 @@ function App() {
       <Sidenav />
       <CommingSoon />
 
-      <MessengerCustomerChat pageId="191285174975188" appId="190474329081776" />
+      <MessengerCustomerChat
+        pageId={process.env.MESSENGER_PAGE_ID}
+        appId={process.env.MESSENGER_APP_ID}
+      />
 
       <Navbar />
       <Switch>
