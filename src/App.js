@@ -22,12 +22,16 @@ import Invoice from "./pages/Invoice";
 import Test from "./pages/Test";
 import SingleRoom from "./pages/SingleRoom";
 import Navbar from "./components/Common/Navbar";
+import MessengerCustomerChat from "react-messenger-customer-chat";
 
 function App() {
   return (
     <Router>
       <Sidenav />
       <CommingSoon />
+
+      <MessengerCustomerChat pageId="191285174975188" appId="187311173194773" />
+
       <Navbar />
       <Switch>
         <Route exact path="/contact">
