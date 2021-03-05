@@ -29,12 +29,14 @@ function Banner({ title, bread, home }) {
     document.getElementById("mySidenav").style.width = "0";
   }, []);
 
+
+
   return (
     <>
       <div
         class="banner"
         id="banner-for-other-pages"
-        style={{ backgroundImage: `url(${banner && banner.banner_image_1})` }}
+        style={{ backgroundImage: `url(${banner && banner[0].image})` }}
       >
         <div class="background-overlay">
           <div class="text-in-banner">
