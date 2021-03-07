@@ -48,7 +48,7 @@ function CheckoutForm({ roomData, formData }) {
   });
 
   function onSubmit(data, onSubmitProps) {
-    console.log(data, "onsubmit")
+    console.log(data, "onsubmit");
     setLoading(true);
     document.getElementById("checkout_btn").disabled = true;
     data.room_id = roomData && roomData.id;

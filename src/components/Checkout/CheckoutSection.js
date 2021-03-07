@@ -8,6 +8,16 @@ function CheckoutSection({ room, form }) {
   let slider1 = [];
   let slider2 = [];
 
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+  };
+
   useEffect(() => {
     setNav1(slider1);
     setNav2(slider2);
@@ -21,25 +31,23 @@ function CheckoutSection({ room, form }) {
               <div className="col-md-5">
                 <div className="room-section-details">
                   <div className="room-image">
-                    {/* <img
-                      className="img-fluid"
-                      src={room && room.feature_image}
-                    /> */}
-
-                    {/* <Slider
+                    <Slider
+                      {...settings}
                       asNavFor={nav2}
                       ref={(slider) => (slider1 = slider)}
                     >
                       <div className="room-search-photo">
-                        <img src={room.feature_image} />
+                        <img src={room && room.feature_image} />
                       </div>
-                      {room.other_image.map((image) => (
-                        <div className="room-search-photo">
-                          <img src={image} />
-                        </div>
-                      ))}
+                      {room &&
+                        room.other_image.map((image) => (
+                          <div className="room-search-photo">
+                            <img src={image} />
+                          </div>
+                        ))}
                     </Slider>
                     <Slider
+                      {...settings}
                       asNavFor={nav1}
                       ref={(slider) => (slider2 = slider)}
                       slidesToShow={3}
@@ -47,15 +55,15 @@ function CheckoutSection({ room, form }) {
                       focusOnSelect={true}
                     >
                       <div className="room-search-photo">
-                        <img src={room.feature_image} />
+                        <img src={room && room.feature_image} />
                       </div>
-                      {room.other_image.map((image) => (
-                        <div className="room-search-photo">
-                          <img src={image} />
-                        </div>
-                      ))}
+                      {room &&
+                        room.other_image.map((image) => (
+                          <div className="room-search-photo">
+                            <img src={image} />
+                          </div>
+                        ))}
                     </Slider>
-                  */}
                   </div>
                   <div className="room-pricing">
                     FROM <span>Rs. {room && room.price}</span>/PER NIGHT

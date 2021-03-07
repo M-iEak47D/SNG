@@ -18,16 +18,23 @@ function PackageForm(props) {
     message: "",
   };
 
+  const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
+  const numberPattern = /^[0-9]+$/;
+
   const validationSchema = Yup.object({
     name: Yup.string().required("Name is required"),
     email: Yup.string().required("Email is required"),
-    contact: Yup.string().required("Contact is required"),
+    contact: Yup.string()
+      .required("Contact is required")
+      .matches(phoneRegExp, "Phone number not valid"),
     datepick: Yup.date().required("Date is required"),
-    number: Yup.string().required("Number is required"),
+    number: Yup.string()
+      .required("Number is required")
+      .matches(numberPattern, "Number not valid"),
     message: Yup.string().required("Message is required"),
   });
+
   const onSubmit = (values, onSubmitProps) => {
-    // props.setSending(true);
     props.modal();
     var dateData = format(values.datepick, "yyyy-MM-d");
     values.datepick = dateData;
@@ -43,7 +50,7 @@ function PackageForm(props) {
         }, 2000);
       })
       .error((response) => {
-        // setLoadings(false);
+        console.log(response);
       });
   };
   return (
@@ -75,7 +82,7 @@ function PackageForm(props) {
 
               <p>Contact</p>
               <FormikControl
-                control="contact"
+                control="phone"
                 type="text"
                 name="contact"
                 placeholder="Enter Contact"

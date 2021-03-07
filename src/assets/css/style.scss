@@ -3260,12 +3260,24 @@ footer {
       padding-bottom: 5px;
     }
     .price-selection-cost {
-      font-size: 20px;
-      font-family: sans-serif;
-      font-weight: 700;
-      margin: 0px;
-      letter-spacing: 1px;
-      padding-bottom: 5px;
+      span {
+        font-size: 20px;
+        font-family: sans-serif;
+        font-weight: 700;
+        margin: 0px;
+        letter-spacing: 1px;
+        padding-bottom: 5px;
+        display: flex;
+        flex-direction: column;
+      }
+      .start_price {
+        text-decoration: line-through;
+        color: #938989;
+        font-size: 18px;
+      }
+      .offer_price {
+        color: #f98d40;
+      }
     }
   }
   .price-selection-bottom {

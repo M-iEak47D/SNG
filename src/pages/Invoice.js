@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from "react";
 import { useHistory, useLocation, Link } from "react-router-dom";
-import { format } from "date-fns";
+import { format, subMilliseconds } from "date-fns";
 import Skeleton from "react-loading-skeleton";
 import axiosInstance from "../helper/axios";
 import Axios from "axios";
@@ -14,6 +14,8 @@ function Invoice() {
   const [newDate, setNewDate] = useState(new Date());
   const [settings, setSettings] = useState();
   const [subTotal, setSubTotal] = useState(0);
+  const [discount, setDiscount] = useState(0);
+  const [taxableAmt, setTaxableAmt] = useState(0);
   const [tax, setTax] = useState(0);
 
   useEffect(() => {
@@ -40,24 +42,31 @@ function Invoice() {
     document.getElementById("mySidenav").style.width = "0";
   }, []);
 
-  console.log(booking && booking);
+  const sum = (booking, form) => {
+    var subtotal_amt =
+      booking.offer_price != 0
+        ? booking.offer_price * form.occupancy.length
+        : booking.original_price * form.occupancy.length;
+
+    setSubTotal(subtotal_amt);
+
+    var discount_amt = (booking.discount_percentage * subtotal_amt) / 100;
+    setDiscount(discount_amt);
+
+    var taxable_amt = subtotal_amt - discount_amt;
+    setTaxableAmt(taxable_amt);
+
+    var tax_amt = (booking.tax * taxable_amt) / 100;
+    setTax(tax_amt);
+  };
 
   useEffect(() => {
     if (location.state) {
       setBooking(location.state.bookingData);
       setRoom(location.state.roomData);
       setForm(location.state.formData);
-      setSubTotal(
-        location.state.formData.occupancy.length > 0
-          ? (location.state.formData &&
-              location.state.formData.occupancy.length) *
-              (location.state.roomData && location.state.roomData.price)
-          : location.state.roomData && location.state.roomData.price
-      );
-      setTax(
-        location.state.bookingData &&
-          Number(location.state.bookingData.data.tax)
-      );
+      // sum(booking.data, form);
+      sum(location.state.bookingData.data, location.state.formData);
     } else {
       history.push("/");
     }
@@ -97,7 +106,7 @@ function Invoice() {
                         </strong>
                         <p>
                           {booking.data.address} <br />
-                          {booking.data.phone} <br/>
+                          {booking.data.phone} <br />
                           <a>{booking.data.email}</a>
                         </p>
                       </div>
@@ -129,9 +138,9 @@ function Invoice() {
                           <div class="col-md-3 qty">
                             {form && form.occupancy.length}{" "}
                           </div>
-
+                          {}
                           <div class="col-md-5 amount text-right">
-                            Rs. {""}
+                            Rs.
                             {subTotal}
                           </div>
                         </div>
@@ -169,36 +178,34 @@ function Invoice() {
                               : ""}{" "}
                           </span>
                         </div>
-
-                        {/* <div className="extra_date">
-                          <strong>Extra Notes </strong>
-                          <br />
-                          {booking.data.message}
-                        </div> */}
                       </p>
                       <div class="field">
-                        Subtotal <span>Rs. {subTotal} </span>
+                        Subtotal <span>Rs. {subTotal}</span>
                       </div>
-                      {tax && tax > 0 ? (
+                      {booking.data.discount_percentage > 0 ? (
                         <div class="field">
-                          Tax({tax} %) <span> {(tax * subTotal) / 100} </span>
+                          Discount({booking.data.discount_percentage} %){" "}
+                          <span>{discount}</span>
+                        </div>
+                      ) : (
+                        ""
+                      )}
+                      <div class="field">
+                      Taxable Amount <span>{taxableAmt}</span>
+                      </div>
+                      {booking.data.tax && form && booking.data.tax > 0 ? (
+                        <div class="field">
+                          Tax({booking.data.tax} %) <span>{tax}</span>
                         </div>
                       ) : (
                         ""
                       )}
 
                       <div class="field grand-total">
-                        Total{" "}
-                        <span>Rs. {subTotal + (tax * subTotal) / 100}</span>
+                        Total <span>Rs. {taxableAmt + tax}</span>
                       </div>
                     </div>
 
-                    {/* <div class="print">
-                      <a href="#">
-                        <i class="fa fa-print"></i>
-                        Print this receipt
-                      </a>
-                    </div> */}
                     <div class="print">
                       <Link to="/">Back to Home Page</Link>
                     </div>

@@ -21,7 +21,9 @@ function SearchRoom() {
     }
   }, [location]);
 
-  console.log(roomData && roomData, "heyy");
+  console.log(roomData && roomData, "heyy room");
+
+  console.log(formData && formData, "heyy form");
 
   const bookNow = (room) => {
     history.push({
@@ -137,9 +139,21 @@ function SearchRoom() {
                               {room.title}
                             </div>
                             <div className="price-selection-cost">
-                              Rs. {room.price}
+                              {room.offer_price > 0 ? (
+                                <>
+                                  <span className="start_price">
+                                    Rs. {room.price}
+                                  </span>
+                                  <span className="offer_price">
+                                    Rs. {room.offer_price}
+                                  </span>
+                                </>
+                              ) : (
+                                <span>Rs. {room.price}</span>
+                              )}
                             </div>
                           </div>
+
                           <div className="price-selection-bottom">
                             <div className="price-selection-description">
                               <ul>
