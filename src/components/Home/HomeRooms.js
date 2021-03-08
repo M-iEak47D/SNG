@@ -31,7 +31,19 @@ function HomeRooms({ rooms, roomText }) {
                               FROM:
                             </span>
                             <span style={{ fontSize: "14px", color: "orange" }}>
-                              {room.price}
+                              {room.offer_price > 0 ? (
+                                <>
+                                  Rs.{" "} 
+                                  <del>
+                                    {room.price}
+                                  </del>
+                                  <span>
+                                    {room.offer_price}
+                                  </span>
+                                </>
+                              ) : (
+                                <span>Rs. {room.price}</span>
+                              )}
                             </span>
                             <br />
 
