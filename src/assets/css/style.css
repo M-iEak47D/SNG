@@ -3262,14 +3262,15 @@ footer .social-media-icons ul li a:hover {
 }
 
 .contact-section .contact_img {
-  height: 100%;
+  height: 250px;
   width: 100%;
+  overflow: hidden;
 }
 
 .contact-section .contact_img img {
   -o-object-fit: cover;
      object-fit: cover;
-  height: 100%;
+  width: 100%;
 }
 
 .contact-section .need-help-title {
