@@ -1,6 +1,7 @@
 import { React, useState, useEffect, useRef } from "react";
 import CheckoutForm from "./CheckoutForm";
 import Slider from "react-slick";
+import Skeleton from "react-loading-skeleton";
 
 function CheckoutSection({ room, form }) {
   const [nav1, setNav1] = useState();
@@ -66,7 +67,15 @@ function CheckoutSection({ room, form }) {
                     </Slider>
                   </div>
                   <div className="room-pricing">
-                    FROM <span>Rs. {room && room.price}</span>/PER NIGHT
+                    FROM  { room && room.offer_price > 0 ? (
+                        <>
+                          <span className="offer_price">
+                            Rs. {room.offer_price}
+                          </span>
+                        </>
+                      ) : (
+                        <span>Rs. {room && room.price}</span>
+                      )}/PER NIGHT
                   </div>
                   <p className="room-title">{room && room.title}</p>
                   <div className="room-facility">
@@ -98,6 +107,7 @@ function CheckoutSection({ room, form }) {
                     </div>
                   </div>
 
+                  { room && form ? 
                   <div className="my-booking">
                     <div className="heading">
                       <h2>My booking</h2>
@@ -141,11 +151,14 @@ function CheckoutSection({ room, form }) {
                         Rs.{" "}
                         {(form && form.occupancy.length) > 0
                           ? (form && form.occupancy.length) *
-                            (room && room.price)
-                          : room && room.price}{" "}
+                            ( room.offer_price > 0 ? room.offer_price : room.price)
+                          :  room.offer_price > 0 ? room.offer_price : room.price}{" "}
                       </p>
                     </div>
                   </div>
+                  :
+                  <Skeleton />
+                  }
                 </div>
               </div>
               <div className="col-md-7">

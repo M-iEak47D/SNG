@@ -124,7 +124,18 @@ function SingleRoomSec() {
                         King bed (qty)
                       </div>
                       <div className="price-selection-cost">
-                        Rs. {room.price}
+                        {room.offer_price > 0 ? (
+                          <>
+                            <span className="start_price">
+                              Rs. {room.price}
+                            </span>
+                            <span className="offer_price">
+                              Rs. {room.offer_price}
+                            </span>
+                          </>
+                        ) : (
+                          <span>Rs. {room.price}</span>
+                        )} 
                       </div>
                     </div>
                     <div className="price-selection-bottom">

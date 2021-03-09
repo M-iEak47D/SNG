@@ -33,8 +33,11 @@ function ContactSection() {
     <div>
       <div className="contact-section">
         <div className="container">
+          <div className="read-our-faq">
+            <p>{settings && settings.contact.title}</p>
+          </div>
           <div className="row">
-            <div className="col-lg-3 order-1 order-lg-0">
+            <div className="col-lg-9 ">
               {/* <div
                 className="hotel-image-in-contact"
                 style={{
@@ -48,17 +51,7 @@ function ContactSection() {
                 />
               </div>
             </div>
-            <div className="col-lg-6">
-              <div className="read-our-faq">
-                <p>{settings && settings.contact.title}</p>
-              </div>
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: settings && settings.contact.description,
-                }}
-              />
-            </div>
-            <div className="col-lg-3 order-12">
+            <div className="col-lg-3 ">
               <div className="contact-panel">
                 <div className="contact-panel-item">
                   <p>
@@ -91,6 +84,14 @@ function ContactSection() {
                 </div>
               </div>
             </div>
+            <div className="col-lg-12 mt-3">
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: settings && settings.contact.description,
+                }}
+              />
+            </div>
+            
           </div>
         </div>
         <div className="leave-message-section">
