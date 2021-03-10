@@ -21,10 +21,6 @@ function SearchRoom() {
     }
   }, [location]);
 
-  console.log(roomData && roomData, "heyy room");
-
-  console.log(formData && formData, "heyy form");
-
   const bookNow = (room) => {
     history.push({
       pathname: "/checkout",

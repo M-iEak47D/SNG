@@ -48,9 +48,10 @@ function Invoice() {
     var taxable_amt =
       room.offer_price != 0
         ? room.offer_price * form.occupancy.length
-        : room.original_price * form.occupancy.length;
+        : room.price * form.occupancy.length;
 
     setTaxableAmt(taxable_amt);
+    // console.log(room.price, "tax");
 
     var tax_amt = (room.tax * taxable_amt) / 100;
     setTax(tax_amt);
@@ -61,13 +62,13 @@ function Invoice() {
       setBooking(location.state.bookingData);
       setRoom(location.state.roomData);
       setForm(location.state.formData);
-      console.log(location.state.roomData, 'hereeeee');
-      // sum(booking.data, form);
       sum(location.state.roomData, location.state.formData);
     } else {
       history.push("/");
     }
   }, [location]);
+
+  console.log(room && room, "booking");
 
   return (
     <div>
@@ -181,20 +182,17 @@ function Invoice() {
                       </div>
                       {taxableAmt < subTotal ? (
                         <div class="field">
-                          {
-                        console.log(room)}
-                          { room.discount_type == "offer_price" ?
-                              <>
-                                Discount{" "}
-                                <span>Rs.{" "}{subTotal - taxableAmt}</span>
-                              </>
-                            : (room.discount_type == "discount_percent" ?
-                              <>
-                                Discount({room.discount_percent} %){" "}
-                                <span>Rs.{" "}{subTotal - taxableAmt}</span>
-                              </>
-                          : null)
-                          }
+                          {console.log(room)}
+                          {room.discount_type == "offer_price" ? (
+                            <>
+                              Discount <span>Rs. {subTotal - taxableAmt}</span>
+                            </>
+                          ) : room.discount_type == "discount_percent" ? (
+                            <>
+                              Discount({room.discount_percent} %){" "}
+                              <span>Rs. {subTotal - taxableAmt}</span>
+                            </>
+                          ) : null}
                         </div>
                       ) : (
                         ""
@@ -202,7 +200,7 @@ function Invoice() {
                       {booking.data.tax && form && booking.data.tax > 0 ? (
                         <>
                           <div class="field">
-                            Taxable Amount <span>Rs.{" "}{taxableAmt}</span>
+                            Taxable Amount <span>Rs. {taxableAmt}</span>
                           </div>
                           <div class="field">
                             Tax({booking.data.tax} %) <span>{tax}</span>
