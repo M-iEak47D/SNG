@@ -22,6 +22,7 @@ function Home() {
   const [discover, setDiscover] = useState();
   const [deal, setDeal] = useState();
   const [special, setSpecial] = useState();
+
   useEffect(() => {
     let source = Axios.CancelToken.source();
     const loadData = async () => {
@@ -29,6 +30,7 @@ function Home() {
         const response = axiosInstance.get(`/homepage`, {
           cancelToken: source.token,
         });
+        // console.log((await response).data, "homepage");
         setRooms((await response).data.rooms);
         setRoomtext((await response).data.room_text);
         setTestimonials((await response).data.testimonials);
