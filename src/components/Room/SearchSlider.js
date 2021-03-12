@@ -53,8 +53,6 @@ function SearchSlider({ room }) {
           </div>
         ))}
       </Slider>
-  
-  
     </>
   );
 }

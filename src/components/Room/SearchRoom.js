@@ -35,6 +35,7 @@ function SearchRoom() {
     para.classList.toggle("active");
     btn.classList.toggle("active");
   };
+  console.log("hello");
 
   return (
     <>
@@ -130,6 +131,7 @@ function SearchRoom() {
                           </button>
                         </div>
                         <div className="price-selection">
+                          <div className="off-bar">20% off</div>
                           <div className="price-selection-top">
                             <div className="price-selection-title">
                               {room.title}

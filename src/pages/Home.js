@@ -59,7 +59,7 @@ function Home() {
       <HomeWelcome welcome={welcome} />
       <HomeDiscover discover={discover} />
       <HomeSummer deal={deal} />
-      <HomeRooms rooms={rooms} roomText={roomtext} />
+    <HomeRooms rooms={rooms} roomText={roomtext} />
       <HomeNewsletter />
       <HomeSpecial special={special} />
       <div className="container">

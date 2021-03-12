@@ -3,7 +3,7 @@ import Skeleton from "react-loading-skeleton";
 import { Link } from "react-router-dom";
 
 function HomeRooms({ rooms, roomText }) {
-  console.log("rooms ", rooms && rooms.feature_image);
+  console.log("rooms")
   return (
     <>
       <div className="our-rooms">

@@ -70,7 +70,9 @@ function Invoice() {
     }
   }, [location]);
 
-  console.log(room && room, "booking");
+  console.log(booking && booking, "booking");
+  console.log(form && form, "form");
+  console.log(room && room, "room");
 
   return (
     <div>
@@ -182,9 +184,9 @@ function Invoice() {
                       <div class="field">
                         Subtotal <span>Rs. {subTotal}</span>
                       </div>
+                      
                       {taxableAmt < subTotal ? (
                         <div class="field">
-                          {console.log(room)}
                           {room.discount_type == "offer_price" ? (
                             <>
                               Discount <span>Rs. {subTotal - taxableAmt}</span>

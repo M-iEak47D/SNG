@@ -8,20 +8,6 @@ import SearchSlider from "./SearchSlider";
 
 function SingleRoomSec() {
   let { id } = useParams();
-  console.log(id);
-  const [nav1, setNav1] = useState();
-  const [nav2, setNav2] = useState();
-
-  // setNav1(nav1 + id);
-  // console.log(nav1, "nav1");
-
-  let slider1 = [];
-  let slider2 = [];
-
-  useEffect(() => {
-    setNav1(slider1);
-    setNav2(slider2);
-  }, [slider1, slider2]);
 
   const [room, setRoom] = useState();
   const readMore = (e) => {
@@ -51,7 +37,7 @@ function SingleRoomSec() {
     };
     loadData();
   }, []);
-
+  console.log(room && room, "rooms");
   return (
     <div>
       <div className="room-section" id="room-section-for-single-room">
@@ -135,7 +121,7 @@ function SingleRoomSec() {
                           </>
                         ) : (
                           <span>Rs. {room.price}</span>
-                        )} 
+                        )}
                       </div>
                     </div>
                     <div className="price-selection-bottom">
