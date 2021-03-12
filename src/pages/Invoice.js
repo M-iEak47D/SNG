@@ -42,7 +42,9 @@ function Invoice() {
   }, []);
 
   const sum = (room, form) => {
-    var subtotal_amt = room.price * form.occupancy.length;
+    var subtotal_amt = room.offer_price
+      ? room.offer_price * form.occupancy.length
+      : room.price * form.occupancy.length;
     setSubTotal(subtotal_amt);
 
     var taxable_amt =
