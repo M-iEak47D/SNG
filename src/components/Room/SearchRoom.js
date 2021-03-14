@@ -35,7 +35,8 @@ function SearchRoom() {
     para.classList.toggle("active");
     btn.classList.toggle("active");
   };
-  console.log("hello");
+
+  console.log("hello", roomData && roomData);
 
   return (
     <>
@@ -131,13 +132,22 @@ function SearchRoom() {
                           </button>
                         </div>
                         <div className="price-selection">
-                          <div className="off-bar">20% off</div>
+                          {room.offer_price &&
+                          room.discount_type == "discount_percent" ? (
+                            <div className="off-bar">
+                              {room.discount_percent} % off
+                            </div>
+                          ) : (
+                            ""
+                          )}
+
                           <div className="price-selection-top">
                             <div className="price-selection-title">
                               {room.title}
                             </div>
                             <div className="price-selection-cost">
-                              {room.offer_price > 0 ? (
+                              {room.offer_price > 0 &&
+                              room.discount_type == "offer_price" ? (
                                 <>
                                   <span className="start_price">
                                     Rs. {room.price}

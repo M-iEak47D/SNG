@@ -3726,13 +3726,13 @@ footer .social-media-icons ul li a:hover {
   background-color: #ff6a00;
   color: #ffffff;
   right: 20px;
-  top: -22px;
+  top: -15px;
   border-radius: 50%;
   font-size: 12px;
   text-align: center;
   margin: 0;
-  height: 40px;
-  width: 40px;
+  height: 30px;
+  width: 73px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
