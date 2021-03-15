@@ -949,7 +949,13 @@ body {
       background-color: #ff6a00;
     }
   }
+  .bottom-search-bar {
+    form {
+      display: flex;
+    }
+  }
 }
+
 @media (max-width: 992px) {
   .search-wrapper {
     .bottom-search-bar-mobile {
@@ -960,10 +966,24 @@ body {
     .bottom-search-bar-mobile {
       display: none;
     }
+    .bottom-search-bar {
+      form {
+        display: block;
+      }
+    }
   }
   .search-wrapper.book_now_nav.side_nav {
     .bottom-search-bar-mobile {
       display: inline-block;
+    }
+  }
+}
+@media only screen and (min-width: 993px) {
+  .search-wrapper.book_now_nav {
+    .bottom-search-bar {
+      form {
+        display: flex;
+      }
     }
   }
 }
@@ -975,8 +995,11 @@ body {
   }
 }
 .modal-body {
-  padding: 2%;
+  // padding: 2%;
   padding-top: 0px;
+}
+.modal-header{
+  display: none;
 }
 
 .modal-backdrop {

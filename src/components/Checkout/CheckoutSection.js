@@ -67,15 +67,17 @@ function CheckoutSection({ room, form }) {
                     </Slider>
                   </div>
                   <div className="room-pricing">
-                    FROM  { room && room.offer_price > 0 ? (
-                        <>
-                          <span className="offer_price">
-                            Rs. {room.offer_price}
-                          </span>
-                        </>
-                      ) : (
-                        <span>Rs. {room && room.price}</span>
-                      )}/PER NIGHT
+                    FROM{" "}
+                    {room && room.offer_price > 0 ? (
+                      <>
+                        <span className="offer_price">
+                          $ {room.offer_price}
+                        </span>
+                      </>
+                    ) : (
+                      <span>$ {room && room.price}</span>
+                    )}
+                    /PER NIGHT
                   </div>
                   <p className="room-title">{room && room.title}</p>
                   <div className="room-facility">
@@ -107,58 +109,62 @@ function CheckoutSection({ room, form }) {
                     </div>
                   </div>
 
-                  { room && form ? 
-                  <div className="my-booking">
-                    <div className="heading">
-                      <h2>My booking</h2>
-                    </div>
+                  {room && form ? (
+                    <div className="my-booking">
+                      <div className="heading">
+                        <h2>My booking</h2>
+                      </div>
 
-                    <div>
-                      <h3>Occupancy</h3>
-                      <p>
-                        {form && form.occupancy.length} Room{" "}
-                        {form &&
+                      <div>
+                        <h3>Occupancy</h3>
+                        <p>
+                          {form && form.occupancy.length} Room{" "}
+                          {form &&
+                            form.occupancy
+                              .map((item) => item.adult)
+                              .reduce((curval, newval) => curval + newval)}{" "}
+                          Adult &nbsp;
+                          {form &&
                           form.occupancy
-                            .map((item) => item.adult)
-                            .reduce((curval, newval) => curval + newval)}{" "}
-                        Adult &nbsp;
-                        {form &&
-                        form.occupancy
-                          .map((item) => item.child)
-                          .reduce((curval, newval) => curval + newval) > 0
-                          ? form.occupancy
-                              .map((item) => item.child)
-                              .reduce((curval, newval) => curval + newval) +
-                            " Child"
-                          : ""}{" "}
-                      </p>
+                            .map((item) => item.child)
+                            .reduce((curval, newval) => curval + newval) > 0
+                            ? form.occupancy
+                                .map((item) => item.child)
+                                .reduce((curval, newval) => curval + newval) +
+                              " Child"
+                            : ""}{" "}
+                        </p>
+                      </div>
+                      <div>
+                        <h3>Check-in</h3>
+                        <p>{form && form.startDate}</p>
+                      </div>
+                      <div>
+                        <h3>Check-out</h3>
+                        <p>{form && form.endDate}</p>
+                      </div>
+                      <div>
+                        <h3>{room && room.title}</h3>
+                        <p>Dream Deals - Superior Room - Breakfast included</p>
+                      </div>
+                      <div>
+                        <h3>Total Price </h3>
+                        <p>
+                          ${" "}
+                          {(form && form.occupancy.length) > 0
+                            ? (form && form.occupancy.length) *
+                              (room.offer_price > 0
+                                ? room.offer_price
+                                : room.price)
+                            : room.offer_price > 0
+                            ? room.offer_price
+                            : room.price}{" "}
+                        </p>
+                      </div>
                     </div>
-                    <div>
-                      <h3>Check-in</h3>
-                      <p>{form && form.startDate}</p>
-                    </div>
-                    <div>
-                      <h3>Check-out</h3>
-                      <p>{form && form.endDate}</p>
-                    </div>
-                    <div>
-                      <h3>{room && room.title}</h3>
-                      <p>Dream Deals - Superior Room - Breakfast included</p>
-                    </div>
-                    <div>
-                      <h3>Total Price </h3>
-                      <p>
-                        Rs.{" "}
-                        {(form && form.occupancy.length) > 0
-                          ? (form && form.occupancy.length) *
-                            ( room.offer_price > 0 ? room.offer_price : room.price)
-                          :  room.offer_price > 0 ? room.offer_price : room.price}{" "}
-                      </p>
-                    </div>
-                  </div>
-                  :
-                  <Skeleton />
-                  }
+                  ) : (
+                    <Skeleton />
+                  )}
                 </div>
               </div>
               <div className="col-md-7">

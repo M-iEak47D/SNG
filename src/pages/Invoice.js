@@ -140,8 +140,7 @@ function Invoice() {
                           </div>
                           {}
                           <div class="col-md-5 amount text-right">
-                            Rs.
-                            {subTotal}
+                            ${subTotal}
                           </div>
                         </div>
                       )}
@@ -180,19 +179,19 @@ function Invoice() {
                         </div>
                       </p>
                       <div class="field">
-                        Subtotal <span>Rs. {subTotal}</span>
+                        Subtotal <span>$ {subTotal}</span>
                       </div>
 
                       {taxableAmt < subTotal ? (
                         <div class="field">
                           {room.discount_type == "offer_price" ? (
                             <>
-                              Discount <span>Rs. {subTotal - taxableAmt}</span>
+                              Discount <span>$ {subTotal - taxableAmt}</span>
                             </>
                           ) : room.discount_type == "discount_percent" ? (
                             <>
                               Discount({room.discount_percent} %){" "}
-                              <span>Rs. {subTotal - taxableAmt}</span>
+                              <span>$ {subTotal - taxableAmt}</span>
                             </>
                           ) : null}
                         </div>
@@ -202,7 +201,7 @@ function Invoice() {
                       {booking.data.tax && form && booking.data.tax > 0 ? (
                         <>
                           <div class="field">
-                            Taxable Amount <span>Rs. {taxableAmt}</span>
+                            Taxable Amount <span>$ {taxableAmt}</span>
                           </div>
                           <div class="field">
                             Tax({booking.data.tax} %) <span>{tax}</span>
@@ -213,7 +212,7 @@ function Invoice() {
                       )}
 
                       <div class="field grand-total">
-                        Total <span>Rs. {taxableAmt + tax}</span>
+                        Total <span>$ {taxableAmt + tax}</span>
                       </div>
                     </div>
 

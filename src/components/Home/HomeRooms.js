@@ -3,7 +3,7 @@ import Skeleton from "react-loading-skeleton";
 import { Link } from "react-router-dom";
 
 function HomeRooms({ rooms, roomText }) {
-  console.log("rooms")
+  console.log("rooms");
   return (
     <>
       <div className="our-rooms">
@@ -34,11 +34,11 @@ function HomeRooms({ rooms, roomText }) {
                             <span style={{ fontSize: "14px", color: "orange" }}>
                               {room.offer_price > 0 ? (
                                 <>
-                                  Rs. <del>{room.price}</del>
+                                  $ <del>{room.price}</del>
                                   <span>{room.offer_price}</span>
                                 </>
                               ) : (
-                                <span>Rs. {room.price}</span>
+                                <span>$ {room.price}</span>
                               )}
                             </span>
                             <br />

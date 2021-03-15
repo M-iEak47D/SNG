@@ -16,7 +16,7 @@ function Navbar() {
   useEffect(() => {
     console.log("first load");
     function googleTranslateElementInit() {
-      console.log('data')
+      console.log("data");
       new google.translate.TranslateElement(
         {
           pageLanguage: "en",
@@ -27,10 +27,10 @@ function Navbar() {
       );
     }
     // google && google.translate && googleTranslateElementInit();
-      window.addEventListener("load", () => {
-          console.log("domloaded");
-          googleTranslateElementInit();
-        });
+    window.addEventListener("load", () => {
+      console.log("domloaded");
+      googleTranslateElementInit();
+    });
   }, []);
 
   // document.addEventListener('load',()=>{
