@@ -857,9 +857,9 @@ body {
   background: white;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  -webkit-box-shadow: 0px 5px 10px #d8d6d6;
-          box-shadow: 0px 5px 10px #d8d6d6;
-  width: 70%;
+  -webkit-box-shadow: 0px 1px 4px #d8d6d6;
+          box-shadow: 0px 1px 4px #d8d6d6;
+  width: 80%;
   margin: 0 auto;
   border-radius: 5px;
   position: relative;
@@ -906,7 +906,7 @@ body {
 }
 
 .search-wrapper .modal-dialog .modal-content .bottom-search-bar {
-  margin-top: 15px;
+  margin-top: 5px;
 }
 
 .search-wrapper .modal-dialog .modal-content .bottom-search-bar .item {
@@ -1140,6 +1140,16 @@ body {
 }
 
 @media only screen and (min-width: 993px) {
+  .search-wrapper.book_now_nav .modal-content {
+    background: transparent;
+  }
+  .search-wrapper.book_now_nav .modal-content .bottom-search-bar .item input {
+    height: 30px;
+    line-height: 30px;
+  }
+  .search-wrapper.book_now_nav .modal-content .bottom-search-bar .item i {
+    top: 7px;
+  }
   .search-wrapper.book_now_nav .bottom-search-bar form {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -1149,7 +1159,7 @@ body {
 
 @media (max-width: 1200px) {
   .bottom-search-bar {
-    width: 90% !important;
+    width: 80% !important;
     padding: 0px !important;
   }
 }

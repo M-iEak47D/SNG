@@ -28,13 +28,17 @@ function HomeRooms({ rooms, roomText }) {
                           <div className="hotel-room-overlay"></div>
                           {/* <a href="#"></a> */}
                           <div className="hotel-room-price">
-                            <span style={{ fontSize: "10px", color: "orange" }}>
+                            {/* <span style={{ fontSize: "10px", color: "orange" }}>
                               FROM:
-                            </span>
+                            </span> */}
                             <span style={{ fontSize: "14px", color: "orange" }}>
                               {room.offer_price > 0 ? (
                                 <>
-                                  $ <del>{room.price}</del>
+                                  ${" "}
+                                  <del style={{ color: "black" }}>
+                                    {room.price}
+                                  </del>
+                                  {"  "}
                                   <span>{room.offer_price}</span>
                                 </>
                               ) : (
