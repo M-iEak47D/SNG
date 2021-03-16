@@ -39,12 +39,12 @@ function TeamSection() {
             team.teams.map((team) => (
               <div className="team-member">
                 <div className="row">
-                  <div className="col-md-3">
+                  <div className="col-sm-3">
                     <div className="team-member-image">
                       <img src={team.image} />
                     </div>
                   </div>
-                  <div className="col-md-9">
+                  <div className="col-sm-9">
                     <div className="team-member-text">
                       <div className="team-member-name">{team.title}</div>
                       <div className="team-member-position">
