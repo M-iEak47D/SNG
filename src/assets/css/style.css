@@ -1684,6 +1684,20 @@ body {
   left: 10px;
 }
 
+.our-rooms-details-wrapper .our-rooms-details .hotel-room .hotel-room-image .hotel-room-price .price {
+  font-size: 14px;
+  color: #fff;
+  font-weight: 700;
+  background: #ff6a00;
+  padding: 3px;
+  padding-right: 3px;
+  padding-left: 3px;
+  border-radius: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-bottom: 0px;
+}
+
 .our-rooms-details-wrapper .our-rooms-details .hotel-room:hover .hotel-room-overlay {
   position: absolute;
   top: 0;

@@ -26,12 +26,9 @@ function HomeRooms({ rooms, roomText }) {
                       >
                         <Link to={"/single_room/" + room.id}>
                           <div className="hotel-room-overlay"></div>
-                          {/* <a href="#"></a> */}
+
                           <div className="hotel-room-price">
-                            {/* <span style={{ fontSize: "10px", color: "orange" }}>
-                              FROM:
-                            </span> */}
-                            <span style={{ fontSize: "14px", color: "orange" }}>
+                            <span className="price">
                               {room.offer_price > 0 ? (
                                 <>
                                   ${" "}
@@ -49,9 +46,9 @@ function HomeRooms({ rooms, roomText }) {
 
                             <span
                               style={{
-                                fontSize: "14px",
+                                fontSize: "16px",
                                 color: "white",
-                                fontWeight: "700",
+                                fontWeight: "600",
                               }}
                             >
                               {room.title}
