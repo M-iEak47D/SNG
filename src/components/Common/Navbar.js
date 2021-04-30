@@ -161,12 +161,12 @@ function Navbar() {
 
                       <li className="nav-item active">
                         <Link className="nav-link" to="/restaurant">
-                          Restaurant <span class="sr-only">(current)</span>
+                          Dining <span class="sr-only">(current)</span>
                         </Link>
                       </li>
                       <li className="nav-item active">
                         <Link className="nav-link" to="/packages">
-                          Packages
+                          Offers
                           <span className="sr-only">(current)</span>
                         </Link>
                       </li>

@@ -96,8 +96,8 @@ function Footer() {
                 <div className="footer-item-list">
                   <p>QUICK LINKS</p>
                   <Link to="/">Home</Link>
-                  <Link to="/restaurant">Restaurant</Link>
-                  <Link to="/packages">Packages</Link>
+                  <Link to="/restaurant">Dining</Link>
+                  <Link to="/packages">Offers</Link>
                 </div>
               </div>
               <div className="col-md-4 col-6">
@@ -114,6 +114,8 @@ function Footer() {
                   <p>HELP</p>
                   <Link to="/contact">Contact Us</Link>
                   <Link to="/reach">How to Reach us?</Link>
+                  <Link to="/terms-condition">Terms and Condition</Link>
+
                 </div>
               </div>
             </div>

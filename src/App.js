@@ -9,6 +9,7 @@ import ImageGallery from "./pages/ImageGallery";
 import VideoGallery from "./pages/VideoGallery";
 import Contact from "./pages/Contact";
 import About from "./pages/About";
+import Terms from "./pages/Terms";
 import Blog from "./pages/Blog";
 import Reach from "./pages/Reach";
 import Restaurant from "./pages/Restaurant";
@@ -84,6 +85,9 @@ function App() {
         </Route>
         <Route exact path="/test">
           <Test />
+        </Route>
+        <Route exact path="/terms-condition">
+          <Terms />
         </Route>
         <Route exact path="/">
           <Home />

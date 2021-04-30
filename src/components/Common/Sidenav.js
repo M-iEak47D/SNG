@@ -64,10 +64,10 @@ function Sidenav() {
           </div>
         </div>
         <div className="nav-content">
-          <Link to="/packages">Packages</Link>
+          <Link to="/packages">Offers</Link>
         </div>
         <div className="nav-content">
-          <Link to="/restaurant">Restaurant</Link>
+          <Link to="/restaurant">Dining</Link>
         </div>
         <div className="nav-content">
           <div className="dropdown">
